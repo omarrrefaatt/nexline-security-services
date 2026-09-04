@@ -2,29 +2,36 @@ import { Link } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { companyStory, guardHeroes } from "../../data/aboutData.js";
-
+import "./About.css";
+import securityTeam from "../../assets/security-team.jpg";
 function About() {
   return (
     <PageShell>
       <section className="about-page">
-        <div className="about-page__hero">
-          <div>
-            <p className="eyebrow">
-              <span className="status-dot" />
-              About Nexline
-            </p>
-            <h1>
-              People behind
-              <br />
-              <em>the protection.</em>
-            </h1>
-          </div>
-          <p className="about-page__hero-note">
-            A security partner for the moments that matter, built around people
-            you can trust.
-          </p>
-        </div>
+      <div className="about-page__hero">
+  <div className="about-page__hero-content">
+    <p className="eyebrow">
+      <span className="status-dot" />
+      About Nexline
+    </p>
 
+    <h1>
+      People behind
+      <br />
+      <em>the protection.</em>
+    </h1>
+<br />
+<br />
+    <p className="about-page__hero-note">
+      A security partner for the moments that matter, built around people
+      you can trust.
+    </p>
+  </div>
+
+  <div className="about-page__hero-image" aria-hidden="true">
+    <img src={securityTeam} alt="" />
+  </div>
+</div>
         <section
           className="company-story"
           aria-labelledby="company-story-title"

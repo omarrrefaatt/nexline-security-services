@@ -8,10 +8,12 @@ import About from "./pages/about/About.jsx";
 // @ts-expect-error Contact is a JavaScript module without TypeScript declarations.
 import Contact from "./pages/contact/Contact.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />

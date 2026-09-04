@@ -1,0 +1,119 @@
+/* =========================================
+   ABOUT HERO
+========================================= */
+
+.about-page__hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Main text stays above the image */
+.about-page__hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 720px;
+}
+
+/* Background people image */
+.about-page__hero-image {
+  position: absolute;
+  z-index: 1;
+
+  top: 0;
+  right: 0;
+
+  width: 62%;
+  height: 100%;
+
+  overflow: hidden;
+
+  /* Starts outside the screen */
+  transform: translateX(100%);
+
+  /* Slides into position when page opens */
+  animation: heroImageSlideIn 1.2s cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+
+  animation-delay: 0.15s;
+
+  /* Makes the image fade in slightly while sliding */
+  opacity: 0;
+  animation-name: heroImageSlideIn;
+}
+
+/* Actual image */
+.about-page__hero-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+}
+
+/* Dark gradient so the white text remains readable */
+.about-page__hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.72) 25%,
+      rgba(0, 0, 0, 0.25) 65%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
+}
+
+/* Text above everything */
+.about-page__hero h1,
+.about-page__hero .eyebrow {
+  position: relative;
+  z-index: 3;
+}
+
+/* Small description stays above image */
+.about-page__hero-note {
+  position: relative;
+  z-index: 3;
+}
+
+/* =========================================
+   SLIDE ANIMATION
+========================================= */
+
+@keyframes heroImageSlideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__hero-image {
+    animation: none;
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

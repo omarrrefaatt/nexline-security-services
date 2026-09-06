@@ -3,14 +3,37 @@ import { Link } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { contactDetails, faqs } from "../../data/contactData.js";
+import { sendContactMessage } from "../../services/mailService.js";
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState(0);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    setSubmitted(true);
+    setIsSending(true);
+    setError("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    try {
+      await sendContactMessage({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        enquiryType: formData.get("enquiryType"),
+        message: formData.get("message"),
+      });
+      setSubmitted(true);
+      form.reset();
+    } catch {
+      setError(
+        "We could not send your message. Please try again or call us directly.",
+      );
+    } finally {
+      setIsSending(false);
+    }
   }
 
   return (
@@ -75,15 +98,25 @@ function Contact() {
                 </div>
                 <label>
                   Name
-                  <input required type="text" placeholder="Your full name" />
+                  <input
+                    name="name"
+                    required
+                    type="text"
+                    placeholder="Your full name"
+                  />
                 </label>
                 <label>
                   Email
-                  <input required type="email" placeholder="you@company.com" />
+                  <input
+                    name="email"
+                    required
+                    type="email"
+                    placeholder="you@company.com"
+                  />
                 </label>
                 <label>
                   How can we help?
-                  <select defaultValue="">
+                  <select name="enquiryType" defaultValue="">
                     <option value="" disabled>
                       Select an enquiry type
                     </option>
@@ -96,13 +129,24 @@ function Contact() {
                 <label>
                   Message
                   <textarea
+                    name="message"
                     required
                     rows="5"
                     placeholder="Tell us a little about what you need"
                   />
                 </label>
-                <button className="button button-primary" type="submit">
-                  Send message <Icon name="arrow" size={16} />
+                {error && (
+                  <p className="form-error" role="alert">
+                    {error}
+                  </p>
+                )}
+                <button
+                  className="button button-primary"
+                  type="submit"
+                  disabled={isSending}
+                >
+                  {isSending ? "Sending..." : "Send message"}{" "}
+                  {!isSending && <Icon name="arrow" size={16} />}
                 </button>
               </form>
             )}

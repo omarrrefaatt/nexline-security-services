@@ -9,6 +9,20 @@ import About from "./pages/about/About.jsx";
 import Contact from "./pages/contact/Contact.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+// @ts-expect-error StandingGuards is a JavaScript module without TypeScript declarations.
+import StandingGuards from "./pages/services/StandingGuards.jsx";
+// @ts-expect-error EventSecurity is a JavaScript module without TypeScript declarations.
+import EventSecurity from "./pages/services/EventSecurity.jsx";
+  // @ts-expect-error MobileSurveillance is a JavaScript module without TypeScript declarations.
+import MobileSurveillance from "./pages/services/MobileSurveillance.jsx";
+// @ts-expect-error MobilePatrols is a JavaScript module without TypeScript declarations.
+import MobilePatrols from "./pages/services/MobilePatrols.jsx";
+// @ts-expect-error FireWatch is a JavaScript module without TypeScript declarations.
+import FireWatch from "./pages/services/FireWatch.jsx";
+// @ts-expect-error FrontReceptionGuards is a JavaScript module without TypeScript declarations.
+import FrontReceptionGuards from "./pages/services/FrontReceptionGuards.jsx";
+
+
 
 function App() {
   return (
@@ -21,6 +35,12 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Home />} />
+        <Route path="/services/standing-guards" element={<StandingGuards />} />
+        <Route path="/services/event-security" element={<EventSecurity />} />
+        <Route path="/services/mobile-surveillance" element={<MobileSurveillance />} />
+        <Route path="/services/mobile-patrols" element={<MobilePatrols />} />
+        <Route path="/services/fire-watch" element={<FireWatch />} />
+        <Route path="/services/front-reception-lobby-guards" element={<FrontReceptionGuards />} />
       </Routes>
     </BrowserRouter>
   );

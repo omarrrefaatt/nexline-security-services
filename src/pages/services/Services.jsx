@@ -1,14 +1,22 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { services } from "../../data/services.js";
+import serviceBackground from "../../assets/run.png";
+import "../../pages/services/Services.css";
 
 function Services() {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
   const filteredServices = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
-    if (!normalizedQuery) return services;
+
+    if (!normalizedQuery) {
+      return services;
+    }
+
     return services.filter((service) =>
       [service.title, service.category, service.description].some((value) =>
         value.toLowerCase().includes(normalizedQuery),
@@ -19,50 +27,79 @@ function Services() {
   return (
     <PageShell>
       <section className="services-page">
+        {/* =====================================================
+            HERO / INTRO
+        ===================================================== */}
         <div className="services-page__intro">
-          <div>
-            <p className="eyebrow">
-              <span className="status-dot" />
+          {/* HERO IMAGE */}
+          <div
+            className="services-page__hero-image services-page__hero-image--visible"
+            aria-hidden="true"
+          >
+            <img src={serviceBackground} alt="" />
+          </div>
+
+          {/* HERO CONTENT */}
+          <div className="services-page__hero-content">
+            <p className="services-page__eyebrow">
+              <span className="services-page__status-dot" />
               What we protect
             </p>
+
             <h1>
               Security that moves
               <br />
               <em>with you.</em>
             </h1>
+
             <p className="services-page__lead">
               From a single site to a complex operation, Nexline builds the
               right level of protection around the way your business works.
             </p>
           </div>
+
+          {/* QUOTE BUTTON */}
           <Link
             className="button button-primary services-page__quote"
             to="/quote"
           >
-            Get Quote <Icon name="arrow" size={16} />
+            Get Quote
+            <Icon name="arrow" size={16} />
           </Link>
         </div>
 
-        <div className="services-toolbar">
-          <div className="services-toolbar__count">
-            <span className="services-toolbar__number">
+        {/* =====================================================
+            TOOLBAR
+        ===================================================== */}
+        <div className="services-page__toolbar">
+          {/* SERVICE COUNT */}
+          <div className="services-page__toolbar-count">
+            <span className="services-page__toolbar-number">
               {String(filteredServices.length).padStart(2, "0")}
             </span>
+
             <span>Services available</span>
           </div>
-          <label className="service-search">
+
+          {/* SEARCH */}
+          <label className="services-page__search">
             <Icon name="search" size={19} />
-            <span className="sr-only">Search security services</span>
+
+            <span className="services-page__sr-only">
+              Search security services
+            </span>
+
             <input
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search services"
             />
+
             {query && (
               <button
                 type="button"
-                className="service-search__clear"
+                className="services-page__search-clear"
                 onClick={() => setQuery("")}
                 aria-label="Clear search"
               >
@@ -72,39 +109,74 @@ function Services() {
           </label>
         </div>
 
+        {/* =====================================================
+            SERVICES GRID
+        ===================================================== */}
         {filteredServices.length > 0 ? (
-          <div className="services-grid">
+          <div className="services-page__grid">
             {filteredServices.map((service, index) => (
-              <article className="service-card" key={service.id}>
-                <div className="service-card__image-wrap">
+              <article
+                key={service.id}
+                className="services-page__card"
+                onClick={() => navigate(`/services/${service.id}`)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    navigate(`/services/${service.id}`);
+                  }
+                }}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${service.title} details`}
+              >
+                <div className="services-page__card-image-wrap">
                   <img
-                    className="service-card__image"
+                    className="services-page__card-image"
                     src={service.image}
-                    alt={service.alt}
+                    alt={service.alt || service.title}
                     loading={index > 1 ? "lazy" : "eager"}
                   />
-                  <span className="service-card__index">0{index + 1}</span>
+
+                  <span className="services-page__card-index">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <div className="service-card__body">
-                  <p className="service-card__category">{service.category}</p>
+
+                <div className="services-page__card-body">
+                  <p className="services-page__card-category">
+                    {service.category}
+                  </p>
+
                   <h2>{service.title}</h2>
-                  <p className="service-card__description">
+
+                  <p className="services-page__card-description">
                     {service.description}
                   </p>
-                  <Link
-                    className="service-card__action"
-                    to={`/quote?service=${service.id}`}
+
+                  <button
+                    type="button"
+                    className="services-page__card-quote"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      navigate(`/quote?service=${service.id}`);
+                    }}
                   >
-                    Get Quote <Icon name="arrow" size={16} />
-                  </Link>
+                    Get Quote
+                    <Icon name="arrow" size={16} />
+                  </button>
                 </div>
               </article>
             ))}
           </div>
         ) : (
-          <div className="services-empty">
+          /* =====================================================
+             EMPTY SEARCH STATE
+          ===================================================== */
+          <div className="services-page__empty">
             <Icon name="search" size={28} />
+
             <h2>No services found</h2>
+
             <p>Try a broader search or clear the field to see every service.</p>
           </div>
         )}

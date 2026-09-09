@@ -53,15 +53,18 @@ function Footer() {
             Southern California.
           </p>
           <div className="site-footer__socials" aria-label="Social media links">
-            {["Facebook", "Instagram", "LinkedIn", "YouTube"].map((network) => (
-              <a
-                href={`#${network.toLowerCase()}`}
-                key={network}
-                aria-label={`${network} placeholder`}
-              >
-                {network.slice(0, 2)}
-              </a>
-            ))}
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <Icon name="facebook" size={16} />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Icon name="instagram" size={16} />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Icon name="linkedin" size={16} />
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <Icon name="youtube" size={16} />
+            </a>
           </div>
         </div>
         <div className="site-footer__column">

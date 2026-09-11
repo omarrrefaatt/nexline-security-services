@@ -1,3 +1,4 @@
+import  "../../components/navigation/navigation.css";
 function Logo() {
   return (
     <a href="/" className="logo">

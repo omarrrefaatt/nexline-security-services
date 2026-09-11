@@ -22,7 +22,7 @@ function Home() {
       <VisionSection />
       <ServicesSection />
       <AwardsSection />
-      <CareerCTA />
+      {/* <CareerCTA /> */}
       <ReviewsSection />
       <TrustedBy />
     </PageShell>

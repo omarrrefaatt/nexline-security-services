@@ -1,8 +1,8 @@
 export const awards = [
   {
-    id: 'iso-27001',
-    title: 'ISO 27001 Certified',
-    description: 'Information security management certified',
+    id: 'Certified Expertise',
+    title: 'Certified Expertise',
+    description: 'Certified expertise. Proven standards. Uncompromising protection.',
     icon: 'shield-check',
   },
   {
@@ -18,9 +18,9 @@ export const awards = [
     icon: 'heart',
   },
   {
-    id: 'professional-standards',
-    title: 'Professional Standards',
-    description: 'ASIS PCI and SIA certified',
+    id: 'Tailored Solutions',
+    title: 'Tailored Solutions',
+    description: 'Customized security solutions for your unique needs',
     icon: 'check-circle',
   },
 ];

@@ -1,5 +1,5 @@
 
-import standingGuards from "../assets/standing-guard.jpg";
+import standingGuards from "../assets/standing_guard.jpeg";
 import servailance from "../assets/mobile-surveillance.jpg";
 import lobbyGuards from "../assets/lobby-guards.jpg";
 import fireWatch from "../assets/fire-watch.jpg";

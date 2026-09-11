@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { services } from "../../data/services.js";
-import serviceBackground from "../../assets/run.png";
+import serviceBackground from "../../assets/guard.png";
+import"../../styles/globals.css"
 import "../../pages/services/Services.css";
+
 
 function Services() {
   const [query, setQuery] = useState("");
@@ -59,13 +61,12 @@ function Services() {
           </div>
 
           {/* QUOTE BUTTON */}
-          <Link
-            className="button button-primary services-page__quote"
-            to="/quote"
-          >
-            Get Quote
-            <Icon name="arrow" size={16} />
-          </Link>
+       <Link
+  className="services-page__quote"
+  to="/quote"
+>
+  Get Quote
+</Link>
         </div>
 
         {/* =====================================================

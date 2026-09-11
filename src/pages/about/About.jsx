@@ -67,7 +67,7 @@ function About() {
               </h2>
             </div>
             <p>
-              Our top-rated guards bring skill, empathy, and readiness to every
+              Our top-rated Team bring skill, empathy, and readiness to every
               assignment. Meet the team behind the Nexline standard.
             </p>
           </div>

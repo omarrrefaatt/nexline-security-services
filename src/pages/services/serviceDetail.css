@@ -54,26 +54,28 @@
 .service-detail-sidebar__header p {
   margin: 0;
 
-  font-size: 9px;
+  font: 0.6rem "DM Mono", monospace;
   font-weight: 700;
   letter-spacing: 0.18em;
+  text-transform: uppercase;
 
-  color: #777;
+  color: var(--gold, #d9a441);
 }
 
 .service-detail-sidebar__line {
   width: 22px;
   height: 1px;
 
-  background: #fff;
+  background: var(--gold, #d9a441);
 }
 
 .service-detail-sidebar h2 {
   margin: 0 0 38px;
 
-  font-size: 20px;
+  font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: -0.03em;
+  color: var(--detail-text);
 }
 
 /* =========================================================
@@ -90,7 +92,7 @@
   position: relative;
 
   display: grid;
-  grid-template-columns: 30px 1fr 18px;
+  grid-template-columns: 34px 1fr 18px;
   align-items: center;
 
   min-height: 64px;
@@ -98,7 +100,7 @@
 
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 
-  color: #777;
+  color: #8a8a8a;
 
   text-decoration: none;
 
@@ -114,11 +116,11 @@
 
 .service-detail-sidebar__link:hover {
   padding-left: 11px;
-  color: #fff;
+  color: #f5f5f5;
 }
 
 .service-detail-sidebar__link.active {
-  color: #fff;
+  color: #f5f5f5;
   padding-left: 11px;
 }
 
@@ -133,30 +135,33 @@
 
   width: 2px;
 
-  background: #fff;
+  background: var(--gold, #d9a441);
 }
 
 .service-detail-sidebar__number {
-  font-size: 9px;
-  font-weight: 600;
+  font: 0.72rem "DM Mono", monospace;
+  letter-spacing: 0.04em;
 
-  color: #555;
+  color: #6b6b6b;
 
   transition: color 0.3s ease;
 }
 
-.service-detail-sidebar__link.active .service-detail-sidebar__number {
-  color: #fff;
+.service-detail-sidebar__link.active .service-detail-sidebar__number,
+.service-detail-sidebar__link:hover .service-detail-sidebar__number {
+  color: var(--gold, #d9a441);
 }
 
 .service-detail-sidebar__title {
-  font-size: 11px;
+  font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.35;
 }
 
 .service-detail-sidebar__arrow {
   font-size: 15px;
+
+  color: var(--gold, #d9a441);
 
   opacity: 0;
 
@@ -208,12 +213,12 @@
 
   margin: 0;
 
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font: 0.65rem "DM Mono", monospace;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 
-  color: #999;
+  color: var(--gold, #d9a441);
 }
 
 .status-dot {
@@ -222,19 +227,18 @@
 
   border-radius: 50%;
 
-  background: #fff;
+  background: var(--gold, #d9a441);
 
-  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 0 rgba(217, 164, 65, 0.4);
 
   animation: statusPulse 2s infinite;
 }
 
 .service-detail-hero__number {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font: 0.68rem "DM Mono", monospace;
+  letter-spacing: 0.08em;
 
-  color: #555;
+  color: #6b6b6b;
 }
 
 .service-detail-hero h1 {
@@ -358,24 +362,46 @@
 }
 
 .service-detail-section-number {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font: 1.85rem "DM Mono", monospace;
+  letter-spacing: 0.08em;
 
-  color: #555;
+  color: #6b6b6b;
 }
 
 .service-detail-label {
   margin: 0 0 17px;
 
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font: 1.85rem "DM Mono", monospace;
+  font-weight: 600;
+  letter-spacing: 0.14em;
 
-  color: #777;
+  color: var(--gold, #d9a441);
 }
 
+/* .service-detail-section-heading wraps the number + label + h2 for
+   "How It Works" and "Our Process" — this selector never existed
+   before, which is why those two sections rendered as plain stacked
+   text instead of the aligned number/heading layout the intro
+   section has. Matches .service-detail-intro exactly. */
+.service-detail-how,
+.service-detail-process {
+  margin-top: 100px;
+}
+
+.service-detail-section-heading {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 25px;
+
+  max-width: 900px;
+}
+
+/* All four section headings (Our Approach, How It Works, Our Process,
+   What We Provide) now share one consistent size instead of two of
+   them silently falling back to the browser's default h2 size */
 .service-detail-intro h2,
+.service-detail-how h2,
+.service-detail-process h2,
 .service-detail-features h2 {
   margin: 0 0 25px;
 
@@ -401,11 +427,72 @@
 }
 
 /* =========================================================
+   PROCESS — was plain unstyled stacked text with no card
+   treatment, no number styling, no spacing rhythm. Rebuilt as
+   a numbered card grid matching the site's card language.
+   ========================================================= */
+
+.service-detail-process-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+
+  margin-top: 40px;
+}
+
+.service-detail-process-item {
+  padding: 1.75rem;
+
+  border: 1px solid var(--detail-border);
+  border-radius: 8px;
+  background: var(--detail-card);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.service-detail-process-item:hover {
+  transform: translateY(-5px);
+  border-color: #83704a;
+}
+
+.service-detail-process-number {
+  display: block;
+
+  margin-bottom: 1.25rem;
+
+  font: 1.4rem "DM Mono", monospace;
+  font-weight: 700;
+
+  color: rgba(217, 164, 65, 0.4);
+}
+
+.service-detail-process-content h3 {
+  margin: 0 0 0.6rem;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+
+  color: #f5f5f5;
+}
+
+.service-detail-process-content p {
+  margin: 0;
+
+  font-size: 0.85rem;
+  line-height: 1.75;
+
+  color: var(--detail-muted);
+}
+
+/* =========================================================
    FEATURES
    ========================================================= */
 
 .service-detail-features {
-  margin-top: 120px;
+  margin-top: 100px;
 }
 
 .service-detail-features__heading {
@@ -416,84 +503,63 @@
   margin-bottom: 40px;
 }
 
+/* Checklist grid — each item is just an icon + one line of text, so
+   the old 145px-tall empty boxes with a pointless hover-only-darken
+   effect are gone. This is sized for what the content actually is. */
 .service-detail-feature-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
-  border-top: 1px solid var(--detail-border);
+  gap: 0.75rem;
 }
 
 .service-detail-feature {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
 
-  min-height: 145px;
+  padding: 1rem 1.25rem;
 
-  padding: 25px;
+  border: 1px solid var(--detail-border);
+  border-radius: 6px;
+  background: var(--detail-card);
 
-  border-bottom: 1px solid var(--detail-border);
+  font-size: 0.92rem;
+  color: #e4e4e4;
 
   transition:
-    background 0.35s ease,
-    transform 0.35s ease;
-}
-
-.service-detail-feature:nth-child(odd) {
-  border-right: 1px solid var(--detail-border);
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .service-detail-feature:hover {
-  background: #111;
+  border-color: var(--gold, #d9a441);
+  background: rgba(217, 164, 65, 0.06);
 }
 
-.service-detail-feature__number {
-  display: block;
+.service-detail-feature__dot {
+  flex-shrink: 0;
 
-  margin-bottom: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  font-size: 9px;
-  font-weight: 700;
+  width: 22px;
+  height: 22px;
 
-  color: #555;
+  border-radius: 50%;
+  border: 1.5px solid rgba(217, 164, 65, 0.4);
+  color: var(--gold, #d9a441);
 }
 
-.service-detail-feature__content {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 15px;
+.service-detail-feature__dot svg {
+  width: 12px;
+  height: 12px;
 }
 
-.service-detail-feature h3 {
-  margin: 0;
-
-  max-width: 300px;
-
-  font-size: 15px;
-  font-weight: 600;
-
-  line-height: 1.4;
-}
-
-.service-detail-feature__arrow {
-  font-size: 20px;
-
-  color: #777;
-
-  transform: translate(-5px, 5px);
-
-  opacity: 0;
-
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-
-.service-detail-feature:hover .service-detail-feature__arrow {
-  opacity: 1;
-
-  transform: translate(0, 0);
-
-  color: #fff;
+@media (max-width: 640px) {
+  .service-detail-feature-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .service-detail-inline-cta {
@@ -525,8 +591,8 @@
   width: 4px;
   background: linear-gradient(
     180deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.25) 100%
+    #d9a441 0%,
+    rgba(217, 164, 65, 0.25) 100%
   );
 }
 
@@ -558,7 +624,9 @@
 
   padding: 18px 24px;
 
-  background: #ffffff;
+  border: 1px solid #e6b855;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #d9a441 0%, #e6b855 100%);
   color: #090a0b;
 
   text-decoration: none;
@@ -566,6 +634,8 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+
+  box-shadow: 0 8px 20px rgba(217, 164, 65, 0.3);
 
   transition:
     transform 0.25s ease,
@@ -575,8 +645,8 @@
 
 .service-detail-inline-cta__button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 30px rgba(255, 255, 255, 0.12);
-  background: #f3f3f3;
+  box-shadow: 0 16px 40px rgba(217, 164, 65, 0.5);
+  background: linear-gradient(135deg, #e6b855 0%, #f0c870 100%);
 }
 
 /* =========================================================
@@ -641,8 +711,9 @@
 
   padding: 17px 22px;
 
-  background: #fff;
-
+  border: 1px solid #e6b855;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #d9a441 0%, #e6b855 100%);
   color: #090a0b;
 
   text-decoration: none;
@@ -653,13 +724,18 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
 
+  box-shadow: 0 8px 20px rgba(217, 164, 65, 0.3);
+
   transition:
     transform 0.3s ease,
-    background 0.3s ease;
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .service-detail-bottom-cta__button:hover {
   transform: translateY(-4px);
+  background: linear-gradient(135deg, #e6b855 0%, #f0c870 100%);
+  box-shadow: 0 16px 40px rgba(217, 164, 65, 0.5);
 }
 
 /* =========================================================
@@ -693,7 +769,7 @@
   background:
     radial-gradient(
       circle at 100% 0%,
-      rgba(255, 255, 255, 0.07),
+      rgba(217, 164, 65, 0.1),
       transparent 55%
     ),
     #111;
@@ -720,7 +796,7 @@
 
   border-radius: 50%;
 
-  background: #fff;
+  background: var(--gold, #d9a441);
 
   animation: statusPulse 2s infinite;
 }
@@ -754,8 +830,9 @@
 
   padding: 17px 18px;
 
-  background: #fff;
-
+  border: 1px solid #e6b855;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #d9a441 0%, #e6b855 100%);
   color: #090a0b;
 
   text-decoration: none;
@@ -766,15 +843,18 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
 
+  box-shadow: 0 8px 20px rgba(217, 164, 65, 0.3);
+
   transition:
     transform 0.3s ease,
-    background 0.3s ease;
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .service-detail-cta__button:hover {
   transform: translateY(-3px);
-
-  background: #e8e8e8;
+  background: linear-gradient(135deg, #e6b855 0%, #f0c870 100%);
+  box-shadow: 0 16px 40px rgba(217, 164, 65, 0.5);
 }
 
 .service-detail-cta__footer {
@@ -877,15 +957,15 @@
 
 @keyframes statusPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0 0 rgba(217, 164, 65, 0.35);
   }
 
   70% {
-    box-shadow: 0 0 0 7px rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 7px rgba(217, 164, 65, 0);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 0 rgba(217, 164, 65, 0);
   }
 }
 

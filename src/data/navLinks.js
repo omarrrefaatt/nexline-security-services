@@ -1,7 +1,6 @@
 import { services } from "./services.js";
 
 export const navLinks = [
-  { label: "Home", href: "/" },
   {
     label: "Services",
     href: "/services",
@@ -11,6 +10,7 @@ export const navLinks = [
       href: `/services/${service.id}`,
     })),
   },
+  { label: "Industries", href: "/industries" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

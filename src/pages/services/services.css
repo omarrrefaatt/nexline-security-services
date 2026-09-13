@@ -1,4 +1,3 @@
-
 /* =========================================================
    SERVICES PAGE
    ========================================================= */
@@ -6,305 +5,222 @@
 .services-page {
   width: 100%;
   min-height: 100vh;
-  background: #090a0b;
-  color: #f5f5f5;
-  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
 }
 
-
 /* =========================================================
-   HERO / INTRO
+   HERO / INTRO — headline + lead + real gold "Get a Quote"
+   button on the left, a contained image on the right (not a
+   full-bleed background photo)
    ========================================================= */
 
 .services-page__intro {
   position: relative;
-  min-height: 620px;
-
-  padding: 0 48px 80px;
+  isolation: isolate;
+  overflow: hidden;
 
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  min-height: 620px;
 
-  overflow: hidden;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3.5rem 2.5rem 5rem;
+
+  border-bottom: 1px solid var(--border);
 }
 
-
-/* =========================================================
-   HERO IMAGE
-   ========================================================= */
-
-.services-page__hero-image {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-}
-
-
-/* =========================================================
-   HERO IMAGE
-   ========================================================= */
-
-.services-page__hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-
-/* =========================================================
-   HERO CONTENT
-   ========================================================= */
-
-.services-page__hero-content {
+.services-page__intro-content {
   position: relative;
-
-  width: min(700px, 65%);
-
   z-index: 3;
+
+  max-width: 620px;
 }
-
-
-/* =========================================================
-   SERVICES EYEBROW
-   ========================================================= */
 
 .services-page__eyebrow {
   display: flex;
   align-items: center;
-
   gap: 10px;
 
-  margin: 0 0 48px;
+  margin: 0 0 2rem;
 
-  font-size: 14px;
-  font-weight: 500;
+  font: 0.65rem "DM Mono", monospace;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 
-  letter-spacing: 0.02em;
-
-  color: #f5f5f5;
+  color: var(--gold);
 }
 
-
-/* =========================================================
-   STATUS DOT
-   ========================================================= */
-
 .services-page__status-dot {
-  width: 7px;
-  height: 7px;
-
-  display: inline-block;
+  width: 6px;
+  height: 6px;
   flex-shrink: 0;
 
   border-radius: 50%;
 
-  background: #ffffff;
+  background: var(--gold);
 }
 
-
-/* =========================================================
-   HERO HEADING
-   ========================================================= */
-
-.services-page__hero-content h1 {
-  position: relative;
-
+.services-page__intro-content h1 {
   margin: 0;
 
-  max-width: 760px;
-
-  font-size: clamp(58px, 7vw, 105px);
-
-  line-height: 0.91;
-
+  font-size: clamp(44px, 6vw, 78px);
+  line-height: 0.95;
   font-weight: 700;
+  letter-spacing: -0.05em;
 
-  letter-spacing: -0.055em;
-
-  color: #f5f5f5;
-
-  z-index: 4;
+  color: var(--text);
 }
 
-
-.services-page__hero-content h1 em {
+.services-page__intro-content h1 em {
   font-style: italic;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--text);
 }
-
-
-/* =========================================================
-   HERO DESCRIPTION
-   ========================================================= */
 
 .services-page__lead {
-  position: relative;
+  max-width: 480px;
 
-  max-width: 560px;
+  margin: 2rem 0 0;
 
-  margin: 42px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.75;
 
-  font-size: 17px;
-
-  line-height: 1.7;
-
-  color: rgba(255, 255, 255, 0.62);
-
-  z-index: 4;
+  color: var(--text-muted);
 }
 
+/* Real gold pill button — no longer a thin underlined text link */
+.services-page__quote {
+  display: inline-block;
+  margin-top: 2rem;
+}
 
 /* =========================================================
-   QUOTE BUTTON
+   HERO IMAGE — full-bleed on the right, fading into the dark
+   background on the left so it blends rather than sitting in
+   a boxed frame. Same technique as .about-page__hero-image.
    ========================================================= */
 
-.services-page__quote {
+.services-page__hero-image {
   position: absolute;
-  right: 48px;
-  bottom: 80px;
-  z-index: 5;
+  z-index: 1;
 
-  display: inline-block;
+  top: 0;
+  right: 0;
 
-  color: #d4af37;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 600;
+  width: 62%;
+  height: 100%;
 
-  padding-bottom: 5px;
-  border-bottom: 2px solid #d4af37;
-
-  transition:
-    color 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease;
+  overflow: hidden;
 }
 
-.services-page__quote:hover {
-  color: #f0c94b;
-  border-color: #f0c94b;
-  transform: translateY(-2px);
+.services-page__hero-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
 }
 
+/* Left-to-right gradient so the image fades into the page
+   background instead of ending in a hard edge, keeping the
+   text on the left fully readable */
+.services-page__hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(11, 12, 14, 0.97) 0%,
+    rgba(11, 12, 14, 0.75) 20%,
+    rgba(11, 12, 14, 0.25) 45%,
+    rgba(11, 12, 14, 0.05) 65%,
+    transparent 100%
+  );
+}
 
 /* =========================================================
-   SERVICES TOOLBAR
+   TOOLBAR
    ========================================================= */
 
 .services-page__toolbar {
-  width: 100%;
-
-  padding: 32px 48px;
-
   display: flex;
-
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
 
-  gap: 30px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid var(--border);
 }
-
-
-/* =========================================================
-   SERVICE COUNT
-   ========================================================= */
 
 .services-page__toolbar-count {
   display: flex;
-
   align-items: center;
+  gap: 0.85rem;
 
-  gap: 14px;
-
-  color: rgba(255, 255, 255, 0.55);
-
-  font-size: 14px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
-
 
 .services-page__toolbar-number {
-  font-size: 32px;
-
-  font-weight: 600;
-
+  font-size: 2rem;
+  font-weight: 700;
   line-height: 1;
 
-  color: #f5f5f5;
-
-  letter-spacing: -0.04em;
+  color: var(--gold);
+  letter-spacing: -0.03em;
 }
-
 
 /* =========================================================
    SEARCH
    ========================================================= */
 
 .services-page__search {
-  width: min(330px, 100%);
+  width: min(320px, 100%);
 
   display: flex;
-
   align-items: center;
+  gap: 0.75rem;
 
-  gap: 12px;
+  padding: 0.7rem 0.9rem;
 
-  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-elevated);
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-muted);
 
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.03);
-
-  color: rgba(255, 255, 255, 0.55);
-
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
+  transition: border-color 0.2s ease;
 }
-
 
 .services-page__search:focus-within {
-  border-color: rgba(255, 255, 255, 0.35);
-
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--gold);
 }
-
 
 .services-page__search input {
   width: 100%;
 
   border: 0;
   outline: 0;
-
   background: transparent;
 
-  color: #ffffff;
-
+  color: var(--text);
   font-family: inherit;
-
-  font-size: 14px;
+  font-size: 0.85rem;
 }
-
 
 .services-page__search input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: #6b6b70;
 }
-
-
-/* Remove browser search decoration */
 
 .services-page__search input::-webkit-search-decoration,
 .services-page__search input::-webkit-search-cancel-button,
@@ -313,263 +229,161 @@
   display: none;
 }
 
-
-/* =========================================================
-   SEARCH CLEAR BUTTON
-   ========================================================= */
-
 .services-page__search-clear {
-  width: 24px;
-  height: 24px;
-
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
   border: 0;
-
   border-radius: 50%;
-
   background: rgba(255, 255, 255, 0.1);
 
-  color: #ffffff;
-
+  color: var(--text);
   cursor: pointer;
-
-  font-size: 18px;
-
+  font-size: 16px;
   line-height: 1;
 
   transition: background 0.2s ease;
 }
 
-
 .services-page__search-clear:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(217, 164, 65, 0.25);
 }
-
 
 /* =========================================================
    SERVICES GRID
    ========================================================= */
 
 .services-page__grid {
-  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
 
-  padding: 48px;
+  padding: 3rem 2.5rem;
 
   display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
 }
 
-
 /* =========================================================
-   SERVICE CARD
+   SERVICE CARD — matches .industry-card exactly
    ========================================================= */
 
 .services-page__card {
   position: relative;
-
   display: flex;
-
   flex-direction: column;
-
   min-width: 0;
-
-  text-decoration: none;
-
-  color: inherit;
-
-  background: #101112;
-
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
+  cursor: pointer;
   overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
-
 
 .services-page__card:hover {
   transform: translateY(-5px);
-
-  border-color: rgba(255, 255, 255, 0.25);
-
-  background: #141516;
+  border-color: #83704a;
 }
-
-
-/* =========================================================
-   CARD IMAGE
-   ========================================================= */
 
 .services-page__card-image-wrap {
   position: relative;
-
   width: 100%;
-
-  aspect-ratio: 16 / 10;
-
+  height: 220px;
   overflow: hidden;
-
-  background: #151617;
+  background: #25262a;
 }
-
 
 .services-page__card-image {
   width: 100%;
   height: 100%;
-
   display: block;
-
   object-fit: cover;
-
-  transition: transform 0.5s ease;
+  filter: saturate(0.72);
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-
-.services-page__card:hover
-.services-page__card-image {
+.services-page__card:hover .services-page__card-image {
   transform: scale(1.04);
+  filter: saturate(1);
 }
 
-
-/* =========================================================
-   CARD INDEX
-   ========================================================= */
-
-.services-page__card-index {
+.services-page__card-image-wrap::after {
   position: absolute;
-
-  top: 18px;
-  right: 18px;
-
-  width: 36px;
-  height: 36px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  background: rgba(0, 0, 0, 0.45);
-
-  backdrop-filter: blur(8px);
-
-  color: #ffffff;
-
-  font-size: 12px;
-
-  font-weight: 600;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent 55%, rgba(11, 12, 14, 0.55) 100%);
+  pointer-events: none;
 }
-
-
-/* =========================================================
-   CARD BODY
-   ========================================================= */
 
 .services-page__card-body {
-  padding: 28px;
-
   display: flex;
-
   flex-direction: column;
-
   flex: 1;
+  padding: 1.5rem;
 }
-
-
-/* =========================================================
-   CARD CATEGORY
-   ========================================================= */
 
 .services-page__card-category {
-  margin: 0 0 16px;
-
-  font-size: 11px;
-
-  font-weight: 600;
-
+  margin: 0 0 0.75rem;
+  color: var(--gold);
+  font: 0.62rem "DM Mono", monospace;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-
-  letter-spacing: 0.12em;
-
-  color: rgba(255, 255, 255, 0.45);
 }
-
-
-/* =========================================================
-   CARD TITLE
-   ========================================================= */
 
 .services-page__card-body h2 {
-  margin: 0;
-
-  font-size: 26px;
-
-  line-height: 1.1;
-
-  letter-spacing: -0.035em;
-
-  color: #ffffff;
+  margin: 0 0 0.75rem;
+  font-size: 1.3rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--text);
 }
-
-
-/* =========================================================
-   CARD DESCRIPTION
-   ========================================================= */
 
 .services-page__card-description {
-  margin: 18px 0 28px;
-
-  font-size: 14px;
-
-  line-height: 1.65;
-
-  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 1.4rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.75;
 }
 
-
-/* =========================================================
-   CARD ACTION
-   ========================================================= */
-
-.services-page__card-action {
+/* Real gold pill button — matches .btn--primary used everywhere
+   else on the site */
+.services-page__card-quote {
   margin-top: auto;
+  align-self: flex-start;
 
   display: inline-flex;
-
   align-items: center;
+  gap: 0.5rem;
 
-  gap: 8px;
+  padding: 0.625rem 1.5rem;
 
-  font-size: 13px;
+  border: 1px solid #e6b855;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #d9a441 0%, #e6b855 100%);
 
+  color: #000000;
+  font-family: inherit;
+  font-size: 0.85rem;
   font-weight: 600;
 
-  color: #ffffff;
+  cursor: pointer;
 
-  transition: gap 0.25s ease;
+  box-shadow: 0 8px 20px rgba(217, 164, 65, 0.3);
+
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-
-.services-page__card:hover
-.services-page__card-action {
-  gap: 13px;
+.services-page__card:hover .services-page__card-quote {
+  background: linear-gradient(135deg, #e6b855 0%, #f0c870 100%);
+  box-shadow: 0 16px 40px rgba(217, 164, 65, 0.5);
+  transform: translateY(-2px);
+  gap: 0.7rem;
 }
-
 
 /* =========================================================
    EMPTY SEARCH STATE
@@ -577,279 +391,114 @@
 
 .services-page__empty {
   min-height: 300px;
+  max-width: 1280px;
+  margin: 0 auto;
 
-  padding: 60px 48px;
+  padding: 4rem 2.5rem;
 
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
-
   text-align: center;
 
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-muted);
 }
 
+.services-page__empty svg {
+  color: var(--gold);
+}
 
 .services-page__empty h2 {
-  margin: 20px 0 8px;
-
-  color: #ffffff;
-
-  font-size: 28px;
+  margin: 1.25rem 0 0.5rem;
+  color: var(--text);
+  font-size: 1.75rem;
 }
-
 
 .services-page__empty p {
   margin: 0;
-
-  font-size: 14px;
+  font-size: 0.9rem;
 }
-
-
-/* =========================================================
-   SCREEN READER ONLY
-   ========================================================= */
 
 .services-page__sr-only {
   position: absolute;
-
   width: 1px;
   height: 1px;
-
   padding: 0;
   margin: -1px;
-
   overflow: hidden;
-
   clip: rect(0, 0, 0, 0);
-
   white-space: nowrap;
-
   border: 0;
 }
-
 
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 1000px) {
-
   .services-page__intro {
-    min-height: 570px;
-
-    padding: 0 36px 70px;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 0;
+    padding: 5rem 2rem 3rem;
   }
-
 
   .services-page__hero-image {
-    width: 65%;
+    position: relative;
+    inset: auto;
 
-    right: -60px;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 16 / 9;
+
+    margin-top: 2.5rem;
   }
 
-
-  .services-page__hero-content {
-    width: 70%;
+  .services-page__hero-image::after {
+    background: linear-gradient(
+      180deg,
+      transparent 55%,
+      rgba(11, 12, 14, 0.5) 100%
+    );
   }
-
-
-  .services-page__hero-content h1 {
-    font-size: clamp(52px, 7vw, 78px);
-  }
-
-
-  .services-page__lead {
-    max-width: 480px;
-  }
-
-
-  .services-page__quote {
-    right: 36px;
-    bottom: 55px;
-  }
-
 
   .services-page__toolbar {
-    padding: 28px 36px;
+    padding: 1.5rem 2rem;
   }
-
 
   .services-page__grid {
-    padding: 36px;
-
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    padding: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
 }
-
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {
-
   .services-page__intro {
-    min-height: 650px;
-
-    padding: 0 22px 45px;
-
-    align-items: flex-start;
+    padding: 4rem 1.25rem 2.5rem;
   }
-
-
-  .services-page__hero-image {
-    width: 105%;
-
-    height: 65%;
-
-    right: -25%;
-
-    bottom: 0;
-  }
-
-
-  .services-page__hero-image img {
-    object-position: right bottom;
-  }
-
-
-  .services-page__hero-content {
-    width: 100%;
-
-    z-index: 3;
-  }
-
-
-  .services-page__eyebrow {
-    margin-bottom: 35px;
-  }
-
-
-  .services-page__hero-content h1 {
-    font-size: clamp(48px, 14vw, 70px);
-
-    line-height: 0.92;
-
-    letter-spacing: -0.06em;
-  }
-
-
-  .services-page__lead {
-    max-width: 390px;
-
-    margin-top: 30px;
-
-    font-size: 15px;
-  }
-
-
-  .services-page__quote {
-    right: auto;
-
-    left: 22px;
-
-    bottom: 35px;
-  }
-
-
-  /* =======================================================
-     TOOLBAR
-     ======================================================= */
 
   .services-page__toolbar {
-    padding: 24px 22px;
-
+    padding: 1.25rem;
     flex-direction: column;
-
     align-items: stretch;
   }
-
 
   .services-page__toolbar-count {
     justify-content: space-between;
   }
 
-
   .services-page__search {
     width: 100%;
   }
 
-
-  /* =======================================================
-     GRID
-     ======================================================= */
-
   .services-page__grid {
-    padding: 22px;
-
+    padding: 1.25rem;
     grid-template-columns: 1fr;
-
-    gap: 18px;
+    gap: 1.25rem;
   }
-
-
-  /* =======================================================
-     CARDS
-     ======================================================= */
-
-  .services-page__card-body {
-    padding: 24px;
-  }
-
-
-  .services-page__card-body h2 {
-    font-size: 24px;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 420px) {
-
-  .services-page__intro {
-    min-height: 620px;
-
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-
-  .services-page__hero-content h1 {
-    font-size: 46px;
-  }
-
-
-  .services-page__hero-image {
-    width: 115%;
-
-    right: -35%;
-  }
-
-
-  .services-page__quote {
-    left: 18px;
-  }
-
-
-  .services-page__toolbar {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-
-  .services-page__grid {
-    padding: 18px;
-  }
-
 }

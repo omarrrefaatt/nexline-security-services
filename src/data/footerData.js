@@ -1,27 +1,23 @@
+import { Link } from "react-router-dom";
 export const footerQuickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Security Services", href: "/services" },
   { label: "Industries We Serve", href: "#industries" },
   { label: "Service Areas", href: "#service-areas" },
-  { label: "Careers", href: "#careers" },
+  // { label: "Careers", href: "#careers" },
   { label: "Contact Us", href: "/contact" },
   { label: "Request a Quote", href: "/quote" },
 ];
 
 export const footerServices = [
-  "Security Guards",
-  "Unarmed Security",
-  "Armed Security",
+  " Standing Security Guards",
+  "Mobile Surveillance Systems",
+"Event Security",
   "Mobile Patrol",
-  "Executive Protection",
-  "Event Security",
-  "Construction Site Security",
-  "Commercial Security",
-  "Residential Security",
+  "Front Reception & Lobby Guards",
   "Fire Watch",
-  "Loss Prevention",
-  "HOA / Community Security",
+
 ];
 
 export const footerServiceAreas = [

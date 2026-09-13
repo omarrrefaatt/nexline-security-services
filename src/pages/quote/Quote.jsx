@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { sendQuoteRequest } from "../../services/mailService.js";
+import "./qoute.css";
 
 function Quote() {
   const [searchParams] = useSearchParams();
@@ -56,7 +57,18 @@ function Quote() {
           <Link className="text-link quote-page__back" to="/services">
             <Icon name="arrow" size={16} /> View all services
           </Link>
+          <br />
+          <br />
+
+          <div className="quote-page__call">
+  <span>We are one call away.</span>
+
+ <a className="button button-outline-light" href="tel:+19097021008">
+  Call Now <Icon name="phone" size={16} />
+</a>
+</div>
         </div>
+
         {submitted ? (
           <div className="contact-success" role="status">
             <Icon name="check" size={32} />

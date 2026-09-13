@@ -31,7 +31,7 @@ function Footer() {
           <Link className="button button-primary" to="/quote">
             Request a Quote <Icon name="arrow" size={16} />
           </Link>
-          <a className="button button-outline-light" href="tel:[PHONE NUMBER]">
+          <a className="button button-outline-light" href="tel:+19097021008">
             Call Now <Icon name="phone" size={16} />
           </a>
         </div>
@@ -130,7 +130,7 @@ function Footer() {
         <div>
           <h3>Trust &amp; credentials</h3>
           <p>
-            Legitimate business credentials can be added here when confirmed.
+             Professional standards backed by verified credentials and ongoing training.
           </p>
         </div>
         <div className="site-footer__trust-list">
@@ -141,7 +141,7 @@ function Footer() {
       </div>
 
       <div className="site-footer__bottom shell">
-        <span>© {currentYear} [COMPANY NAME]. All Rights Reserved.</span>
+        <span>© {currentYear} NexLine Security. All Rights Reserved.</span>
         <div>
           <a href="#privacy">Privacy Policy</a>
           <a href="#terms">Terms &amp; Conditions</a>

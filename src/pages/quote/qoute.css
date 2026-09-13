@@ -1,0 +1,8 @@
+.quote-page__call {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.quote-page__call span {
+  color: #d9a441;
+}

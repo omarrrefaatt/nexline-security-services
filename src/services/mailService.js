@@ -2,13 +2,12 @@ const DEBUG = true; // flip to false to silence all logging in production
 
 const emailConfig = {
   endpoint: "https://api.emailjs.com/api/v1.0/email/send",
-  serviceId: import.meta.env.EMAILJS_SERVICE_ID || "service_dummy",
-  publicKey: import.meta.env.EMAILJS_PUBLIC_KEY || "public_key_dummy",
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_dummy",
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "public_key_dummy",
   // Single generic template — see setup note at the bottom of this file.
-  templateId: import.meta.env.EMAILJS_TEMPLATE_ID || "template_dummy",
-  fromEmail: import.meta.env.EMAILJS_FROM || "noreply@nexline.security",
-  companyEmail:
-    import.meta.env.EMAILJS_COMPANY_EMAIL || "hello@nexline.security",
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_dummy",
+  fromEmail: import.meta.env.VITE_EMAIL_FROM || "noreply@nexline.security",
+  companyEmail: import.meta.env.VITE_COMPANY_EMAIL || "hello@nexline.security",
 };
 
 // Same palette as src/styles/globals.css — keep these two in sync.

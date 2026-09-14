@@ -4,7 +4,7 @@ import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { services } from "../../data/services.js";
 import serviceBackground from "../../assets/run.png";
-import "../../pages/services/Services.css";
+import "./services.css";
 
 function Services() {
   const [query, setQuery] = useState("");

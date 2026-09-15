@@ -1,16 +1,63 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { sendQuoteRequest } from "../../services/mailService.js";
 import "./qoute.css";
 
+const serviceOptions = [
+  { value: "standing-guards", label: "Standing Guards" },
+  { value: "mobile-surveillance-systems", label: "Mobile Surveillance Systems" },
+  { value: "event-security", label: "Event Security" },
+  { value: "vehicle-mobile-patrols", label: "Vehicle & Mobile Patrols" },
+  { value: "front-reception-lobby-guards", label: "Front Reception & Lobby Guards" },
+  { value: "fire-watch", label: "Fire Watch" },
+];
+
 function Quote() {
   const [searchParams] = useSearchParams();
-  const selectedService = searchParams.get("service");
+  const selectedService = searchParams.get("service") || "";
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState("");
+  const [serviceOpen, setServiceOpen] = useState(false);
+  const [serviceValue, setServiceValue] = useState(selectedService);
+  const serviceDropdownRef = useRef(null);
+
+  const selectedServiceLabel =
+    serviceOptions.find((option) => option.value === serviceValue)?.label ||
+    "Select a service";
+
+  useEffect(() => {
+    setServiceValue(selectedService);
+  }, [selectedService]);
+
+  useEffect(() => {
+    if (!serviceOpen) return;
+
+    function handlePointerDown(event) {
+      if (
+        serviceDropdownRef.current &&
+        !serviceDropdownRef.current.contains(event.target)
+      ) {
+        setServiceOpen(false);
+      }
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setServiceOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [serviceOpen]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -28,6 +75,8 @@ function Quote() {
       });
       setSubmitted(true);
       form.reset();
+      setServiceValue(selectedService);
+      setServiceOpen(false);
     } catch {
       setError(
         "We could not send your request. Please try again or call us directly.",
@@ -63,7 +112,7 @@ function Quote() {
           <div className="quote-page__call">
   <span>We are one call away.</span>
 
- <a className="button button-outline-light" href="tel:+19097021008">
+ <a className="btn btn--sm site-footer__cta-call" href="tel:+19097021008">
   Call Now <Icon name="phone" size={16} />
 </a>
 </div>
@@ -106,22 +155,62 @@ function Quote() {
                 placeholder="you@company.com"
               />
             </label>
-            <label>
-              What do you need?
-              <select name="service" defaultValue={selectedService || ""}>
-                <option value="" disabled>
-                  Select a service
-                </option>
-                <option value="executive-protection">
-                  Executive Protection
-                </option>
-                <option value="corporate-security">Corporate Security</option>
-                <option value="event-security">Event Security</option>
-                <option value="mobile-patrols">Mobile Patrols</option>
-                <option value="security-consulting">Security Consulting</option>
-                <option value="loss-prevention">Loss Prevention</option>
-              </select>
-            </label>
+            <div className="quote-form__field">
+              <label className="quote-form__field-label" htmlFor="service-trigger">
+                What do you need?
+              </label>
+
+              <div
+                ref={serviceDropdownRef}
+                className={`quote-form__dropdown ${serviceOpen ? "is-open" : ""}`}
+              >
+                <input type="hidden" name="service" value={serviceValue} />
+
+                <button
+                  id="service-trigger"
+                  type="button"
+                  className={`quote-form__dropdown-toggle ${
+                    serviceValue ? "" : "is-empty"
+                  }`}
+                  aria-haspopup="listbox"
+                  aria-expanded={serviceOpen}
+                  onClick={() => setServiceOpen((open) => !open)}
+                >
+                  <span>{selectedServiceLabel}</span>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+
+                <div className="quote-form__dropdown-menu" role="listbox" aria-label="Select a service">
+                  {serviceOptions.map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      className={`quote-form__dropdown-item ${
+                        serviceValue === option.value ? "is-active" : ""
+                      }`}
+                      onClick={() => {
+                        setServiceValue(option.value);
+                        setServiceOpen(false);
+                      }}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
             <label>
               Project details
               <textarea
@@ -136,7 +225,7 @@ function Quote() {
               </p>
             )}
             <button
-              className="button button-primary"
+              className="btn btn--primary btn--sm quote-form__submit"
               type="submit"
               disabled={isSending}
             >

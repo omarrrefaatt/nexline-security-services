@@ -28,10 +28,10 @@ function Footer() {
           </p>
         </div>
         <div className="site-footer__cta-actions">
-          <Link className="button button-primary" to="/quote">
+          <Link className="btn btn--primary btn--sm site-footer__cta-quote" to="/quote">
             Request a Quote <Icon name="arrow" size={16} />
           </Link>
-          <a className="button button-outline-light" href="tel:+19097021008">
+          <a className="btn btn--sm site-footer__cta-call" href="tel:+19097021008">
             Call Now <Icon name="phone" size={16} />
           </a>
         </div>

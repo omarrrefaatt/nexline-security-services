@@ -1,15 +1,56 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { contactDetails, faqs } from "../../data/contactData.js";
 import { sendContactMessage } from "../../services/mailService.js";
 
+const enquiryOptions = [
+  { value: "general-enquiry", label: "General enquiry" },
+  { value: "request-a-service", label: "Request a service" },
+  { value: "existing-client-support", label: "Existing client support" },
+  { value: "press-and-partnerships", label: "Press and partnerships" },
+];
+
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState(0);
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+  const [enquiryValue, setEnquiryValue] = useState("");
+  const enquiryDropdownRef = useRef(null);
+
+  const selectedEnquiryLabel =
+    enquiryOptions.find((option) => option.value === enquiryValue)?.label ||
+    "Select an enquiry type";
+
+  useEffect(() => {
+    if (!enquiryOpen) return;
+
+    function handlePointerDown(event) {
+      if (
+        enquiryDropdownRef.current &&
+        !enquiryDropdownRef.current.contains(event.target)
+      ) {
+        setEnquiryOpen(false);
+      }
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setEnquiryOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [enquiryOpen]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -27,6 +68,8 @@ function Contact() {
       });
       setSubmitted(true);
       form.reset();
+      setEnquiryValue("");
+      setEnquiryOpen(false);
     } catch {
       setError(
         "We could not send your message. Please try again or call us directly.",
@@ -114,18 +157,69 @@ function Contact() {
                     placeholder="you@company.com"
                   />
                 </label>
-                <label>
-                  How can we help?
-                  <select name="enquiryType" defaultValue="">
-                    <option value="" disabled>
-                      Select an enquiry type
-                    </option>
-                    <option>General enquiry</option>
-                    <option>Request a service</option>
-                    <option>Existing client support</option>
-                    <option>Press and partnerships</option>
-                  </select>
-                </label>
+                <div className="contact-form__field">
+                  <label
+                    className="contact-form__field-label"
+                    htmlFor="enquiry-trigger"
+                  >
+                    How can we help?
+                  </label>
+
+                  <div
+                    ref={enquiryDropdownRef}
+                    className={`contact-form__dropdown ${enquiryOpen ? "is-open" : ""}`}
+                  >
+                    <input type="hidden" name="enquiryType" value={enquiryValue} />
+
+                    <button
+                      id="enquiry-trigger"
+                      type="button"
+                      className={`contact-form__dropdown-toggle ${
+                        enquiryValue ? "" : "is-empty"
+                      }`}
+                      aria-haspopup="listbox"
+                      aria-expanded={enquiryOpen}
+                      onClick={() => setEnquiryOpen((open) => !open)}
+                    >
+                      <span>{selectedEnquiryLabel}</span>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+
+                    <div
+                      className="contact-form__dropdown-menu"
+                      role="listbox"
+                      aria-label="Select an enquiry type"
+                    >
+                      {enquiryOptions.map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          className={`contact-form__dropdown-item ${
+                            enquiryValue === option.value ? "is-active" : ""
+                          }`}
+                          onClick={() => {
+                            setEnquiryValue(option.value);
+                            setEnquiryOpen(false);
+                          }}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
                 <label>
                   Message
                   <textarea
@@ -141,7 +235,7 @@ function Contact() {
                   </p>
                 )}
                 <button
-                  className="button button-primary"
+                  className="btn btn--primary btn--sm contact-form__submit"
                   type="submit"
                   disabled={isSending}
                 >

@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { services } from "../../data/services.js";
-import serviceBackground from "../../assets/guards-services.jpg";
-import "../../styles/globals.css";
-import "../../pages/services/services.css";
+
+
+import serviceBackground from "../../assets/run.png";
+import "./services.css";
+
 
 function Services() {
   const [query, setQuery] = useState("");

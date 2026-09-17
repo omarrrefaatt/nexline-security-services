@@ -3,8 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { services } from "../../data/services.js";
+
+
 import serviceBackground from "../../assets/run.png";
 import "./services.css";
+
 
 function Services() {
   const [query, setQuery] = useState("");
@@ -31,16 +34,7 @@ function Services() {
             HERO / INTRO
         ===================================================== */}
         <div className="services-page__intro">
-          {/* HERO IMAGE */}
-          <div
-            className="services-page__hero-image services-page__hero-image--visible"
-            aria-hidden="true"
-          >
-            <img src={serviceBackground} alt="" />
-          </div>
-
-          {/* HERO CONTENT */}
-          <div className="services-page__hero-content">
+          <div className="services-page__intro-content">
             <p className="services-page__eyebrow">
               <span className="services-page__status-dot" />
               What we protect
@@ -56,23 +50,21 @@ function Services() {
               From a single site to a complex operation, Nexline builds the
               right level of protection around the way your business works.
             </p>
+
+            <Link className="services-page__quote btn btn--primary" to="/quote">
+              Get a Quote
+            </Link>
           </div>
 
-          {/* QUOTE BUTTON */}
-          <Link
-            className="button button-primary services-page__quote"
-            to="/quote"
-          >
-            Get Quote
-            <Icon name="arrow" size={16} />
-          </Link>
+          <div className="services-page__hero-image">
+            <img src={serviceBackground} alt="" />
+          </div>
         </div>
 
         {/* =====================================================
             TOOLBAR
         ===================================================== */}
         <div className="services-page__toolbar">
-          {/* SERVICE COUNT */}
           <div className="services-page__toolbar-count">
             <span className="services-page__toolbar-number">
               {String(filteredServices.length).padStart(2, "0")}
@@ -81,7 +73,6 @@ function Services() {
             <span>Services available</span>
           </div>
 
-          {/* SEARCH */}
           <label className="services-page__search">
             <Icon name="search" size={19} />
 
@@ -136,10 +127,6 @@ function Services() {
                     alt={service.alt || service.title}
                     loading={index > 1 ? "lazy" : "eager"}
                   />
-
-                  <span className="services-page__card-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
                 </div>
 
                 <div className="services-page__card-body">

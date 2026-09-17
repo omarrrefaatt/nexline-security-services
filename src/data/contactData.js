@@ -1,8 +1,8 @@
 export const contactDetails = [
   {
     label: "Call us",
-    value: "+1 (800) 555-NEXLINE",
-    href: "tel:+1800555639546",
+    value: "+1(909) 702-1008",
+    href: "tel:+19097021008",
   },
   {
     label: "Email us",

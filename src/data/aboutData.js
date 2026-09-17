@@ -1,3 +1,7 @@
+import CEO from "../assets/ceo.jpeg";
+import team1 from "../assets/team1.jpeg";
+import team3 from "../assets/team3.jpg";
+import team4 from "../assets/team.jpg";
 export const companyStory = {
   eyebrow: "The Nexline standard",
   title: "Protection built on trust.",
@@ -18,46 +22,45 @@ export const companyStory = {
 export const guardHeroes = [
   {
     rank: "01",
-    name: "Maya Thompson",
-    role: "Protection Lead",
-    specialty: "Executive protection",
+    name: " Mr.Ahmed Elbaga",
+    role: "CEO & Founder",
+    specialty: "Executive Leadership",
     summary:
-      "Maya pairs ten years of close protection experience with a warm, observant presence that puts clients at ease.",
-    image:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=85",
+      " Mr.Ahmed brings his expertise as a Certified Public Accountant (CPA) together with strong business leadership to guide the company with professionalism, integrity, and a commitment to excellence.",
+    image: CEO,
     alt: "Professional woman standing confidently in an office",
   },
   {
     rank: "02",
     name: "Jordan Williams",
-    role: "Operations Specialist",
-    specialty: "Corporate security",
+    role: "Security Guard",
+    specialty: "Professional Security Services",
     summary:
-      "Jordan is a steady operational anchor, known for sharp site awareness and seamless coordination across complex teams.",
+      "Jordan is a dependable security professional committed to maintaining a safe, secure, and welcoming environment for clients and their propertiess.",
     image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85",
+      team1,
     alt: "Professional man in a suit standing outdoors",
   },
   {
     rank: "03",
-    name: "Aisha Carter",
+    name: "Marcus Reed",
     role: "Event Security Lead",
     specialty: "Events & crowd safety",
     summary:
-      "Aisha makes busy environments feel effortless, bringing clear communication and thoughtful crowd management to every event.",
+      "Marcus makes busy environments feel effortless, bringing clear communication and thoughtful crowd management to every event.",
     image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=85",
+      team4,
     alt: "Professional woman smiling in a dark jacket",
   },
   {
     rank: "04",
-    name: "Marcus Reed",
+    name: " Aisha Carter",
     role: "Response Supervisor",
     specialty: "Mobile response",
     summary:
-      "Marcus leads with composure under pressure and keeps response teams ready, connected, and a step ahead of risk.",
+      "Aisha leads with composure under pressure and keeps response teams ready, connected, and a step ahead of risk.",
     image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
+      team3,
     alt: "Professional man smiling in a city setting",
   },
 ];

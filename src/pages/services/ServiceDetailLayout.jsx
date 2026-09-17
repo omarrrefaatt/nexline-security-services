@@ -145,7 +145,9 @@ function ServiceDetailLayout({ service }) {
                 <div className="service-detail-feature-grid">
                   {service.features.map((feature) => (
                     <div className="service-detail-feature" key={feature}>
-                      <span className="service-detail-feature__dot" />
+                      <span className="service-detail-feature__dot">
+                        <Icon name="check" size={12} />
+                      </span>
                       <span>{feature}</span>
                     </div>
                   ))}

@@ -10,18 +10,19 @@ function Hero() {
     {
       id: 'safe-family',
       title: 'Safe Families',
-      image: 'src/assets/family.jpg',
+      image: 'src/assets/home_bg.png',
     },
-    {
-      id: 'friendly-guard',
-      title: 'Friendly Security',
-      image: 'src/assets/guards.jpg',
-    },
-    {
+     {
       id: 'patrol-vehicle',
       title: 'Patrol Vehicle',
       image: 'src/assets/patrol.jpg',
     },
+    {
+      id: 'friendly-guard',
+      title: 'Friendly Security',
+      image: 'src/assets/home_bg3.jpeg',
+    },
+   
     {
       id: 'monitoring',
       title: '24/7 Monitoring',
@@ -79,8 +80,8 @@ function Hero() {
 
       {/* Content Overlay */}
       <div className="hero__content">
-        <h1>Your Trusted Security Partner</h1>
-        <p className="hero__subtitle">Professional security solutions for peace of mind</p>
+        <h1>NexLine Security</h1>
+        <p className="hero__subtitle">A Safer Tomorrow Starts Today.</p>
 
         <div className="hero__cta">
           <Button variant="primary" href="/quote">

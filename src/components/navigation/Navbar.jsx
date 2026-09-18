@@ -3,12 +3,24 @@ import Icon from "../common/Icon.jsx";
 import { navLinks } from "../../data/navLinks.js";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useLanguage } from "../../context/LanguageContext.tsx";
+import { translations } from "../../data/translations";
+import "./navigation.css";
 
 function Navbar() {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [languageOpen, setLanguageOpen] = useState(false);
+
+  const { language, setLanguage } = useLanguage();
+  const t = translations[language];
 
   const handleDropdownOpen = (label) => {
     setOpenDropdown(openDropdown === label ? null : label);
+  };
+
+  // Translate navigation labels using translationKey
+  const getNavLabel = (link) => {
+    return t.nav[link.translationKey] || link.label;
   };
 
   return (
@@ -22,9 +34,11 @@ function Navbar() {
               <NavLink
                 to={link.href}
                 end={link.href === "/"}
-                className={({ isActive }) => (isActive ? "is-active" : "")}
+                className={({ isActive }) =>
+                  isActive ? "is-active" : ""
+                }
               >
-                {link.label}
+                {getNavLabel(link)}
               </NavLink>
 
               {/* Dropdown Arrow */}
@@ -32,7 +46,7 @@ function Navbar() {
                 <button
                   type="button"
                   className="navbar__dropdown-toggle"
-                  aria-label={`Toggle ${link.label} menu`}
+                  aria-label={`Toggle ${getNavLabel(link)} menu`}
                   onClick={() => handleDropdownOpen(link.label)}
                   aria-expanded={openDropdown === link.label}
                 >
@@ -63,7 +77,9 @@ function Navbar() {
                       key={item.label}
                       to={item.href}
                       className={({ isActive }) =>
-                        `navbar__dropdown-item ${isActive ? "is-active" : ""}`
+                        `navbar__dropdown-item ${
+                          isActive ? "is-active" : ""
+                        }`
                       }
                       onClick={() => setOpenDropdown(null)}
                     >
@@ -77,16 +93,56 @@ function Navbar() {
         </nav>
 
         <div className="navbar__actions">
-          <a href="/quote" className="btn btn--primary btn--sm">
-            Get Started
-          </a>
-          <button
-            type="button"
-            className="icon-btn"
-            aria-label="Change language"
+          {/* Get Started */}
+          <a
+            href="/quote"
+            className="btn btn--primary btn--sm"
           >
-            <Icon name="globe" size={20} />
-          </button>
+            {t.nav.getStarted}
+          </a>
+
+          {/* Language */}
+          <div className="navbar__language">
+            <button
+              type="button"
+              className="icon-btn"
+              aria-label="Change language"
+              onClick={() => setLanguageOpen(!languageOpen)}
+              aria-expanded={languageOpen}
+            >
+              <Icon name="globe" size={20} />
+            </button>
+
+            {languageOpen && (
+              <div className="language-menu">
+                {/* English */}
+                <button
+                  type="button"
+                  className={language === "en" ? "active" : ""}
+                  onClick={() => {
+                    setLanguage("en");
+                    setLanguageOpen(false);
+                  }}
+                >
+                  {t.nav.english}
+                  {language === "en" && <span>✓</span>}
+                </button>
+
+                {/* Spanish */}
+                <button
+                  type="button"
+                  className={language === "es" ? "active" : ""}
+                  onClick={() => {
+                    setLanguage("es");
+                    setLanguageOpen(false);
+                  }}
+                >
+                  {t.nav.spanish}
+                  {language === "es" && <span>✓</span>}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>

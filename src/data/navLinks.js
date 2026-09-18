@@ -3,6 +3,7 @@ import { services } from "./services.js";
 export const navLinks = [
   {
     label: "Services",
+    translationKey: "services",
     href: "/services",
     hasDropdown: true,
     dropdown: services.map((service) => ({
@@ -10,7 +11,19 @@ export const navLinks = [
       href: `/services/${service.id}`,
     })),
   },
-  { label: "Industries", href: "/industries" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  {
+    label: "Industries",
+    translationKey: "industries",
+    href: "/industries",
+  },
+  {
+    label: "About Us",
+    translationKey: "about",
+    href: "/about",
+  },
+  {
+    label: "Contact",
+    translationKey: "contact",
+    href: "/contact",
+  },
 ];

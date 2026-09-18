@@ -1,9 +1,14 @@
-import Icon from '../../components/common/Icon.jsx';
+import Icon from "../../components/common/Icon.jsx";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../../context/LanguageContext.tsx";
+import { translations } from "../../data/translations.ts";
 
 function VisionSection() {
   const sectionRef = useRef(null);
   const [hasStarted, setHasStarted] = useState(false);
+
+  const { language } = useLanguage();
+  const t = translations[language];
 
   const [counts, setCounts] = useState({
     clients: 0,
@@ -13,53 +18,35 @@ function VisionSection() {
 
   const stats = [
     {
-      id: 'clients',
-      number: '500+',
-      label: 'Clients Protected',
+      id: "clients",
       target: 500,
-      step: 1,
     },
     {
-      id: 'professionals',
-      number: '800+',
-      label: 'Security Professionals',
+      id: "professionals",
       target: 800,
-      step: 1,
     },
     {
-      id: 'operations',
-      number: '24/7',
-      label: 'Operations',
+      id: "operations",
       target: null,
-      step: null,
     },
     {
-      id: 'years',
-      number: '15+',
-      label: 'Years of Excellence',
+      id: "years",
       target: 15,
-      step: 1,
     },
   ];
 
   const strengths = [
     {
-      id: 'monitoring',
-      icon: 'clock',
-      title: '24/7 Monitoring',
-      description: 'Continuous surveillance and alert response around the clock',
+      id: "monitoring",
+      icon: "clock",
     },
     {
-      id: 'scalable',
-      icon: 'trending-up',
-      title: 'Scalable Solutions',
-      description: 'Security services that grow and adapt with your needs',
+      id: "scalable",
+      icon: "trending-up",
     },
     {
-      id: 'expertise',
-      icon: 'shield-check',
-      title: 'Expert Team',
-      description: 'Trained professionals with industry certifications',
+      id: "expertise",
+      icon: "shield-check",
     },
   ];
 
@@ -84,43 +71,44 @@ function VisionSection() {
     return () => observer.disconnect();
   }, []);
 
-// Count the numbers
-useEffect(() => {
-  if (!hasStarted) return;
+  // Count the numbers
+  useEffect(() => {
+    if (!hasStarted) return;
 
-  const duration = 1800;
-  const startTime = performance.now();
+    const duration = 1800;
+    const startTime = performance.now();
 
-  const animate = (currentTime) => {
-    const progress = Math.min(
-      (currentTime - startTime) / duration,
-      1
-    );
+    const animate = (currentTime) => {
+      const progress = Math.min(
+        (currentTime - startTime) / duration,
+        1
+      );
 
-    setCounts({
-      clients: Math.min(
-        Math.floor(500 * progress),
-        500
-      ),
+      setCounts({
+        clients: Math.min(
+          Math.floor(500 * progress),
+          500
+        ),
 
-      professionals: Math.min(
-        Math.floor(800 * progress),
-        800
-      ),
+        professionals: Math.min(
+          Math.floor(800 * progress),
+          800
+        ),
 
-      years: Math.min(
-        Math.floor(15 * progress),
-        15
-      ),
-    });
+        years: Math.min(
+          Math.floor(15 * progress),
+          15
+        ),
+      });
 
-    if (progress < 1) {
-      requestAnimationFrame(animate);
-    }
-  };
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
 
-  requestAnimationFrame(animate);
-}, [hasStarted]);
+    requestAnimationFrame(animate);
+  }, [hasStarted]);
+
   return (
     <section
       ref={sectionRef}
@@ -130,33 +118,33 @@ useEffect(() => {
 
         {/* Header */}
         <div className="vision-section__header">
-          <h2>Why Choose Us</h2>
-          <p>Leading the industry in professional security solutions</p>
+          <h2>{t.vision.title}</h2>
+          <p>{t.vision.subtitle}</p>
         </div>
 
         {/* Stats Grid */}
         <div className="vision-section__stats">
           {stats.map((stat) => (
-            <div key={stat.id} className="stat-card">
-
+            <div
+              key={stat.id}
+              className="stat-card"
+            >
               <div className="stat-card__number">
-                {stat.id === 'operations'
-                  ? '24/7'
-                  : `${counts[stat.id].toLocaleString()}${stat.id === 'clients' || stat.id === 'professionals' || stat.id === 'years' ? '+' : ''}`
-                }
+                {stat.id === "operations"
+                  ? "24/7"
+                  : `${counts[stat.id].toLocaleString()}+`}
               </div>
 
               <div className="stat-card__label">
-                {stat.label}
+                {t.vision.stats[stat.id]}
               </div>
-
             </div>
           ))}
         </div>
 
         {/* Strengths */}
         <div className="vision-section__strengths">
-          <h3>Our Core Strengths</h3>
+          <h3>{t.vision.coreStrengths}</h3>
 
           <div className="strengths-grid">
             {strengths.map((strength) => (
@@ -171,9 +159,13 @@ useEffect(() => {
                   />
                 </div>
 
-                <h4>{strength.title}</h4>
+                <h4>
+                  {t.vision.strengths[strength.id].title}
+                </h4>
 
-                <p>{strength.description}</p>
+                <p>
+                  {t.vision.strengths[strength.id].description}
+                </p>
               </div>
             ))}
           </div>

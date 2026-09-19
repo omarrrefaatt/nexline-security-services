@@ -1,7 +1,7 @@
 import Logo from "./Logo.jsx";
 import Icon from "../common/Icon.jsx";
 import { navLinks } from "../../data/navLinks.js";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext.tsx";
 import { translations } from "../../data/translations";
@@ -94,12 +94,12 @@ function Navbar() {
 
         <div className="navbar__actions">
           {/* Get Started */}
-          <a
-            href="/quote"
-            className="btn btn--primary btn--sm"
-          >
-            {t.nav.getStarted}
-          </a>
+          <Link
+  to="/quote"
+  className="btn btn--primary btn--sm"
+>
+  {t.nav.getStarted}
+</Link>
 
           {/* Language */}
           <div className="navbar__language">

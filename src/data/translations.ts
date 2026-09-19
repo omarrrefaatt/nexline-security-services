@@ -670,6 +670,272 @@ servicesSection: {
     "Ready to find your perfect security solution?",
   viewAll: "View All Services",
 },
+serviceDetail: {
+  sidebarLabel: "SECURITY SERVICES",
+  sidebarTitle: "Our Services",
+  serviceLabel: "SERVICE",
+  imageLabel: "PROFESSIONAL SECURITY",
+  approachLabel: "OUR APPROACH",
+  professional: "Professional",
+  howItWorksLabel: "HOW IT WORKS",
+  processLabel: "OUR PROCESS",
+  processTitle: "From assessment to protection.",
+  servicesLabel: "OUR SERVICES",
+  featuresTitle: "What We Provide",
+
+  cta: {
+    label: "Need a tailored plan?",
+    title:
+      "Protect your site with a custom security solution.",
+    button: "Request a Quote",
+  },
+},
+contact: {
+  hero: {
+    eyebrow: "Contact Nexline",
+    titleLine1: "Let's make",
+    titleLine2: "it safer.",
+    description:
+      "Have a question, a project, or a concern? Start a conversation with the people who will be there when it matters.",
+  },
+
+  details: {
+    title: "Reach us directly",
+    phone: "Call us",
+    email: "Email us",
+    address: "Visit us",
+    responseDesk: "Response desk",
+    available: "Available 24 / 7",
+  },
+
+  form: {
+    success: {
+      eyebrow: "Message received",
+      title: "We'll be in touch.",
+      description:
+        "Your message is with our team. We'll respond within one business day.",
+      anotherMessage: "Send another message",
+    },
+
+    header: "Send a message",
+
+    name: {
+      label: "Name",
+      placeholder: "Your full name",
+    },
+
+    email: {
+      label: "Email",
+      placeholder: "you@company.com",
+    },
+
+    enquiry: {
+      label: "How can we help?",
+      placeholder: "Select an enquiry type",
+      ariaLabel: "Select an enquiry type",
+      options: {
+        general: "General enquiry",
+        service: "Request a service",
+        support: "Existing client support",
+        press: "Press and partnerships",
+      },
+    },
+
+    message: {
+      label: "Message",
+      placeholder: "Tell us a little about what you need",
+    },
+
+    sending: "Sending...",
+    send: "Send message",
+
+    error:
+      "We could not send your message. Please try again or call us directly.",
+  },
+
+  faq: {
+    eyebrow: "Good to know",
+    titleLine1: "Questions,",
+    titleLine2: "answered.",
+
+    items: {
+      response: {
+        question: "How quickly can Nexline respond to a request?",
+        answer:
+          "Our team typically responds within one business day. For urgent coverage or an active concern, call our response desk directly and we will help you assess the next step.",
+      },
+
+      event: {
+        question: "Can you build a plan for a single event?",
+        answer:
+          "Yes. We support one-off events as well as ongoing contracts. We can help with access control, crowd safety, executive protection, and post-event review.",
+      },
+
+      smallBusiness: {
+        question: "Do you work with small businesses?",
+        answer:
+          "We do. Every engagement is sized around the real risk and operating rhythm of the client, from a growing business with one site to a multi-location organization.",
+      },
+
+      message: {
+        question: "What happens after I send a message?",
+        answer:
+          "A Nexline specialist reviews your message, reaches out to understand your priorities, and recommends a practical next step. There is no obligation to proceed.",
+      },
+    },
+  },
+
+  footerCta: {
+    title: "Looking for a complete security plan?",
+    link: "Explore our services",
+  },
+},
+quote: {
+  hero: {
+    eyebrow: "Start a conversation",
+    titleLine1: "Let's build",
+    titleLine2: "your cover.",
+    description:
+      "Tell us what you need protected and a Nexline specialist will be in touch with a considered recommendation.",
+    backToServices: "View all services",
+    callText: "We are one call away.",
+    callButton: "Call Now",
+  },
+
+  success: {
+    eyebrow: "Request received",
+    title: "We'll be in touch.",
+    description:
+      "Your quote request is with our team. We'll respond within one business day.",
+    anotherRequest: "Send another request",
+  },
+
+  form: {
+    name: {
+      label: "Name",
+      placeholder: "Your full name",
+    },
+
+    email: {
+      label: "Work email",
+      placeholder: "you@company.com",
+    },
+
+    service: {
+      label: "What do you need?",
+      placeholder: "Select a service",
+      ariaLabel: "Select a service",
+    },
+
+    details: {
+      label: "Project details",
+      placeholder:
+        "A little about your site, event, or operation",
+    },
+
+    sending: "Sending...",
+    submit: "Request a quote",
+
+    error:
+      "We could not send your request. Please try again or call us directly.",
+  },
+},
+industries: {
+  hero: {
+    title: "Industries We Serve",
+    description:
+      "From single storefronts to regulated industrial sites, we build security programs around how each industry actually operates. Explore the sectors we work with below.",
+    jumpNavLabel: "Jump to an industry",
+  },
+
+  suggestedServices: "Suggested services",
+
+  getQuote: "Get a Quote",
+
+  items: {
+    construction: {
+      title: "Construction",
+      alt: "Construction site at dusk",
+      blurb:
+        "Active job sites face theft of materials and equipment, unauthorized access, and liability risk after hours. We keep sites secured around the clock, from ground-breaking to final walkthrough.",
+    },
+
+    retailShopping: {
+      title:
+        "Shopping Malls, Retail Stores & Supermarkets",
+      alt: "Interior of a busy shopping mall",
+      blurb:
+        "From single storefronts to full shopping centers, we help reduce shrinkage, manage crowds, and give shoppers and staff a visible, approachable security presence.",
+    },
+
+    education: {
+      title: "Schools, Colleges & Universities",
+      alt: "University campus building",
+      blurb:
+        "Campuses need a security presence that feels protective, not intimidating. We support access control, event coverage, and routine patrols across K-12 and higher-ed campuses.",
+    },
+
+    oilGasChemical: {
+      title:
+        "Petroleum, Petrochemical & Chemical Facilities",
+      alt: "Industrial petrochemical facility at night",
+      blurb:
+        "High-hazard sites demand strict access control and rigorously trained personnel who understand regulated environments. We support facilities with compliance-aware security planning.",
+    },
+
+    industrialManufacturing: {
+      title:
+        "Manufacturing Plants, Industrial Facilities & Warehouses",
+      alt: "Interior of a large warehouse facility",
+      blurb:
+        "Protect inventory, equipment, and perimeter access across production floors, distribution centers, and storage facilities with consistent, trained coverage.",
+    },
+
+    residentialCommunities: {
+      title:
+        "Gated Residential Communities & Condo/Apartment Complexes",
+      alt: "Gated residential community entrance",
+      blurb:
+        "Residents expect to feel safe coming home. We provide gate staffing, patrol coverage, and visitor management tailored to residential communities of any size.",
+    },
+
+    hospitality: {
+      title: "Hotels & Motels",
+      alt: "Hotel lobby interior",
+      blurb:
+        "Guest safety and a welcoming first impression go hand in hand. We provide lobby presence, patrol coverage, and incident response that protects your guests and your brand.",
+    },
+
+    parkingFacilities: {
+      title: "Parking Facilities",
+      alt: "Multi-level parking garage",
+      blurb:
+        "Parking structures see a steady mix of foot and vehicle traffic with limited natural oversight. Our patrols deter theft and vandalism and keep garages feeling safe after dark.",
+    },
+
+    eventsEntertainment: {
+      title:
+        "Concerts, Sporting Events & Special Events",
+      alt: "Crowd at a large outdoor concert event",
+      blurb:
+        "Large gatherings need experienced crowd management, access control, and rapid incident response. We staff everything from private functions to large-scale public events.",
+    },
+
+    bankingFinancial: {
+      title: "Banks & Financial Institutions",
+      alt: "Modern bank branch exterior",
+      blurb:
+        "Financial institutions carry elevated risk and strict compliance expectations. We provide a disciplined, highly trained presence for branches and back-office facilities alike.",
+    },
+
+    healthcare: {
+      title: "Hospitals",
+      alt: "Hospital building exterior",
+      blurb:
+        "Hospitals need security that supports patients, staff, and visitors without disrupting care. We provide trained personnel experienced in healthcare environments and de-escalation.",
+    },
+  },
+},
   },
 
   es: {
@@ -1347,6 +1613,274 @@ servicesSection: {
   ctaQuestion:
     "¿Está listo para encontrar la solución de seguridad ideal para usted?",
   viewAll: "Ver Todos los Servicios",
+},
+serviceDetail: {
+  sidebarLabel: "SERVICIOS DE SEGURIDAD",
+  sidebarTitle: "Nuestros Servicios",
+  serviceLabel: "SERVICIO",
+  imageLabel: "SEGURIDAD PROFESIONAL",
+  approachLabel: "NUESTRO ENFOQUE",
+  professional: "Profesional",
+  howItWorksLabel: "CÓMO FUNCIONA",
+  processLabel: "NUESTRO PROCESO",
+  processTitle: "De la evaluación a la protección.",
+  servicesLabel: "NUESTROS SERVICIOS",
+  featuresTitle: "Lo Que Ofrecemos",
+
+  cta: {
+    label: "¿Necesita un plan personalizado?",
+    title:
+      "Proteja su sitio con una solución de seguridad personalizada.",
+    button: "Solicitar una Cotización",
+  },
+},
+contact: {
+  hero: {
+    eyebrow: "Contacte a Nexline",
+    titleLine1: "Hagamos",
+    titleLine2: "todo más seguro.",
+    description:
+      "¿Tiene una pregunta, un proyecto o una inquietud? Inicie una conversación con las personas que estarán allí cuando más importe.",
+  },
+
+  details: {
+    title: "Contáctenos directamente",
+    phone: "Llámenos",
+    email: "Envíenos un correo",
+    address: "Visítenos",
+    responseDesk: "Mesa de respuesta",
+    available: "Disponible 24 / 7",
+  },
+
+  form: {
+    success: {
+      eyebrow: "Mensaje recibido",
+      title: "Nos pondremos en contacto.",
+      description:
+        "Su mensaje está con nuestro equipo. Responderemos dentro de un día hábil.",
+      anotherMessage: "Enviar otro mensaje",
+    },
+
+    header: "Envíe un mensaje",
+
+    name: {
+      label: "Nombre",
+      placeholder: "Su nombre completo",
+    },
+
+    email: {
+      label: "Correo electrónico",
+      placeholder: "usted@empresa.com",
+    },
+
+    enquiry: {
+      label: "¿Cómo podemos ayudarle?",
+      placeholder: "Seleccione un tipo de consulta",
+      ariaLabel: "Seleccione un tipo de consulta",
+      options: {
+        general: "Consulta general",
+        service: "Solicitar un servicio",
+        support: "Soporte para clientes actuales",
+        press: "Prensa y asociaciones",
+      },
+    },
+
+    message: {
+      label: "Mensaje",
+      placeholder: "Cuéntenos un poco sobre lo que necesita",
+    },
+
+    sending: "Enviando...",
+    send: "Enviar mensaje",
+
+    error:
+      "No pudimos enviar su mensaje. Inténtelo nuevamente o llámenos directamente.",
+  },
+
+  faq: {
+    eyebrow: "Información útil",
+    titleLine1: "Preguntas,",
+    titleLine2: "respuestas.",
+
+    items: {
+      response: {
+        question: "¿Qué tan rápido puede Nexline responder a una solicitud?",
+        answer:
+          "Nuestro equipo normalmente responde dentro de un día hábil. Para cobertura urgente o una situación activa, llame directamente a nuestra mesa de respuesta y le ayudaremos a determinar el siguiente paso.",
+      },
+
+      event: {
+        question: "¿Pueden crear un plan para un solo evento?",
+        answer:
+          "Sí. Apoyamos tanto eventos únicos como contratos continuos. Podemos ayudar con el control de acceso, la seguridad de multitudes, la protección ejecutiva y la revisión posterior al evento.",
+      },
+
+      smallBusiness: {
+        question: "¿Trabajan con pequeñas empresas?",
+        answer:
+          "Sí. Cada servicio se adapta al riesgo real y al funcionamiento del cliente, desde una empresa en crecimiento con una sola ubicación hasta una organización con múltiples ubicaciones.",
+      },
+
+      message: {
+        question: "¿Qué sucede después de enviar un mensaje?",
+        answer:
+          "Un especialista de Nexline revisa su mensaje, se comunica con usted para comprender sus prioridades y recomienda un siguiente paso práctico. No existe ninguna obligación de continuar.",
+      },
+    },
+  },
+
+  footerCta: {
+    title: "¿Busca un plan de seguridad completo?",
+    link: "Explore nuestros servicios",
+  },
+},
+quote: {
+  hero: {
+    eyebrow: "Inicie una conversación",
+    titleLine1: "Construyamos",
+    titleLine2: "su protección.",
+    description:
+      "Cuéntenos qué necesita proteger y un especialista de Nexline se pondrá en contacto con usted con una recomendación personalizada.",
+    backToServices: "Ver todos los servicios",
+    callText: "Estamos a una llamada de distancia.",
+    callButton: "Llamar Ahora",
+  },
+
+  success: {
+    eyebrow: "Solicitud recibida",
+    title: "Nos pondremos en contacto.",
+    description:
+      "Su solicitud de cotización está con nuestro equipo. Responderemos dentro de un día hábil.",
+    anotherRequest: "Enviar otra solicitud",
+  },
+
+  form: {
+    name: {
+      label: "Nombre",
+      placeholder: "Su nombre completo",
+    },
+
+    email: {
+      label: "Correo electrónico de trabajo",
+      placeholder: "usted@empresa.com",
+    },
+
+    service: {
+      label: "¿Qué necesita?",
+      placeholder: "Seleccione un servicio",
+      ariaLabel: "Seleccione un servicio",
+    },
+
+    details: {
+      label: "Detalles del proyecto",
+      placeholder:
+        "Cuéntenos un poco sobre su sitio, evento u operación",
+    },
+
+    sending: "Enviando...",
+    submit: "Solicitar una cotización",
+
+    error:
+      "No pudimos enviar su solicitud. Inténtelo nuevamente o llámenos directamente.",
+  },
+},
+industries: {
+  hero: {
+    title: "Industrias que Atendemos",
+    description:
+      "Desde pequeños comercios hasta instalaciones industriales reguladas, desarrollamos programas de seguridad adaptados a la forma en que realmente opera cada industria. Explore los sectores con los que trabajamos a continuación.",
+    jumpNavLabel: "Ir a una industria",
+  },
+
+  suggestedServices: "Servicios sugeridos",
+
+  getQuote: "Solicitar una Cotización",
+
+  items: {
+    construction: {
+      title: "Construcción",
+      alt: "Sitio de construcción al atardecer",
+      blurb:
+        "Los sitios de construcción activos enfrentan riesgos de robo de materiales y equipos, acceso no autorizado y responsabilidad fuera del horario laboral. Mantenemos los sitios protegidos las 24 horas, desde el inicio de la obra hasta la inspección final.",
+    },
+
+    retailShopping: {
+      title:
+        "Centros Comerciales, Tiendas Minoristas y Supermercados",
+      alt: "Interior de un centro comercial concurrido",
+      blurb:
+        "Desde pequeñas tiendas hasta grandes centros comerciales, ayudamos a reducir las pérdidas, gestionar las multitudes y ofrecer a clientes y empleados una presencia de seguridad visible y accesible.",
+    },
+
+    education: {
+      title:
+        "Escuelas, Colegios y Universidades",
+      alt: "Edificio de un campus universitario",
+      blurb:
+        "Los campus necesitan una presencia de seguridad que se sienta protectora, no intimidante. Apoyamos el control de acceso, la cobertura de eventos y las patrullas rutinarias en campus de educación primaria, secundaria y superior.",
+    },
+
+    oilGasChemical: {
+      title:
+        "Instalaciones Petroleras, Petroquímicas y Químicas",
+      alt: "Instalación petroquímica industrial durante la noche",
+      blurb:
+        "Los sitios de alto riesgo requieren un estricto control de acceso y personal altamente capacitado que comprenda los entornos regulados. Apoyamos a las instalaciones con una planificación de seguridad orientada al cumplimiento.",
+    },
+
+    industrialManufacturing: {
+      title:
+        "Plantas de Manufactura, Instalaciones Industriales y Almacenes",
+      alt: "Interior de un gran almacén",
+      blurb:
+        "Proteja inventarios, equipos y accesos perimetrales en áreas de producción, centros de distribución y almacenes mediante una cobertura constante y personal capacitado.",
+    },
+
+    residentialCommunities: {
+      title:
+        "Comunidades Residenciales Cerradas y Complejos de Condominios/Apartamentos",
+      alt: "Entrada de una comunidad residencial cerrada",
+      blurb:
+        "Los residentes esperan sentirse seguros al regresar a casa. Ofrecemos personal para entradas, cobertura de patrullaje y gestión de visitantes adaptadas a comunidades residenciales de cualquier tamaño.",
+    },
+
+    hospitality: {
+      title: "Hoteles y Moteles",
+      alt: "Interior del vestíbulo de un hotel",
+      blurb:
+        "La seguridad de los huéspedes y una primera impresión acogedora van de la mano. Ofrecemos presencia en vestíbulos, cobertura de patrullaje y respuesta a incidentes para proteger a sus huéspedes y su marca.",
+    },
+
+    parkingFacilities: {
+      title: "Instalaciones de Estacionamiento",
+      alt: "Estacionamiento de varios niveles",
+      blurb:
+        "Los estacionamientos reciben un flujo constante de peatones y vehículos con una supervisión natural limitada. Nuestras patrullas ayudan a disuadir robos y vandalismo y mantienen los estacionamientos más seguros después del anochecer.",
+    },
+
+    eventsEntertainment: {
+      title:
+        "Conciertos, Eventos Deportivos y Eventos Especiales",
+      alt: "Multitud en un gran concierto al aire libre",
+      blurb:
+        "Las grandes reuniones requieren una gestión experimentada de multitudes, control de acceso y una respuesta rápida a incidentes. Cubrimos desde eventos privados hasta grandes eventos públicos.",
+    },
+
+    bankingFinancial: {
+      title:
+        "Bancos e Instituciones Financieras",
+      alt: "Exterior de una sucursal bancaria moderna",
+      blurb:
+        "Las instituciones financieras enfrentan mayores riesgos y estrictos requisitos de cumplimiento. Ofrecemos una presencia disciplinada y altamente capacitada tanto para sucursales como para instalaciones administrativas.",
+    },
+
+    healthcare: {
+      title: "Hospitales",
+      alt: "Exterior de un edificio hospitalario",
+      blurb:
+        "Los hospitales necesitan una seguridad que apoye a pacientes, personal y visitantes sin interrumpir la atención. Ofrecemos personal capacitado con experiencia en entornos sanitarios y técnicas de desescalada.",
+    },
+  },
 },
   },
 } as const;

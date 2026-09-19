@@ -1,40 +1,39 @@
 export const contactDetails = [
   {
-    label: "Call us",
+    id: "phone",
+    translationKey: "phone",
     value: "+1(909) 702-1008",
     href: "tel:+19097021008",
   },
   {
-    label: "Email us",
-    value: "hello@nexline.security",
-    href: "mailto:hello@nexline.security",
+    id: "email",
+    translationKey: "email",
+    value: "info@nexlinesecurity.com",
+    href: "mailto:info@nexlinesecurity.com",
   },
   {
-    label: "Visit us",
-    value: "220 Mercer Street, New York, NY",
+    id: "address",
+    translationKey: "address",
+    value: "5790 Magnolia Ave, Suite 101, Riverside, CA 92506",
     href: "#location",
   },
 ];
 
 export const faqs = [
   {
-    question: "How quickly can Nexline respond to a request?",
-    answer:
-      "Our team typically responds within one business day. For urgent coverage or an active concern, call our response desk directly and we will help you assess the next step.",
+    id: "response",
+    translationKey: "response",
   },
   {
-    question: "Can you build a plan for a single event?",
-    answer:
-      "Yes. We support one-off events as well as ongoing contracts. We can help with access control, crowd safety, executive protection, and post-event review.",
+    id: "event",
+    translationKey: "event",
   },
   {
-    question: "Do you work with small businesses?",
-    answer:
-      "We do. Every engagement is sized around the real risk and operating rhythm of the client, from a growing business with one site to a multi-location organization.",
+    id: "small-business",
+    translationKey: "smallBusiness",
   },
   {
-    question: "What happens after I send a message?",
-    answer:
-      "A Nexline specialist reviews your message, reaches out to understand your priorities, and recommends a practical next step. There is no obligation to proceed.",
+    id: "message",
+    translationKey: "message",
   },
 ];

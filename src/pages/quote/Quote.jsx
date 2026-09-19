@@ -2,31 +2,40 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
+import { services } from "../../data/services.js";
 import { sendQuoteRequest } from "../../services/mailService.js";
+import { useLanguage } from "../../context/LanguageContext.tsx";
+import { translations } from "../../data/translations.ts";
 import "./qoute.css";
 
-const serviceOptions = [
-  { value: "standing-guards", label: "Standing Guards" },
-  { value: "mobile-surveillance-systems", label: "Mobile Surveillance Systems" },
-  { value: "event-security", label: "Event Security" },
-  { value: "vehicle-mobile-patrols", label: "Vehicle & Mobile Patrols" },
-  { value: "front-reception-lobby-guards", label: "Front Reception & Lobby Guards" },
-  { value: "fire-watch", label: "Fire Watch" },
-];
-
 function Quote() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const [searchParams] = useSearchParams();
+
   const selectedService = searchParams.get("service") || "";
+
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState("");
   const [serviceOpen, setServiceOpen] = useState(false);
-  const [serviceValue, setServiceValue] = useState(selectedService);
+  const [serviceValue, setServiceValue] =
+    useState(selectedService);
+
   const serviceDropdownRef = useRef(null);
 
+  /*
+   * Find the translated service title from translations.ts
+   * using the translationKey from services.js.
+   */
+  const selectedServiceData = services.find(
+    (service) => service.id === serviceValue
+  );
+
   const selectedServiceLabel =
-    serviceOptions.find((option) => option.value === serviceValue)?.label ||
-    "Select a service";
+    t.services.items[selectedServiceData?.translationKey]?.title ||
+    t.quote.form.service.placeholder;
 
   useEffect(() => {
     setServiceValue(selectedService);
@@ -54,15 +63,24 @@ function Quote() {
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener("pointerdown", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener(
+        "pointerdown",
+        handlePointerDown
+      );
+
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
     };
   }, [serviceOpen]);
 
   async function handleSubmit(event) {
     event.preventDefault();
+
     setIsSending(true);
     setError("");
+
     const form = event.currentTarget;
     const formData = new FormData(form);
 
@@ -73,14 +91,15 @@ function Quote() {
         service: formData.get("service"),
         details: formData.get("details"),
       });
+
       setSubmitted(true);
+
       form.reset();
+
       setServiceValue(selectedService);
       setServiceOpen(false);
     } catch {
-      setError(
-        "We could not send your request. Please try again or call us directly.",
-      );
+      setError(t.quote.form.error);
     } finally {
       setIsSending(false);
     }
@@ -92,79 +111,117 @@ function Quote() {
         <div className="quote-page__content">
           <p className="eyebrow">
             <span className="status-dot" />
-            Start a conversation
+            {t.quote.hero.eyebrow}
           </p>
+
           <h1>
-            Let&apos;s build
+            {t.quote.hero.titleLine1}
             <br />
-            <em>your cover.</em>
+            <em>{t.quote.hero.titleLine2}</em>
           </h1>
+
           <p className="services-page__lead">
-            Tell us what you need protected and a Nexline specialist will be in
-            touch with a considered recommendation.
+            {t.quote.hero.description}
           </p>
-          <Link className="text-link quote-page__back" to="/services">
-            <Icon name="arrow" size={16} /> View all services
+
+          <Link
+            className="text-link quote-page__back"
+            to="/services"
+          >
+            <Icon name="arrow" size={16} />
+            {t.quote.hero.backToServices}
           </Link>
+
           <br />
           <br />
 
           <div className="quote-page__call">
-  <span>We are one call away.</span>
+            <span>{t.quote.hero.callText}</span>
 
- <a className="btn btn--sm site-footer__cta-call" href="tel:+19097021008">
-  Call Now <Icon name="phone" size={16} />
-</a>
-</div>
+            <a
+              className="btn btn--sm site-footer__cta-call"
+              href="tel:+19097021008"
+            >
+              {t.quote.hero.callButton}
+              <Icon name="phone" size={16} />
+            </a>
+          </div>
         </div>
 
         {submitted ? (
-          <div className="contact-success" role="status">
+          <div
+            className="contact-success"
+            role="status"
+          >
             <Icon name="check" size={32} />
-            <p className="eyebrow">Request received</p>
-            <h2>We&apos;ll be in touch.</h2>
-            <p>
-              Your quote request is with our team. We&apos;ll respond within one
-              business day.
+
+            <p className="eyebrow">
+              {t.quote.success.eyebrow}
             </p>
+
+            <h2>{t.quote.success.title}</h2>
+
+            <p>{t.quote.success.description}</p>
+
             <button
               type="button"
               className="text-link"
               onClick={() => setSubmitted(false)}
             >
-              Send another request <Icon name="arrow" size={16} />
+              {t.quote.success.anotherRequest}
+              <Icon name="arrow" size={16} />
             </button>
           </div>
         ) : (
-          <form className="quote-form" onSubmit={handleSubmit}>
+          <form
+            className="quote-form"
+            onSubmit={handleSubmit}
+          >
             <label>
-              Name
+              {t.quote.form.name.label}
+
               <input
                 name="name"
                 required
                 type="text"
-                placeholder="Your full name"
+                placeholder={
+                  t.quote.form.name.placeholder
+                }
               />
             </label>
+
             <label>
-              Work email
+              {t.quote.form.email.label}
+
               <input
                 name="email"
                 required
                 type="email"
-                placeholder="you@company.com"
+                placeholder={
+                  t.quote.form.email.placeholder
+                }
               />
             </label>
+
             <div className="quote-form__field">
-              <label className="quote-form__field-label" htmlFor="service-trigger">
-                What do you need?
+              <label
+                className="quote-form__field-label"
+                htmlFor="service-trigger"
+              >
+                {t.quote.form.service.label}
               </label>
 
               <div
                 ref={serviceDropdownRef}
-                className={`quote-form__dropdown ${serviceOpen ? "is-open" : ""}`}
+                className={`quote-form__dropdown ${
+                  serviceOpen ? "is-open" : ""
+                }`}
               >
-                <input type="hidden" name="service" value={serviceValue} />
+                <input
+                  type="hidden"
+                  name="service"
+                  value={serviceValue}
+                />
 
                 <button
                   id="service-trigger"
@@ -174,9 +231,16 @@ function Quote() {
                   }`}
                   aria-haspopup="listbox"
                   aria-expanded={serviceOpen}
-                  onClick={() => setServiceOpen((open) => !open)}
+                  onClick={() =>
+                    setServiceOpen(
+                      (open) => !open
+                    )
+                  }
                 >
-                  <span>{selectedServiceLabel}</span>
+                  <span>
+                    {selectedServiceLabel}
+                  </span>
+
                   <svg
                     width="16"
                     height="16"
@@ -188,49 +252,85 @@ function Quote() {
                     strokeLinejoin="round"
                     aria-hidden="true"
                   >
-                    <polyline points="6 9 12 15 18 9"></polyline>
+                    <polyline points="6 9 12 15 18 9" />
                   </svg>
                 </button>
 
-                <div className="quote-form__dropdown-menu" role="listbox" aria-label="Select a service">
-                  {serviceOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      className={`quote-form__dropdown-item ${
-                        serviceValue === option.value ? "is-active" : ""
-                      }`}
-                      onClick={() => {
-                        setServiceValue(option.value);
-                        setServiceOpen(false);
-                      }}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
+                <div
+                  className="quote-form__dropdown-menu"
+                  role="listbox"
+                  aria-label={
+                    t.quote.form.service.ariaLabel
+                  }
+                >
+                  {services.map((service) => {
+                    const translatedService =
+                      t.services.items[
+                        service.translationKey
+                      ];
+
+                    return (
+                      <button
+                        key={service.id}
+                        type="button"
+                        className={`quote-form__dropdown-item ${
+                          serviceValue === service.id
+                            ? "is-active"
+                            : ""
+                        }`}
+                        onClick={() => {
+                          setServiceValue(service.id);
+                          setServiceOpen(false);
+                        }}
+                      >
+                        {translatedService?.title ||
+                          service.title}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
+
             <label>
-              Project details
+              {t.quote.form.details.label}
+
               <textarea
                 name="details"
                 rows="4"
-                placeholder="A little about your site, event, or operation"
+                placeholder={
+                  t.quote.form.details.placeholder
+                }
               />
             </label>
+
             {error && (
-              <p className="form-error" role="alert">
+              <p
+                className="form-error"
+                role="alert"
+              >
                 {error}
               </p>
             )}
+
             <button
               className="btn btn--primary btn--sm quote-form__submit"
               type="submit"
               disabled={isSending}
             >
-              {isSending ? "Sending..." : "Request a quote"}{" "}
-              {!isSending && <Icon name="arrow" size={16} />}
+              {isSending
+                ? t.quote.form.sending
+                : t.quote.form.submit}
+
+              {!isSending && (
+                <>
+                  {" "}
+                  <Icon
+                    name="arrow"
+                    size={16}
+                  />
+                </>
+              )}
             </button>
           </form>
         )}

@@ -3,15 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { services } from "../../data/services.js";
-
+import { useLanguage } from "../../context/LanguageContext.tsx";
+import { translations } from "../../data/translations.ts";
 
 import serviceBackground from "../../assets/run.png";
 import "./services.css";
 
-
 function Services() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+
+  const { language } = useLanguage();
+  const t = translations[language];
 
   const filteredServices = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -20,16 +23,28 @@ function Services() {
       return services;
     }
 
-    return services.filter((service) =>
-      [service.title, service.category, service.description].some((value) =>
-        value.toLowerCase().includes(normalizedQuery),
-      ),
-    );
-  }, [query]);
+    return services.filter((service) => {
+      const translatedService =
+        t.services.items[service.translationKey];
+
+      const searchableValues = [
+        translatedService?.title,
+        translatedService?.category,
+        translatedService?.description,
+      ];
+
+      return searchableValues.some(
+        (value) =>
+          value &&
+          value.toLowerCase().includes(normalizedQuery)
+      );
+    });
+  }, [query, t]);
 
   return (
     <PageShell>
       <section className="services-page">
+
         {/* =====================================================
             HERO / INTRO
         ===================================================== */}
@@ -37,22 +52,24 @@ function Services() {
           <div className="services-page__intro-content">
             <p className="services-page__eyebrow">
               <span className="services-page__status-dot" />
-              What we protect
+              {t.services.hero.eyebrow}
             </p>
 
             <h1>
-              Security that moves
+              {t.services.hero.titleLine1}
               <br />
-              <em>with you.</em>
+              <em>{t.services.hero.titleLine2}</em>
             </h1>
 
             <p className="services-page__lead">
-              From a single site to a complex operation, Nexline builds the
-              right level of protection around the way your business works.
+              {t.services.hero.description}
             </p>
 
-            <Link className="services-page__quote btn btn--primary" to="/quote">
-              Get a Quote
+            <Link
+              className="services-page__quote btn btn--primary"
+              to="/quote"
+            >
+              {t.services.hero.quote}
             </Link>
           </div>
 
@@ -70,21 +87,23 @@ function Services() {
               {String(filteredServices.length).padStart(2, "0")}
             </span>
 
-            <span>Services available</span>
+            <span>{t.services.toolbar.available}</span>
           </div>
 
           <label className="services-page__search">
             <Icon name="search" size={19} />
 
             <span className="services-page__sr-only">
-              Search security services
+              {t.services.toolbar.searchLabel}
             </span>
 
             <input
               type="search"
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search services"
+              onChange={(event) =>
+                setQuery(event.target.value)
+              }
+              placeholder={t.services.toolbar.searchPlaceholder}
             />
 
             {query && (
@@ -92,7 +111,7 @@ function Services() {
                 type="button"
                 className="services-page__search-clear"
                 onClick={() => setQuery("")}
-                aria-label="Clear search"
+                aria-label={t.services.toolbar.clearSearch}
               >
                 &times;
               </button>
@@ -105,55 +124,75 @@ function Services() {
         ===================================================== */}
         {filteredServices.length > 0 ? (
           <div className="services-page__grid">
-            {filteredServices.map((service, index) => (
-              <article
-                key={service.id}
-                className="services-page__card"
-                onClick={() => navigate(`/services/${service.id}`)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    navigate(`/services/${service.id}`);
+            {filteredServices.map((service, index) => {
+              const translatedService =
+                t.services.items[service.translationKey];
+
+              return (
+                <article
+                  key={service.id}
+                  className="services-page__card"
+                  onClick={() =>
+                    navigate(`/services/${service.id}`)
                   }
-                }}
-                tabIndex={0}
-                role="button"
-                aria-label={`View ${service.title} details`}
-              >
-                <div className="services-page__card-image-wrap">
-                  <img
-                    className="services-page__card-image"
-                    src={service.image}
-                    alt={service.alt || service.title}
-                    loading={index > 1 ? "lazy" : "eager"}
-                  />
-                </div>
+                  onKeyDown={(event) => {
+                    if (
+                      event.key === "Enter" ||
+                      event.key === " "
+                    ) {
+                      event.preventDefault();
+                      navigate(
+                        `/services/${service.id}`
+                      );
+                    }
+                  }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`${t.services.card.viewDetails} ${translatedService.title}`}
+                >
+                  <div className="services-page__card-image-wrap">
+                    <img
+                      className="services-page__card-image"
+                      src={service.image}
+                      alt={
+                        translatedService.alt ||
+                        translatedService.title
+                      }
+                      loading={
+                        index > 1 ? "lazy" : "eager"
+                      }
+                    />
+                  </div>
 
-                <div className="services-page__card-body">
-                  <p className="services-page__card-category">
-                    {service.category}
-                  </p>
+                  <div className="services-page__card-body">
+                    <p className="services-page__card-category">
+                      {translatedService.category}
+                    </p>
 
-                  <h2>{service.title}</h2>
+                    <h2>{translatedService.title}</h2>
 
-                  <p className="services-page__card-description">
-                    {service.description}
-                  </p>
+                    <p className="services-page__card-description">
+                      {translatedService.description}
+                    </p>
 
-                  <button
-                    type="button"
-                    className="services-page__card-quote"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      navigate(`/quote?service=${service.id}`);
-                    }}
-                  >
-                    Get Quote
-                    <Icon name="arrow" size={16} />
-                  </button>
-                </div>
-              </article>
-            ))}
+                    <button
+                      type="button"
+                      className="services-page__card-quote"
+                      onClick={(event) => {
+                        event.stopPropagation();
+
+                        navigate(
+                          `/quote?service=${service.id}`
+                        );
+                      }}
+                    >
+                      {t.services.card.getQuote}
+                      <Icon name="arrow" size={16} />
+                    </button>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         ) : (
           /* =====================================================
@@ -162,11 +201,12 @@ function Services() {
           <div className="services-page__empty">
             <Icon name="search" size={28} />
 
-            <h2>No services found</h2>
+            <h2>{t.services.empty.title}</h2>
 
-            <p>Try a broader search or clear the field to see every service.</p>
+            <p>{t.services.empty.description}</p>
           </div>
         )}
+
       </section>
     </PageShell>
   );

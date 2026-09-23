@@ -7,6 +7,7 @@ import fireWatch from "../assets/fire-watch.jpg";
 export const services = [
   {
     id: "standing-guards",
+    translationKey: "standingGuards",
     category: "Protective services",
     title: "Standing Guards",
     description:
@@ -68,6 +69,7 @@ export const services = [
 
   {
     id: "mobile-surveillance",
+    translationKey: "mobileSurveillance",
     category: "Security solutions",
     title: "Mobile Surveillance Systems",
     description:
@@ -129,6 +131,7 @@ export const services = [
 
   {
     id: "event-security",
+    translationKey: "eventSecurity",
     category: "Event security",
     title: "Event Security",
     description:
@@ -191,6 +194,7 @@ export const services = [
 
   {
     id: "mobile-patrols",
+    translationKey: "mobilePatrols",
     category: "Response & patrol",
     title: "Vehicle & Mobile Patrols",
     description:
@@ -253,6 +257,7 @@ export const services = [
 
   {
     id: "front-reception-lobby-guards",
+    translationKey: "lobbyGuards",
     category: "Desk security solutions",
     title: "Front Reception & Lobby Guards",
     description:
@@ -314,6 +319,7 @@ export const services = [
 
   {
     id: "fire-watch",
+    translationKey: "fireWatch",
     category: "Alarm & fire safety",
     title: "Fire Watch",
     description:

@@ -5,119 +5,198 @@ import {
   footerServiceAreas,
   footerServices,
 } from "../../data/footerData.js";
-
+import { useLanguage } from "../../context/LanguageContext.tsx";
+import { translations } from "../../data/translations.ts";
 function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <footer className="site-footer">
+
+      {/* ================= CTA ================= */}
       <div className="site-footer__cta shell">
         <div>
           <p className="eyebrow">
             <span className="status-dot" />
-            Let&apos;s talk protection
+            {t.footer.cta.eyebrow}
           </p>
+
           <h2>
-            Need reliable
+            {t.footer.cta.titleLine1}
             <br />
-            <em>security?</em>
+            <em>{t.footer.cta.titleLine2}</em>
           </h2>
+
           <p>
-            Protect your people, property, and business with professional
-            security services.
+            {t.footer.cta.description}
           </p>
         </div>
+
         <div className="site-footer__cta-actions">
-          <Link className="btn btn--primary btn--sm site-footer__cta-quote" to="/quote">
-            Request a Quote <Icon name="arrow" size={16} />
+          <Link
+            className="btn btn--primary btn--sm site-footer__cta-quote"
+            to="/quote"
+          >
+            {t.footer.cta.quoteButton}
+            <Icon name="arrow" size={16} />
           </Link>
-          <a className="btn btn--sm site-footer__cta-call" href="tel:+19097021008">
-            Call Now <Icon name="phone" size={16} />
+
+          <a
+            className="btn btn--sm site-footer__cta-call"
+            href="tel:+19097021008"
+          >
+            {t.footer.cta.callButton}
+            <Icon name="phone" size={16} />
           </a>
         </div>
       </div>
 
+      {/* ================= MAIN FOOTER ================= */}
       <div className="site-footer__main shell">
+
+        {/* Brand */}
         <div className="site-footer__brand">
           <Link to="/" className="site-footer__logo">
             <span className="site-footer__mark">
               <Icon name="shield" size={20} />
             </span>
+
             <span>
-              NEXLINE<small>SECURITY SERVICES</small>
+              NEXLINE
+              <small>SECURITY SERVICES</small>
             </span>
           </Link>
+
           <p>
-            Professional, reliable, highly trained security professionals
-            serving businesses, properties, events, and communities throughout
-            Southern California.
+            {t.footer.brand.description}
           </p>
-          <div className="site-footer__socials" aria-label="Social media links">
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+
+          <div
+            className="site-footer__socials"
+            aria-label={t.footer.brand.socialLabel}
+          >
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
               <Icon name="facebook" size={16} />
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
               <Icon name="instagram" size={16} />
             </a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               <Icon name="linkedin" size={16} />
             </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+
+            <a
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
               <Icon name="youtube" size={16} />
             </a>
           </div>
         </div>
+
+        {/* Quick Links */}
         <div className="site-footer__column">
-          <h3>Quick links</h3>
-          {footerQuickLinks.map((link) =>
+          <h3>{t.footer.quickLinks.title}</h3>
+
+          {footerQuickLinks.map((link) => (
             link.href.startsWith("/") ? (
               <Link key={link.label} to={link.href}>
-                {link.label}
+                {t.footer.quickLinks.items[link.label] || link.label}
               </Link>
             ) : (
               <a key={link.label} href={link.href}>
-                {link.label}
+                {t.footer.quickLinks.items[link.label] || link.label}
               </a>
-            ),
-          )}
+            )
+          ))}
         </div>
+
+        {/* Security Services */}
         <div className="site-footer__column">
-          <h3>Security services</h3>
+          <h3>{t.footer.services.title}</h3>
+
           {footerServices.map((service) => (
             <a href="/services" key={service}>
-              {service}
+              {t.footer.services.items[service.trim()] || service.trim()}
             </a>
           ))}
         </div>
+
+        {/* Contact */}
         <div className="site-footer__column site-footer__contact">
-          <h3>Contact us</h3>
-          <span>Phone</span>
+          <h3>{t.footer.contact.title}</h3>
+
+          <span>{t.footer.contact.phone}</span>
           <strong>[PHONE NUMBER]</strong>
-          <span>Email</span>
+
+          <span>{t.footer.contact.email}</span>
           <strong>[EMAIL ADDRESS]</strong>
-          <span>Address</span>
+
+          <span>{t.footer.contact.address}</span>
           <strong>[BUSINESS ADDRESS]</strong>
-          <span>Hours</span>
+
+          <span>{t.footer.contact.hours}</span>
           <strong>[BUSINESS HOURS]</strong>
         </div>
       </div>
 
-      <div className="site-footer__areas shell" id="service-areas">
+      {/* ================= SERVICE AREAS ================= */}
+      <div
+        className="site-footer__areas shell"
+        id="service-areas"
+      >
         <div className="site-footer__section-heading">
           <div>
-            <p className="eyebrow">Where we serve</p>
+            <p className="eyebrow">
+              {t.footer.serviceAreas.eyebrow}
+            </p>
+
             <h2>
-              Service <em>areas.</em>
+              {t.footer.serviceAreas.titleLine1}{" "}
+              <em>{t.footer.serviceAreas.titleLine2}</em>
             </h2>
           </div>
-          <p>Professional security services throughout Southern California.</p>
+
+          <p>
+            {t.footer.serviceAreas.description}
+          </p>
         </div>
+
         <div className="site-footer__area-grid">
           {footerServiceAreas.map((group) => (
             <section key={group.region}>
-              <h3>{group.region}</h3>
+              <h3>
+                {t.footer.serviceAreas.regions[group.region] ||
+                  group.region}
+              </h3>
+
               {group.locations.map((location) => (
-                <a href="#service-areas" key={location}>
+                <a
+                  href="#service-areas"
+                  key={location}
+                >
                   {location}
                 </a>
               ))}
@@ -126,29 +205,57 @@ function Footer() {
         </div>
       </div>
 
+      {/* ================= TRUST & CREDENTIALS ================= */}
       <div className="site-footer__trust shell">
         <div>
-          <h3>Trust &amp; credentials</h3>
+          <h3>{t.footer.trust.title}</h3>
+
           <p>
-             Professional standards backed by verified credentials and ongoing training.
+            {t.footer.trust.description}
           </p>
         </div>
+
         <div className="site-footer__trust-list">
-          <span>License information: [TO BE PROVIDED]</span>
-          <span>Insurance information: [TO BE PROVIDED]</span>
-          <span>Certifications: [TO BE PROVIDED]</span>
+          <span>
+            {t.footer.trust.license}
+          </span>
+
+          <span>
+            {t.footer.trust.insurance}
+          </span>
+
+          <span>
+            {t.footer.trust.certifications}
+          </span>
         </div>
       </div>
 
+      {/* ================= BOTTOM ================= */}
       <div className="site-footer__bottom shell">
-        <span>© {currentYear} NexLine Security. All Rights Reserved.</span>
+        <span>
+          © {currentYear} NexLine Security.{" "}
+          {t.footer.bottom.rights}
+        </span>
+
         <div>
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms &amp; Conditions</a>
-          <a href="#accessibility">Accessibility Statement</a>
-          <a href="#sitemap">Sitemap</a>
+          <a href="#privacy">
+            {t.footer.bottom.privacy}
+          </a>
+
+          <a href="#terms">
+            {t.footer.bottom.terms}
+          </a>
+
+          <a href="#accessibility">
+            {t.footer.bottom.accessibility}
+          </a>
+
+          <a href="#sitemap">
+            {t.footer.bottom.sitemap}
+          </a>
         </div>
       </div>
+
     </footer>
   );
 }

@@ -273,7 +273,7 @@ hero: {
   },
 },
 vision: {
-  title: "Why Choose Us",
+  title: "Why Choose Us?",
   subtitle:
     "Leading the industry in professional security solutions",
 

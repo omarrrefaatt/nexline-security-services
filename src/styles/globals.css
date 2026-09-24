@@ -250,10 +250,11 @@ button {
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2.5rem;
-  text-align: center;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 2.5rem 2.5rem 2.5rem 4%;
+  text-align: left;
 }
 
 .hero__content h1 {
@@ -269,19 +270,20 @@ button {
   font-size: 1.25rem;
   color: #a4a5ab;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .hero__cta {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
   margin-bottom: 3rem;
   flex-wrap: wrap;
 }
 
+/* Keep highlight cards centered */
 .hero__highlights {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -290,15 +292,170 @@ button {
   margin: 0 auto;
 }
 
+/* ========================================================================== 
+   Highlight Cards
+   ========================================================================== */
+
+.highlight-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-align: center;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid rgba(217, 164, 65, 0.35);
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 12, 14, 0.72) 0%,
+    rgba(11, 12, 14, 0.6) 100%
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: highlightPulse 3s ease-in-out infinite;
+}
+
+.highlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(217, 164, 65, 0.5),
+    rgba(217, 164, 65, 0.3),
+    transparent
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: neonFlicker 0.15s infinite;
+}
+
+.highlight-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 8px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(217, 164, 65, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.highlight-card:hover::before {
+  opacity: 1;
+}
+
+.highlight-card:hover::after {
+  opacity: 1;
+}
+
+.highlight-card__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(217, 164, 65, 0.15) 0%,
+    rgba(217, 164, 65, 0.05) 100%
+  );
+  border-radius: 50%;
+  color: #d9a441;
+  border: 1.5px solid rgba(217, 164, 65, 0.4);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.highlight-card__icon svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover .highlight-card__icon svg {
+  transform: rotate(-5deg);
+}
+
+.highlight-card__title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.1rem 0 0;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.highlight-card:hover .highlight-card__title {
+  color: #d9a441;
+}
+
+/* ========================================================================== 
+   RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 768px) {
+  .hero__content {
+    padding: 2rem;
+  }
+
   .hero__cta {
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
   }
 
   .hero__highlights {
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__content {
+    padding: 1.5rem;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__highlights {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__content {
+    padding: 1.5rem;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__highlights {
+    grid-template-columns: 1fr;
   }
 }
 

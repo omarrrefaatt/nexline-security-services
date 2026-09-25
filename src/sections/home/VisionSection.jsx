@@ -31,7 +31,7 @@ function VisionSection() {
     },
     {
       id: "years",
-      target: 15,
+      target: 25,
     },
   ];
 
@@ -96,8 +96,8 @@ function VisionSection() {
         ),
 
         years: Math.min(
-          Math.floor(15 * progress),
-          15
+          Math.floor(25 * progress),
+          25
         ),
       });
 

@@ -34,7 +34,7 @@ export const guardHeroes = [
     role: "CEO & Founder",
     specialty: "Executive Leadership",
     summary:
-      "Mr. Ahmed brings his expertise as a Certified Public Accountant (CPA) together with strong business leadership to guide the company with professionalism, integrity, and a commitment to excellence.",
+      "Mr. Ahmed leads NexLine with a strong commitment to professional, high-end security services, building a company centered on trust, integrity, reliability, and excellence in protecting clients and their properties.",
     image: CEO,
     alt: "Professional man standing confidently in an office",
   },
@@ -43,10 +43,10 @@ export const guardHeroes = [
     rank: "02",
     translationKey: "jordan",
     name: "Jordan Williams",
-    role: "Security Guard",
+    role: "Security Field Supervisor",
     specialty: "Professional Security Services",
     summary:
-      "Jordan is a dependable security professional committed to maintaining a safe, secure, and welcoming environment for clients and their properties.",
+      "Jordan is a dependable security supervisor professional committed to maintaining a safe, secure, and welcoming environment for clients and their properties.",
     image: team1,
     alt: "Professional man in a suit standing outdoors",
   },

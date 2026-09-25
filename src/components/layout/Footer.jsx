@@ -149,16 +149,17 @@ function Footer() {
           <h3>{t.footer.contact.title}</h3>
 
           <span>{t.footer.contact.phone}</span>
-          <strong>[PHONE NUMBER]</strong>
+          <strong>+1 (909) 702-1008</strong>
 
           <span>{t.footer.contact.email}</span>
-          <strong>[EMAIL ADDRESS]</strong>
+          <strong>info@nexlinesecurity.com</strong>
 
           <span>{t.footer.contact.address}</span>
-          <strong>[BUSINESS ADDRESS]</strong>
+          <strong>5790 Magnolia Ave, Suite 101, Riverside, CA 92506
+Response desk</strong>
 
           <span>{t.footer.contact.hours}</span>
-          <strong>[BUSINESS HOURS]</strong>
+          <strong>9 am to 6 pm</strong>
         </div>
       </div>
 

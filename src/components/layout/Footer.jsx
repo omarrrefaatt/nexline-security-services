@@ -15,7 +15,6 @@ function Footer() {
 
   return (
     <footer className="site-footer">
-
       {/* ================= CTA ================= */}
       <div className="site-footer__cta shell">
         <div>
@@ -30,9 +29,7 @@ function Footer() {
             <em>{t.footer.cta.titleLine2}</em>
           </h2>
 
-          <p>
-            {t.footer.cta.description}
-          </p>
+          <p>{t.footer.cta.description}</p>
         </div>
 
         <div className="site-footer__cta-actions">
@@ -56,7 +53,6 @@ function Footer() {
 
       {/* ================= MAIN FOOTER ================= */}
       <div className="site-footer__main shell">
-
         {/* Brand */}
         <div className="site-footer__brand">
           <Link to="/" className="site-footer__logo">
@@ -70,9 +66,7 @@ function Footer() {
             </span>
           </Link>
 
-          <p>
-            {t.footer.brand.description}
-          </p>
+          <p>{t.footer.brand.description}</p>
 
           <div
             className="site-footer__socials"
@@ -120,7 +114,7 @@ function Footer() {
         <div className="site-footer__column">
           <h3>{t.footer.quickLinks.title}</h3>
 
-          {footerQuickLinks.map((link) => (
+          {footerQuickLinks.map((link) =>
             link.href.startsWith("/") ? (
               <Link key={link.label} to={link.href}>
                 {t.footer.quickLinks.items[link.label] || link.label}
@@ -129,8 +123,8 @@ function Footer() {
               <a key={link.label} href={link.href}>
                 {t.footer.quickLinks.items[link.label] || link.label}
               </a>
-            )
-          ))}
+            ),
+          )}
         </div>
 
         {/* Security Services */}
@@ -149,30 +143,26 @@ function Footer() {
           <h3>{t.footer.contact.title}</h3>
 
           <span>{t.footer.contact.phone}</span>
+
           <strong>+1 (909) 702-1008</strong>
+
 
           <span>{t.footer.contact.email}</span>
           <strong>info@nexlinesecurity.com</strong>
 
           <span>{t.footer.contact.address}</span>
-          <strong>5790 Magnolia Ave, Suite 101, Riverside, CA 92506
-Response desk</strong>
+          <strong>5790 Magnolia Ave, Suite 101, Riverside, CA 92506</strong>
 
           <span>{t.footer.contact.hours}</span>
-          <strong>9 am to 6 pm</strong>
+          <strong>Monday - Friday: 8:00 AM - 5:00 PM</strong>
         </div>
       </div>
 
       {/* ================= SERVICE AREAS ================= */}
-      <div
-        className="site-footer__areas shell"
-        id="service-areas"
-      >
+      <div className="site-footer__areas shell" id="service-areas">
         <div className="site-footer__section-heading">
           <div>
-            <p className="eyebrow">
-              {t.footer.serviceAreas.eyebrow}
-            </p>
+            <p className="eyebrow">{t.footer.serviceAreas.eyebrow}</p>
 
             <h2>
               {t.footer.serviceAreas.titleLine1}{" "}
@@ -180,24 +170,18 @@ Response desk</strong>
             </h2>
           </div>
 
-          <p>
-            {t.footer.serviceAreas.description}
-          </p>
+          <p>{t.footer.serviceAreas.description}</p>
         </div>
 
         <div className="site-footer__area-grid">
           {footerServiceAreas.map((group) => (
             <section key={group.region}>
               <h3>
-                {t.footer.serviceAreas.regions[group.region] ||
-                  group.region}
+                {t.footer.serviceAreas.regions[group.region] || group.region}
               </h3>
 
               {group.locations.map((location) => (
-                <a
-                  href="#service-areas"
-                  key={location}
-                >
+                <a href="#service-areas" key={location}>
                   {location}
                 </a>
               ))}
@@ -211,52 +195,34 @@ Response desk</strong>
         <div>
           <h3>{t.footer.trust.title}</h3>
 
-          <p>
-            {t.footer.trust.description}
-          </p>
+          <p>{t.footer.trust.description}</p>
         </div>
 
         <div className="site-footer__trust-list">
-          <span>
-            {t.footer.trust.license}
-          </span>
+          <span>{t.footer.trust.license}</span>
 
-          <span>
-            {t.footer.trust.insurance}
-          </span>
+          <span>{t.footer.trust.insurance}</span>
 
-          <span>
-            {t.footer.trust.certifications}
-          </span>
+          <span>{t.footer.trust.certifications}</span>
         </div>
       </div>
 
       {/* ================= BOTTOM ================= */}
       <div className="site-footer__bottom shell">
         <span>
-          © {currentYear} NexLine Security.{" "}
-          {t.footer.bottom.rights}
+          © {currentYear} NexLine Security. {t.footer.bottom.rights}
         </span>
 
         <div>
-          <a href="#privacy">
-            {t.footer.bottom.privacy}
-          </a>
+          <a href="#privacy">{t.footer.bottom.privacy}</a>
 
-          <a href="#terms">
-            {t.footer.bottom.terms}
-          </a>
+          <a href="#terms">{t.footer.bottom.terms}</a>
 
-          <a href="#accessibility">
-            {t.footer.bottom.accessibility}
-          </a>
+          <a href="#accessibility">{t.footer.bottom.accessibility}</a>
 
-          <a href="#sitemap">
-            {t.footer.bottom.sitemap}
-          </a>
+          <a href="#sitemap">{t.footer.bottom.sitemap}</a>
         </div>
       </div>
-
     </footer>
   );
 }

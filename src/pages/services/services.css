@@ -11,31 +11,25 @@
 
 /* =========================================================
    HERO / INTRO — headline + lead + real gold "Get a Quote"
-   button on the left, a contained image on the right (not a
-   full-bleed background photo)
+   button on the left, a contained image on the right
    ========================================================= */
 
 .services-page__intro {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-
   display: flex;
   align-items: center;
-
   min-height: 620px;
-
   max-width: 1280px;
   margin: 0 auto;
   padding: 3.5rem 2.5rem 5rem;
-
   border-bottom: 1px solid var(--border);
 }
 
 .services-page__intro-content {
   position: relative;
   z-index: 3;
-
   max-width: 620px;
 }
 
@@ -43,35 +37,31 @@
   display: flex;
   align-items: center;
   gap: 10px;
-
   margin: 0 0 2rem;
 
-  font: 0.65rem "DM Mono", monospace;
+  font-family: inherit;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-transform: none;
 
   color: var(--gold);
 }
 
 .services-page__status-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   flex-shrink: 0;
-
   border-radius: 50%;
-
   background: var(--gold);
 }
 
 .services-page__intro-content h1 {
   margin: 0;
-
   font-size: clamp(44px, 6vw, 78px);
   line-height: 0.95;
   font-weight: 700;
   letter-spacing: -0.05em;
-
   color: var(--text);
 }
 
@@ -83,53 +73,41 @@
 
 .services-page__lead {
   max-width: 480px;
-
   margin: 2rem 0 0;
-
   font-size: 1.05rem;
   line-height: 1.75;
-
   color: var(--text-muted);
 }
 
-/* Real gold pill button — no longer a thin underlined text link */
+/* Real gold pill button */
+
 .services-page__quote {
   display: inline-block;
   margin-top: 2rem;
 }
 
 /* =========================================================
-   HERO IMAGE — full-bleed on the right, fading into the dark
-   background on the left so it blends rather than sitting in
-   a boxed frame. Same technique as .about-page__hero-image.
+   HERO IMAGE
    ========================================================= */
 
 .services-page__hero-image {
   position: absolute;
   z-index: 1;
-
   top: 0;
   right: 0;
-
   width: 62%;
   height: 100%;
-
   overflow: hidden;
 }
 
 .services-page__hero-image img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   object-position: center;
-
   display: block;
 }
 
-/* Left-to-right gradient so the image fades into the page
-   background instead of ending in a hard edge, keeping the
-   text on the left fully readable */
 .services-page__hero-image::after {
   content: "";
   position: absolute;
@@ -154,11 +132,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem 2.5rem;
-
   border-bottom: 1px solid var(--border);
 }
 
@@ -166,16 +142,20 @@
   display: flex;
   align-items: center;
   gap: 0.85rem;
-
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+.services-page__toolbar-available {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .services-page__toolbar-number {
   font-size: 2rem;
   font-weight: 700;
   line-height: 1;
-
   color: var(--gold);
   letter-spacing: -0.03em;
 }
@@ -186,19 +166,14 @@
 
 .services-page__search {
   width: min(320px, 100%);
-
   display: flex;
   align-items: center;
   gap: 0.75rem;
-
   padding: 0.7rem 0.9rem;
-
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--bg-elevated);
-
   color: var(--text-muted);
-
   transition: border-color 0.2s ease;
 }
 
@@ -208,11 +183,9 @@
 
 .services-page__search input {
   width: 100%;
-
   border: 0;
   outline: 0;
   background: transparent;
-
   color: var(--text);
   font-family: inherit;
   font-size: 0.85rem;
@@ -241,8 +214,8 @@
   border: 0;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-
   color: var(--text);
+
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
@@ -261,7 +234,6 @@
 .services-page__grid {
   max-width: 1280px;
   margin: 0 auto;
-
   padding: 3rem 2.5rem;
 
   display: grid;
@@ -270,18 +242,22 @@
 }
 
 /* =========================================================
-   SERVICE CARD — matches .industry-card exactly
+   SERVICE CARD
    ========================================================= */
 
 .services-page__card {
   position: relative;
+
   display: flex;
   flex-direction: column;
+
   min-width: 0;
   cursor: pointer;
   overflow: hidden;
+
   border: 1px solid var(--border);
   background: var(--bg-elevated);
+
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
@@ -302,8 +278,11 @@
   width: 100%;
   height: 100%;
   display: block;
+
   object-fit: cover;
+
   filter: saturate(0.72);
+
   transition: transform 0.5s ease, filter 0.5s ease;
 }
 
@@ -315,8 +294,15 @@
 .services-page__card-image-wrap::after {
   position: absolute;
   inset: 0;
+
   content: "";
-  background: linear-gradient(180deg, transparent 55%, rgba(11, 12, 14, 0.55) 100%);
+
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(11, 12, 14, 0.55) 100%
+  );
+
   pointer-events: none;
 }
 
@@ -324,34 +310,50 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+
   padding: 1.5rem;
 }
 
+/* =========================================================
+   SERVICE CATEGORY
+   Bigger + italic + normal capitalization
+   ========================================================= */
+
 .services-page__card-category {
   margin: 0 0 0.75rem;
+
   color: var(--gold);
-  font: 0.62rem "DM Mono", monospace;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: none;
 }
 
 .services-page__card-body h2 {
   margin: 0 0 0.75rem;
+
   font-size: 1.3rem;
   letter-spacing: -0.03em;
   line-height: 1.2;
+
   color: var(--text);
 }
 
 .services-page__card-description {
   margin: 0 0 1.4rem;
+
   color: var(--text-muted);
+
   font-size: 0.85rem;
   line-height: 1.75;
 }
 
-/* Real gold pill button — matches .btn--primary used everywhere
-   else on the site */
+/* =========================================================
+   CARD QUOTE BUTTON
+   ========================================================= */
+
 .services-page__card-quote {
   margin-top: auto;
   align-self: flex-start;
@@ -364,9 +366,15 @@
 
   border: 1px solid #e6b855;
   border-radius: 6px;
-  background: linear-gradient(135deg, #d9a441 0%, #e6b855 100%);
+
+  background: linear-gradient(
+    135deg,
+    #d9a441 0%,
+    #e6b855 100%
+  );
 
   color: #000000;
+
   font-family: inherit;
   font-size: 0.85rem;
   font-weight: 600;
@@ -379,9 +387,16 @@
 }
 
 .services-page__card:hover .services-page__card-quote {
-  background: linear-gradient(135deg, #e6b855 0%, #f0c870 100%);
+  background: linear-gradient(
+    135deg,
+    #e6b855 0%,
+    #f0c870 100%
+  );
+
   box-shadow: 0 16px 40px rgba(217, 164, 65, 0.5);
+
   transform: translateY(-2px);
+
   gap: 0.7rem;
 }
 
@@ -393,13 +408,13 @@
   min-height: 300px;
   max-width: 1280px;
   margin: 0 auto;
-
   padding: 4rem 2.5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
 
   color: var(--text-muted);
@@ -411,6 +426,7 @@
 
 .services-page__empty h2 {
   margin: 1.25rem 0 0.5rem;
+
   color: var(--text);
   font-size: 1.75rem;
 }
@@ -426,8 +442,11 @@
   height: 1px;
   padding: 0;
   margin: -1px;
+
   overflow: hidden;
+
   clip: rect(0, 0, 0, 0);
+
   white-space: nowrap;
   border: 0;
 }
@@ -440,7 +459,9 @@
   .services-page__intro {
     align-items: flex-start;
     flex-direction: column;
+
     min-height: 0;
+
     padding: 5rem 2rem 3rem;
   }
 
@@ -450,6 +471,7 @@
 
     width: 100%;
     max-width: 420px;
+
     aspect-ratio: 16 / 9;
 
     margin-top: 2.5rem;
@@ -469,6 +491,7 @@
 
   .services-page__grid {
     padding: 2rem;
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -484,6 +507,7 @@
 
   .services-page__toolbar {
     padding: 1.25rem;
+
     flex-direction: column;
     align-items: stretch;
   }
@@ -498,6 +522,7 @@
 
   .services-page__grid {
     padding: 1.25rem;
+
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }

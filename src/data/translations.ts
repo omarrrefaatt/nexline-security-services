@@ -318,7 +318,7 @@ services: {
   },
 
   toolbar: {
-    available: "Services available",
+    available: "Services available :",
     searchPlaceholder: "Search services",
     searchLabel: "Search security services",
     clearSearch: "Clear search",

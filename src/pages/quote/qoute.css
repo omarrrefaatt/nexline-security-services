@@ -44,7 +44,7 @@
   color: var(--text-muted);
   font: 0.65rem "DM Mono", monospace;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 
 .quote-form__dropdown {

@@ -10,7 +10,16 @@ import { translations } from "../../data/translations.ts";
 function getServiceById(id) {
   return services.find((service) => service.id === id);
 }
+function ItalicLastWord({ text }) {
+  const words = text.split(" ");
+  const lastWord = words.pop();
 
+  return (
+    <>
+      {words.join(" ")} <em>{lastWord}</em>
+    </>
+  );
+}
 function Industries() {
   const { language } = useLanguage();
   const t = translations[language];
@@ -20,8 +29,9 @@ function Industries() {
       <div className="industries-page">
         <div className="industries-page__intro">
           <div className="industries-page__intro-content">
-            <h1>{t.industries.hero.title}</h1>
-
+            <h1>
+  <ItalicLastWord text={t.industries.hero.title} />
+</h1>
             <p className="industries-page__lead">
               {t.industries.hero.description}
             </p>
@@ -31,10 +41,9 @@ function Industries() {
             className="industries-page__jumpnav"
             aria-label={t.industries.hero.jumpNavLabel}
           >
-            <span className="industries-page__jumpnav-label">
-              {t.industries.hero.jumpNavLabel}
-            </span>
-
+           <span className="industries-page__jumpnav-label">
+  Industries We <em>Serve</em>
+</span>
             <ul>
               {industries.map((industry) => {
                 const translatedIndustry =

@@ -11,7 +11,10 @@ function AwardsSection() {
     <section className="awards-section">
       <div className="awards-section__container">
         <div className="awards-section__header">
-          <h2>{t.awards.title}</h2>
+          <h2>
+  {t.awards.title.split(" ").slice(0, -1).join(" ")}{" "}
+  <em>{t.awards.title.split(" ").slice(-1)}</em>
+</h2>
           <p>{t.awards.subtitle}</p>
         </div>
 

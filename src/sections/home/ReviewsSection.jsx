@@ -17,7 +17,10 @@ function ReviewsSection() {
     <section className="reviews-section">
       <div className="reviews-section__container">
         <div className="reviews-section__header">
-          <h2>{t.reviews.title}</h2>
+          <h2>
+  {t.reviews.title.split(" ").slice(0, -1).join(" ")}{" "}
+  <em>{t.reviews.title.split(" ").slice(-1)}</em>
+</h2>
           <p>{t.reviews.subtitle}</p>
         </div>
 

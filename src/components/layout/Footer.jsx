@@ -143,7 +143,9 @@ function Footer() {
           <h3>{t.footer.contact.title}</h3>
 
           <span>{t.footer.contact.phone}</span>
-          <strong>+1(909) 702-1008</strong>
+
+          <strong>+1 (909) 702-1008</strong>
+
 
           <span>{t.footer.contact.email}</span>
           <strong>info@nexlinesecurity.com</strong>

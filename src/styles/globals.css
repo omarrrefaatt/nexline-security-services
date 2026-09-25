@@ -272,10 +272,11 @@ button {
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2.5rem;
-  text-align: center;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 2.5rem 2.5rem 2.5rem 4%;
+  text-align: left;
 }
 
 .hero__content h1 {
@@ -291,19 +292,20 @@ button {
   font-size: 1.25rem;
   color: #a4a5ab;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .hero__cta {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
   margin-bottom: 3rem;
   flex-wrap: wrap;
 }
 
+/* Keep highlight cards centered */
 .hero__highlights {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -312,18 +314,146 @@ button {
   margin: 0 auto;
 }
 
+/* ========================================================================== 
+   Highlight Cards
+   ========================================================================== */
+.highlight-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05rem;
+  text-align: center;
+
+  /* taller, narrower */
+  padding: 0.5rem 0.06rem;
+
+  border: 1px solid rgba(217, 164, 65, 0.35);
+  border-radius: 5px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(11, 12, 14, 0.72) 0%,
+    rgba(11, 12, 14, 0.6) 100%
+  );
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: highlightPulse 3s ease-in-out infinite;
+}
+
+.highlight-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 5px;
+
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(217, 164, 65, 0.1) 0%,
+    transparent 70%
+  );
+
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.highlight-card:hover::before {
+  opacity: 1;
+}
+
+.highlight-card:hover::after {
+  opacity: 1;
+}
+
+.highlight-card__icon {
+  width: 19px;
+  height: 19px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(217, 164, 65, 0.15) 0%,
+    rgba(217, 164, 65, 0.05) 100%
+  );
+
+  border-radius: 50%;
+  color: #d9a441;
+  border: 1px solid rgba(217, 164, 65, 0.4);
+
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.highlight-card__icon svg {
+  width: 9px;
+  height: 9px;
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover .highlight-card__icon svg {
+  transform: rotate(-5deg);
+}
+
+.highlight-card__title {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.1px;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.highlight-card:hover .highlight-card__title {
+  color: #d9a441;
+}
+
+/* ========================================================================== 
+   RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 768px) {
+  .hero__content {
+    padding: 2rem;
+  }
+
   .hero__cta {
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
   }
 
   .hero__highlights {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.5rem;
+    margin: 0 auto;
   }
 }
 
+@media (max-width: 640px) {
+  .hero__content {
+    padding: 1.5rem;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__highlights {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+  }
+}
 @media (max-width: 640px) {
   .hero__cta {
     flex-direction: column;
@@ -338,7 +468,7 @@ button {
    Highlight Cards (neon-framed, used inside hero)
    ========================================================================== */
 
-.highlight-card {
+/* .highlight-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -358,7 +488,7 @@ button {
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: highlightPulse 3s ease-in-out infinite;
-}
+} */
 
 .highlight-card::before {
   content: "";
@@ -566,8 +696,8 @@ button {
 .navbar__logo {
   background: url("../assets/logo.png");
   background-size: contain;
-  width: 44px;
-  height: 44px;
+  width: 55px;
+  height: 55px;
 }
 
 .navbar--lg {
@@ -604,11 +734,11 @@ button {
 }
 
 .navbar--lg .logo__name {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .navbar--lg .logo__tagline {
-  font-size: 0.72rem;
+  font-size: 0.95rem;
 }
 
 .navbar--lg .navbar__links {
@@ -1092,7 +1222,10 @@ button {
   font-weight: 700;
   color: #ffffff;
 }
-
+.your-section-class h2 em {
+  font-style: italic;
+  font-weight: inherit;
+}
 .vision-section__header p {
   font-size: 1.1rem;
   color: #a4a5ab;
@@ -1132,7 +1265,7 @@ button {
 .stat-card__label {
   font-size: 0.9rem;
   color: #a4a5ab;
-  text-transform: uppercase;
+  text-transform: none;;
   letter-spacing: 0.05em;
 }
 
@@ -1224,7 +1357,10 @@ button {
   font-weight: 700;
   color: #ffffff;
 }
-
+.services-section__header h2 em {
+  font-style: italic;
+  font-weight: inherit;
+}
 .services-section__header p {
   font-size: 1.1rem;
   color: #a4a5ab;
@@ -1291,9 +1427,9 @@ button {
 }
 
 .services-section .service-card__category {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #d9a441;
-  text-transform: uppercase;
+  text-transform: none;;
   letter-spacing: 0.1em;
   margin: 0 0 0.75rem;
   font-weight: 600;
@@ -1325,7 +1461,7 @@ button {
   font-size: 0.85rem;
   font-weight: 600;
   color: #d9a441;
-  text-transform: uppercase;
+  text-transform: none;;
   letter-spacing: 0.05em;
   transition: gap 0.2s ease;
   transform: translateY(-15px);
@@ -1396,6 +1532,10 @@ button {
   margin-bottom: 1rem;
   font-weight: 700;
   color: #ffffff;
+}
+.awards-section__header h2 em {
+  font-style: italic;
+  font-weight: inherit;
 }
 
 .awards-section__header p {
@@ -1572,6 +1712,10 @@ button {
   font-weight: 700;
   color: #ffffff;
 }
+.reviews-section__header h2 em {
+  font-style: italic;
+  font-weight: inherit;
+}
 
 .reviews-section__header p {
   font-size: 1.1rem;
@@ -1637,7 +1781,7 @@ button {
   font-size: 0.85rem;
   color: #d9a441;
   margin: 0 0 0.25rem;
-  text-transform: uppercase;
+  text-transform: none;;
   letter-spacing: 0.05em;
 }
 
@@ -1724,7 +1868,7 @@ button {
     0.68rem "DM Mono",
     monospace;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .company-story__detail p {
   margin: 0;
@@ -1836,7 +1980,7 @@ button {
     0.62rem "DM Mono",
     monospace;
   letter-spacing: 0.07em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .hero-guard__summary {
   margin: 0;
@@ -1945,11 +2089,9 @@ button {
 .contact-page__label {
   margin: 0 0 1.8rem;
   color: var(--gold);
-  font:
-    0.67rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .contact-detail {
   padding: 1rem 0;
@@ -1960,11 +2102,9 @@ button {
   display: block;
   margin-bottom: 0.4rem;
   color: var(--text-muted);
-  font:
-    0.65rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .contact-detail a {
   color: var(--text);
@@ -2014,11 +2154,9 @@ button {
   flex-direction: column;
   gap: 0.45rem;
   color: var(--text-muted);
-  font:
-    0.65rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .contact-form input,
 .contact-form select,
@@ -2051,11 +2189,9 @@ button {
 
 .contact-form__field-label {
   color: var(--text-muted);
-  font:
-    0.65rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 
 .contact-form__dropdown {
@@ -2255,6 +2391,10 @@ button {
   font-size: clamp(2.5rem, 5vw, 4.7rem);
   line-height: 0.96;
   letter-spacing: -0.06em;
+}
+.faq-section__heading h2 em {
+  font-style: italic;
+  font-weight: inherit;
 }
 .faq-list {
   border-top: 1px solid var(--border);
@@ -2513,11 +2653,9 @@ button {
 .site-footer__trust h3 {
   margin: 0 0 0.75rem;
   color: var(--gold);
-  font:
-    0.65rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .site-footer__column a {
   color: #a4a5ab;
@@ -2531,11 +2669,9 @@ button {
 .site-footer__contact span {
   margin-top: 0.2rem;
   color: #77787d;
-  font:
-    0.6rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .site-footer__contact strong {
   color: #d8d8d6;
@@ -2629,14 +2765,10 @@ button {
   padding: 0.35rem 0.65rem;
   border: 1px solid #3a3b3e;
   color: #a4a5ab;
-  font:
-    0.62rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease;
+  text-transform: none;;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 .site-footer__trust-list span:hover {
   border-color: var(--gold);
@@ -2800,7 +2932,7 @@ button {
     0.7rem "DM Mono",
     monospace;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 
 .services-toolbar__number {
@@ -2926,11 +3058,9 @@ button {
 .services-page .service-card__category {
   margin-bottom: 0.65rem;
   color: var(--gold);
-  font:
-    0.65rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.09em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .services-page .service-card h2 {
   margin: 0 0 0.7rem;
@@ -3062,11 +3192,9 @@ button {
   flex-direction: column;
   gap: 0.45rem;
   color: var(--text-muted);
-  font:
-    0.65rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 .quote-form input,
 .quote-form select,
@@ -3128,6 +3256,7 @@ button {
   }
 }
 
+
 /* ==========================================================================
    Industries page
    ========================================================================== */
@@ -3157,6 +3286,12 @@ button {
   line-height: 0.92;
 }
 
+/* Keep italic styling for the big headline */
+.industries-page__intro-content h1 em {
+  font-style: italic;
+  font-weight: inherit;
+}
+
 .industries-page__lead {
   max-width: 560px;
   margin: 0;
@@ -3166,6 +3301,7 @@ button {
 }
 
 /* Quick-jump nav */
+
 .industries-page__jumpnav {
   flex-shrink: 0;
   width: 260px;
@@ -3176,11 +3312,9 @@ button {
   display: block;
   margin-bottom: 1rem;
   color: var(--gold);
-  font:
-    0.65rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 
 .industries-page__jumpnav ul {
@@ -3199,7 +3333,7 @@ button {
   padding: 0.5rem 0.7rem;
   border-left: 2px solid transparent;
   color: var(--text-muted);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   line-height: 1.4;
   transition: all 0.2s ease;
 }
@@ -3212,21 +3346,22 @@ button {
 }
 
 /* Slim custom scrollbar for the jump list */
+
 .industries-page__jumpnav ul::-webkit-scrollbar {
   width: 4px;
 }
+
 .industries-page__jumpnav ul::-webkit-scrollbar-thumb {
   background: #3a3b3e;
 }
+
 .industries-page__jumpnav ul::-webkit-scrollbar-thumb:hover {
   background: var(--gold);
-}
-.industries-page__jumpnav a {
-  font-size: 0.88rem;
 }
 
 /* Smooth scroll to anchored cards + offset so the sticky navbar
    doesn't cover the top of the card when jumped to */
+
 html {
   scroll-behavior: smooth;
 }
@@ -3235,47 +3370,9 @@ html {
   scroll-margin-top: 6rem;
 }
 
-@media (max-width: 1000px) {
-  .industries-page__intro {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .industries-page__jumpnav {
-    width: 100%;
-  }
-
-  .industries-page__jumpnav ul {
-    max-height: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .industries-page__jumpnav a {
-    padding: 0.4rem 0.6rem;
-    border-left: none;
-    border: 1px solid #3a3b3e;
-  }
-
-  .industries-page__jumpnav a:hover,
-  .industries-page__jumpnav a:focus-visible {
-    border-color: var(--gold);
-  }
-}
-
-@media (max-width: 640px) {
-  .industries-page__jumpnav-label {
-    margin-bottom: 0.75rem;
-  }
-}
-.industries-page__lead {
-  max-width: 560px;
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.8;
-}
+/* ==========================================================================
+   Industries grid
+   ========================================================================== */
 
 .industries-grid {
   display: grid;
@@ -3366,11 +3463,9 @@ html {
   display: block;
   margin-bottom: 0.65rem;
   color: var(--gold);
-  font:
-    0.62rem "DM Mono",
-    monospace;
+  font: 0.8rem "DM Mono", monospace;
   letter-spacing: 0.09em;
-  text-transform: uppercase;
+  text-transform: none;;
 }
 
 .industry-card__service-links {
@@ -3401,7 +3496,38 @@ html {
   align-self: flex-start;
 }
 
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
 @media (max-width: 1000px) {
+  .industries-page__intro {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .industries-page__jumpnav {
+    width: 100%;
+  }
+
+  .industries-page__jumpnav ul {
+    max-height: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .industries-page__jumpnav a {
+    padding: 0.4rem 0.6rem;
+    border-left: none;
+    border: 1px solid #3a3b3e;
+  }
+
+  .industries-page__jumpnav a:hover,
+  .industries-page__jumpnav a:focus-visible {
+    border-color: var(--gold);
+  }
+
   .industries-grid {
     grid-template-columns: 1fr;
   }
@@ -3418,6 +3544,10 @@ html {
 
   .industries-page__intro h1 {
     font-size: clamp(3rem, 15vw, 4.6rem);
+  }
+
+  .industries-page__jumpnav-label {
+    margin-bottom: 0.75rem;
   }
 
   .industries-grid {

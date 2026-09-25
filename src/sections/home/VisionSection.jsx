@@ -31,7 +31,7 @@ function VisionSection() {
     },
     {
       id: "years",
-      target: 15,
+      target: 25,
     },
   ];
 
@@ -96,8 +96,8 @@ function VisionSection() {
         ),
 
         years: Math.min(
-          Math.floor(15 * progress),
-          15
+          Math.floor(25 * progress),
+          25
         ),
       });
 
@@ -118,7 +118,10 @@ function VisionSection() {
 
         {/* Header */}
         <div className="vision-section__header">
-          <h2>{t.vision.title}</h2>
+         <h2>
+  {t.vision.title.split(" ").slice(0, -1).join(" ")}{" "}
+  <em>{t.vision.title.split(" ").slice(-1)}</em>
+</h2>
           <p>{t.vision.subtitle}</p>
         </div>
 

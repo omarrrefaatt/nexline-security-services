@@ -6,7 +6,7 @@ import { services } from "../../data/services.js";
 import { useLanguage } from "../../context/LanguageContext.tsx";
 import { translations } from "../../data/translations.ts";
 
-import serviceBackground from "../../assets/run.png";
+import serviceBackground from "../../assets/guards-services.jpg";
 import "./services.css";
 
 function Services() {
@@ -83,12 +83,10 @@ function Services() {
         ===================================================== */}
         <div className="services-page__toolbar">
           <div className="services-page__toolbar-count">
-            <span className="services-page__toolbar-number">
-              {String(filteredServices.length).padStart(2, "0")}
-            </span>
-
-            <span>{t.services.toolbar.available}</span>
-          </div>
+  <span className="services-page__toolbar-available">
+    {t.services.toolbar.available}
+  </span>
+</div>
 
           <label className="services-page__search">
             <Icon name="search" size={19} />

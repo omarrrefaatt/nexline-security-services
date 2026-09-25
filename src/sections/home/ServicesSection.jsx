@@ -13,7 +13,10 @@ function ServicesSection() {
       <div className="services-section__container">
 
         <div className="services-section__header">
-          <h2>{t.servicesSection.title}</h2>
+          <h2>
+  {t.servicesSection.title.split(" ").slice(0, -2).join(" ")}{" "}
+  <em>{t.servicesSection.title.split(" ").slice(-2).join(" ")}</em>
+</h2>
           <p>{t.servicesSection.subtitle}</p>
         </div>
 

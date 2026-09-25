@@ -51,22 +51,23 @@ export const translations = {
           "Our top-rated team brings skill, empathy, and readiness to every assignment. Meet the team behind the NexLine standard.",
       },
 
-      team: {
-        ahmed: {
-          name: "Mr. Ahmed Elbaga",
-          role: "CEO & Founder",
-          specialty: "Executive Leadership",
-          summary:
-            "Mr. Ahmed brings his expertise as a Certified Public Accountant (CPA) together with strong business leadership to guide the company with professionalism, integrity, and a commitment to excellence.",
-          alt: "Professional man standing confidently in an office",
-        },
+     team: {
+  ahmed: {
+    name: "Mr. Ahmed Elbaga",
+    role: "CEO & Founder",
+    specialty: "Executive Leadership",
+    summary:
+      "Mr. Ahmed leads NexLine with a strong commitment to professional, high-end security services, building a company centered on trust, integrity, reliability, and excellence in protecting clients and their properties.",
+    alt: "Professional man standing confidently in an office",
+  },
+
 
         jordan: {
           name: "Jordan Williams",
-          role: "Security Guard",
+          role: "Security Field Supervisor",
           specialty: "Professional Security Services",
           summary:
-            "Jordan is a dependable security professional committed to maintaining a safe, secure, and welcoming environment for clients and their properties.",
+            "Jordan is a dependable security supervisor professional committed to maintaining a safe, secure, and welcoming environment for clients and their properties.",
           alt: "Professional man in a suit standing outdoors",
         },
 
@@ -273,7 +274,7 @@ hero: {
   },
 },
 vision: {
-  title: "Why Choose Us",
+  title: "Why Choose Us?",
   subtitle:
     "Leading the industry in professional security solutions",
 
@@ -317,7 +318,7 @@ services: {
   },
 
   toolbar: {
-    available: "Services available",
+    available: "Services available :",
     searchPlaceholder: "Search services",
     searchLabel: "Search security services",
     clearSearch: "Clear search",
@@ -990,24 +991,25 @@ industries: {
           "Nuestro equipo profesional aporta experiencia, empatía y preparación a cada asignación. Conozca al equipo detrás del estándar de NexLine.",
       },
 
-      team: {
-        ahmed: {
-          name: "Sr. Ahmed Elbaga",
-          role: "CEO y Fundador",
-          specialty: "Liderazgo Ejecutivo",
-          summary:
-            "El Sr. Ahmed combina su experiencia como Contador Público Certificado (CPA) con una sólida capacidad de liderazgo empresarial para dirigir la empresa con profesionalismo, integridad y compromiso con la excelencia.",
-          alt: "Hombre profesional de pie con confianza en una oficina",
-        },
+    
+team: {
+  ahmed: {
+    name: "Sr. Ahmed Elbaga",
+    role: "CEO y Fundador",
+    specialty: "Liderazgo Ejecutivo",
+    summary:
+      "El Sr. Ahmed lidera NexLine con un firme compromiso con los servicios de seguridad profesionales y de alta gama, construyendo una empresa basada en la confianza, la integridad, la fiabilidad y la excelencia en la protección de sus clientes y sus propiedades.",
+    alt: "Hombre profesional de pie con confianza en una oficina",
+  },
 
-        jordan: {
-          name: "Jordan Williams",
-          role: "Guardia de Seguridad",
-          specialty: "Servicios Profesionales de Seguridad",
-          summary:
-            "Jordan es un profesional de seguridad confiable y comprometido con mantener un entorno seguro, protegido y acogedor para los clientes y sus propiedades.",
-          alt: "Hombre profesional con traje de pie al aire libre",
-        },
+       jordan: {
+  name: "Jordan Williams",
+  role: "Supervisor de Seguridad de Campo",
+  specialty: "Servicios de Seguridad Profesional",
+  summary:
+    "Jordan es un supervisor de seguridad confiable y comprometido con mantener un entorno seguro, protegido y acogedor para los clientes y sus propiedades.",
+  alt: "Hombre profesional con traje de pie al aire libre",
+},
 
         marcus: {
           name: "Marcus Reed",

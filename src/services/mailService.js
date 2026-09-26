@@ -10,7 +10,6 @@ const emailConfig = {
   companyEmail: import.meta.env.VITE_COMPANY_EMAIL || "hello@nexline.security",
 };
 
-// Same palette as src/styles/globals.css — keep these two in sync.
 const theme = {
   background: "#0b0c0e",
   panel: "#16171b",
@@ -35,6 +34,7 @@ function isEmailValid(value) {
 
 if (DEBUG) {
   console.group("[mailService] config loaded");
+
   console.log(
     "serviceId:",
     emailConfig.serviceId,
@@ -42,6 +42,7 @@ if (DEBUG) {
       ? "⚠️ FALLBACK — env var not loaded"
       : "✅",
   );
+
   console.log(
     "templateId:",
     emailConfig.templateId,
@@ -49,6 +50,7 @@ if (DEBUG) {
       ? "⚠️ FALLBACK — env var not loaded"
       : "✅",
   );
+
   console.log(
     "publicKey:",
     maskKey(emailConfig.publicKey),
@@ -56,8 +58,10 @@ if (DEBUG) {
       ? "⚠️ FALLBACK — env var not loaded"
       : "✅",
   );
+
   console.log("fromEmail:", emailConfig.fromEmail);
   console.log("companyEmail:", emailConfig.companyEmail);
+
   console.groupEnd();
 }
 
@@ -71,20 +75,63 @@ function escapeHtml(value) {
 }
 
 /**
+ * Generates a human-readable unique reference for quote requests.
+ *
+ * Example:
+ * NX-20260926-1848-A7F2
+ *
+ * This is useful for:
+ * - Gmail searching
+ * - Identifying a specific quote
+ * - Referring to a request in future communication
+ */
+function generateQuoteReference() {
+  const now = new Date();
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+
+  let randomPart = "";
+
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    randomPart = crypto
+      .randomUUID()
+      .replaceAll("-", "")
+      .slice(0, 4)
+      .toUpperCase();
+  } else {
+    randomPart = Math.random().toString(36).slice(2, 6).toUpperCase();
+  }
+
+  return `NX-${year}${month}${day}-${hours}${minutes}-${randomPart}`;
+}
+
+/**
  * Table-based logo lockup (badge + wordmark), matching components/navigation/Logo.jsx.
  * Built with markup, not an external image, so it never depends on image hosting
- * or gets blocked by an email client's "block remote images" setting.
+ * or gets blocked by email client's "block remote images" setting.
  */
 function logoBlock() {
   return `
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
       <tr>
         <td style="padding-right:12px;vertical-align:middle;">
-          <div style="width:40px;height:40px;line-height:38px;text-align:center;border-radius:50%;border:1.5px solid ${theme.text};font-family:Arial,sans-serif;font-weight:700;font-size:14px;color:${theme.text};">Nx</div>
+          <div style="width:40px;height:40px;line-height:38px;text-align:center;border-radius:50%;border:1.5px solid ${theme.text};font-family:Arial,sans-serif;font-weight:700;font-size:14px;color:${theme.text};">
+            Nx
+          </div>
         </td>
+
         <td style="vertical-align:middle;text-align:left;">
-          <div style="font-family:Arial,sans-serif;font-weight:700;font-size:16px;color:${theme.text};line-height:1.2;">Nexline</div>
-          <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.03em;color:${theme.muted};">Security Services</div>
+          <div style="font-family:Arial,sans-serif;font-weight:700;font-size:16px;color:${theme.text};line-height:1.2;">
+            Nexline
+          </div>
+
+          <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.03em;color:${theme.muted};">
+            Security Services
+          </div>
         </td>
       </tr>
     </table>`;
@@ -94,103 +141,271 @@ function emailLayout(title, eyebrow, body) {
   return `
     <div style="margin:0;background:${theme.background};padding:32px 16px;font-family:Arial,sans-serif;">
       <div style="max-width:600px;margin:0 auto;background:${theme.panel};border:1px solid ${theme.border};border-radius:10px;overflow:hidden;">
+
         <div style="height:4px;background:${theme.gold};"></div>
+
         <div style="padding:30px 32px 26px;border-bottom:1px solid ${theme.border};text-align:center;">
           ${logoBlock()}
         </div>
+
         <div style="padding:36px 32px;">
-          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${theme.gold};font-weight:700;margin-bottom:12px;">${eyebrow}</div>
-          <h1 style="margin:0 0 22px;font-size:26px;line-height:1.25;font-weight:700;color:${theme.text};">${title}</h1>
+
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${theme.gold};font-weight:700;margin-bottom:12px;">
+            ${eyebrow}
+          </div>
+
+          <h1 style="margin:0 0 22px;font-size:26px;line-height:1.25;font-weight:700;color:${theme.text};">
+            ${title}
+          </h1>
+
           ${body}
+
         </div>
+
         <div style="padding:22px 32px;border-top:1px solid ${theme.border};color:${theme.muted};font-size:12px;line-height:1.7;">
           Nexline Security Services &middot; Available 24/7<br />
-          <a href="mailto:${escapeHtml(emailConfig.companyEmail)}" style="color:${theme.gold};text-decoration:none;">${escapeHtml(emailConfig.companyEmail)}</a>
+
+          <a
+            href="mailto:${escapeHtml(emailConfig.companyEmail)}"
+            style="color:${theme.gold};text-decoration:none;"
+          >
+            ${escapeHtml(emailConfig.companyEmail)}
+          </a>
         </div>
+
       </div>
     </div>`;
 }
 
 function detailRows(details) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">${Object.entries(
-    details,
-  )
-    .map(
-      ([label, value]) => `
-        <tr>
-          <td style="padding:12px 0;border-bottom:1px solid ${theme.border};color:${theme.muted};font-size:11px;text-transform:uppercase;letter-spacing:0.05em;width:34%;vertical-align:top;">${escapeHtml(label)}</td>
-          <td style="padding:12px 0;border-bottom:1px solid ${theme.border};color:${theme.text};font-size:14px;line-height:1.5;white-space:pre-wrap;">${escapeHtml(value) || "—"}</td>
-        </tr>`,
-    )
-    .join("")}</table>`;
+  return `
+    <table
+      role="presentation"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      style="width:100%;border-collapse:collapse;"
+    >
+      ${Object.entries(details)
+        .map(
+          ([label, value]) => `
+            <tr>
+              <td
+                style="
+                  padding:12px 0;
+                  border-bottom:1px solid ${theme.border};
+                  color:${theme.muted};
+                  font-size:11px;
+                  text-transform:uppercase;
+                  letter-spacing:0.05em;
+                  width:34%;
+                  vertical-align:top;
+                "
+              >
+                ${escapeHtml(label)}
+              </td>
+
+              <td
+                style="
+                  padding:12px 0;
+                  border-bottom:1px solid ${theme.border};
+                  color:${theme.text};
+                  font-size:14px;
+                  line-height:1.5;
+                  white-space:pre-wrap;
+                "
+              >
+                ${escapeHtml(value) || "—"}
+              </td>
+            </tr>`,
+        )
+        .join("")}
+    </table>`;
 }
 
 function companyTemplate(type, details) {
   const isQuote = type === "quote";
+
   return emailLayout(
     isQuote ? "New quote request" : "New contact message",
     isQuote ? "Quote desk" : "Contact desk",
-    `<p style="margin:0 0 24px;color:${theme.muted};font-size:15px;line-height:1.7;">${isQuote ? "A prospective client has requested a considered recommendation." : "A visitor has sent a new message through the website."}</p>${detailRows(details)}`,
+
+    `
+      <p
+        style="
+          margin:0 0 24px;
+          color:${theme.muted};
+          font-size:15px;
+          line-height:1.7;
+        "
+      >
+        ${
+          isQuote
+            ? "A prospective client has requested a quotation. The details are below."
+            : "A visitor has sent a new message through the website."
+        }
+      </p>
+
+      ${detailRows(details)}
+    `,
   );
 }
 
-function confirmationTemplate(name, type) {
-  const requestType = type === "quote" ? "quote request" : "message";
+function confirmationTemplate(name, type, quoteReference = null) {
+  const isQuote = type === "quote";
+
+  const requestType = isQuote ? "quote request" : "message";
+
+  const referenceBlock =
+    isQuote && quoteReference
+      ? `
+      <div
+        style="
+          margin:0 0 24px;
+          padding:16px 18px;
+          background:${theme.goldDark};
+          border:1px solid ${theme.gold};
+          border-radius:8px;
+        "
+      >
+        <div
+          style="
+            margin-bottom:6px;
+            color:${theme.gold};
+            font-size:11px;
+            font-weight:700;
+            letter-spacing:1.5px;
+            text-transform:uppercase;
+          "
+        >
+          Quote reference
+        </div>
+
+        <div
+          style="
+            color:${theme.text};
+            font-size:20px;
+            font-weight:700;
+            letter-spacing:0.04em;
+          "
+        >
+          ${escapeHtml(quoteReference)}
+        </div>
+      </div>
+    `
+      : "";
+
   return emailLayout(
-    "We received your request",
-    "Message received",
-    `<p style="margin:0 0 18px;color:${theme.text};font-size:16px;line-height:1.7;">Hello ${escapeHtml(name)},</p>
-      <p style="margin:0 0 8px;color:${theme.muted};font-size:15px;line-height:1.7;">Thank you for sending your ${requestType} to Nexline. Our team has it and will get back to you within one business day.</p>
-      <p style="margin:0;color:${theme.muted};font-size:15px;line-height:1.7;">For anything urgent, call our response desk directly at <a href="tel:+1800555639546" style="color:${theme.gold};text-decoration:none;">+1 (800) 555-NEXLINE</a>.</p>`,
+    isQuote ? "We received your quote request" : "We received your message",
+    isQuote ? "Quote request received" : "Message received",
+
+    `
+      <p
+        style="
+          margin:0 0 18px;
+          color:${theme.text};
+          font-size:16px;
+          line-height:1.7;
+        "
+      >
+        Hello ${escapeHtml(name)},
+      </p>
+
+      ${referenceBlock}
+
+      <p
+        style="
+          margin:0 0 8px;
+          color:${theme.muted};
+          font-size:15px;
+          line-height:1.7;
+        "
+      >
+        Thank you for sending your ${requestType} to Nexline.
+        Our team has received it and will get back to you within one business day.
+      </p>
+
+      <p
+        style="
+          margin:0;
+          color:${theme.muted};
+          font-size:15px;
+          line-height:1.7;
+        "
+      >
+        For anything urgent, call our response desk directly at
+        <a
+          href="tel:+1800555639546"
+          style="color:${theme.gold};text-decoration:none;"
+        >
+          +1 (800) 555-NEXLINE
+        </a>.
+      </p>
+    `,
   );
 }
 
 /**
  * Sends fully-built HTML through EmailJS's single pass-through template.
- * `html_body` is inserted as raw HTML — see setup note below.
+ * `html_body` is inserted as raw HTML — see setup note at the bottom of this file.
  */
 async function sendMail(to, subject, html, replyTo = emailConfig.companyEmail) {
   const payload = {
     service_id: emailConfig.serviceId,
     template_id: emailConfig.templateId,
     user_id: emailConfig.publicKey,
+
     template_params: {
       to_email: to,
       from_email: emailConfig.fromEmail,
       reply_to: replyTo,
+
+      // IMPORTANT:
+      // Your EmailJS template Subject field must contain:
+      // {{subject}}
       subject,
+
       html_body: html,
     },
   };
 
   if (DEBUG) {
     console.group(`[mailService] sendMail → ${to}`);
+
     console.log("subject:", subject);
+
     console.log(
       "replyTo:",
       replyTo,
       isEmailValid(replyTo) ? "✅ valid format" : "⚠️ INVALID EMAIL FORMAT",
     );
+
     console.log(
       "to valid format:",
       isEmailValid(to) ? "✅" : "⚠️ INVALID EMAIL FORMAT",
     );
+
     console.log("service_id:", payload.service_id);
     console.log("template_id:", payload.template_id);
     console.log("html length:", html?.length ?? 0, "chars");
+
     console.groupEnd();
   }
 
   const response = await fetch(emailConfig.endpoint, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
   });
 
   // Always read the body — EmailJS puts the real error reason here,
-  // and response.ok alone tells you nothing about *why* it failed.
+  // and response.ok alone tells you nothing about why it failed.
   const rawBody = await response.text();
+
   let parsedBody = rawBody;
+
   try {
     parsedBody = JSON.parse(rawBody);
   } catch {
@@ -213,6 +428,7 @@ async function sendMail(to, subject, html, replyTo = emailConfig.companyEmail) {
       subject,
       body: parsedBody,
     });
+
     throw new Error(
       `The email provider could not send this message (status ${response.status}): ${
         typeof parsedBody === "string" ? parsedBody : JSON.stringify(parsedBody)
@@ -224,42 +440,86 @@ async function sendMail(to, subject, html, replyTo = emailConfig.companyEmail) {
 export async function sendQuoteRequest({ name, email, service, details }) {
   if (DEBUG) {
     console.group("[mailService] sendQuoteRequest");
-    console.log({ name, email, service, details });
+
+    console.log({
+      name,
+      email,
+      service,
+      details,
+    });
+
     console.groupEnd();
   }
 
-  const subject = `Quote request: ${service || "New enquiry"}`;
+  // Generate one reference for this quote.
+  // The SAME reference is used in both:
+  // 1. The company's email
+  // 2. The customer's confirmation email
+  const quoteReference = generateQuoteReference();
+
+  const serviceName = service || "General Service";
+
+  // Company-facing subject.
+  //
+  // Example:
+  // NEW QUOTE REQUEST | Security Guarding | Ahmed Mohamed | #NX-20260926-1848-A7F2
+  const companySubject = `NEW QUOTE REQUEST | ${serviceName} | ${name} | #${quoteReference}`;
 
   try {
     await sendMail(
       emailConfig.companyEmail,
-      subject,
+
+      companySubject,
+
       companyTemplate("quote", {
+        "Quote reference": quoteReference,
         Name: name,
         "Work email": email,
-        Service: service || "Not specified",
+        Service: serviceName,
         "Project details": details || "Not provided",
       }),
+
+      // Replying to the company email will reply directly to the customer.
       email,
     );
-    if (DEBUG) console.log("[mailService] ✅ company notification sent");
+
+    if (DEBUG) {
+      console.log(
+        "[mailService] ✅ company quote notification sent",
+        quoteReference,
+      );
+    }
   } catch (err) {
     console.error(
       "[mailService] ❌ failed sending company notification for quote:",
       err,
     );
+
     throw err;
   }
 
   try {
+    // Customer-facing subject.
+    //
+    // Example:
+    // Nexline Quote Request Received | #NX-20260926-1848-A7F2
+    const customerSubject = `Nexline Quote Request Received | #${quoteReference}`;
+
     await sendMail(
       email,
-      "We received your Nexline quote request",
-      confirmationTemplate(name, "quote"),
+      customerSubject,
+      confirmationTemplate(name, "quote", quoteReference),
     );
-    if (DEBUG) console.log("[mailService] ✅ confirmation email sent to user");
+
+    if (DEBUG) {
+      console.log(
+        "[mailService] ✅ quote confirmation email sent to user",
+        quoteReference,
+      );
+    }
   } catch (err) {
     console.error("[mailService] ❌ failed sending confirmation to user:", err);
+
     throw err;
   }
 }
@@ -272,51 +532,64 @@ export async function sendContactMessage({
 }) {
   if (DEBUG) {
     console.group("[mailService] sendContactMessage");
-    console.log({ name, email, enquiryType, message });
+
+    console.log({
+      name,
+      email,
+      enquiryType,
+      message,
+    });
+
     console.groupEnd();
   }
 
-  const subject = `Website contact: ${enquiryType || "General enquiry"}`;
+  const companySubject = `NEW CONTACT MESSAGE | ${
+    enquiryType || "General Enquiry"
+  } | ${name}`;
 
   try {
     await sendMail(
       emailConfig.companyEmail,
-      subject,
+
+      companySubject,
+
       companyTemplate("contact", {
         Name: name,
         Email: email,
         "Enquiry type": enquiryType || "General enquiry",
         Message: message,
       }),
+
       email,
     );
-    if (DEBUG) console.log("[mailService] ✅ company notification sent");
+
+    if (DEBUG) {
+      console.log("[mailService] ✅ company contact notification sent");
+    }
   } catch (err) {
     console.error(
       "[mailService] ❌ failed sending company notification for contact:",
       err,
     );
+
     throw err;
   }
 
   try {
     await sendMail(
       email,
-      "We received your message for Nexline",
+
+      "Nexline Message Received",
+
       confirmationTemplate(name, "contact"),
     );
-    if (DEBUG) console.log("[mailService] ✅ confirmation email sent to user");
+
+    if (DEBUG) {
+      console.log("[mailService] ✅ contact confirmation email sent to user");
+    }
   } catch (err) {
     console.error("[mailService] ❌ failed sending confirmation to user:", err);
+
     throw err;
   }
 }
-
-/**
- * EmailJS one-time setup (in the EmailJS dashboard):
- * Create a single template whose entire body is just:
- *   {{{html_body}}}
- * (triple braces = insert as raw HTML, not escaped text).
- * On that same template's Settings tab, set "To Email" to {{to_email}}.
- * Set the template's ID as VITE_EMAILJS_TEMPLATE_ID in your .env.
- */

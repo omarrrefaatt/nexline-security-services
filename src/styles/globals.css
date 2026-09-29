@@ -708,7 +708,7 @@ button {
 
   /* Move the 3 highlight cards slightly down */
   .hero__highlights {
-    transform: translateY(20px);
+    transform: translateY(40px);
   }
 }
 /* ==========================================================================

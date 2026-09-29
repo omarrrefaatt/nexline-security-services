@@ -3496,7 +3496,7 @@ html {
   align-self: flex-start;
 }
 
-/* ==========================================================================
+/* ========================================================================== 
    Responsive
    ========================================================================== */
 
@@ -3511,21 +3511,25 @@ html {
   }
 
   .industries-page__jumpnav ul {
-    max-height: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    max-height: 260px;
+    overflow-y: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
   }
 
   .industries-page__jumpnav a {
-    padding: 0.4rem 0.6rem;
-    border-left: none;
-    border: 1px solid #3a3b3e;
+    padding: 0.5rem 0.7rem;
+    border-left: 2px solid transparent;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
   }
 
   .industries-page__jumpnav a:hover,
   .industries-page__jumpnav a:focus-visible {
-    border-color: var(--gold);
+    border-left-color: var(--gold);
+    background: rgba(217, 164, 65, 0.06);
   }
 
   .industries-grid {
@@ -3546,8 +3550,30 @@ html {
     font-size: clamp(3rem, 15vw, 4.6rem);
   }
 
+  .industries-page__jumpnav {
+    width: 100%;
+  }
+
   .industries-page__jumpnav-label {
     margin-bottom: 0.75rem;
+  }
+
+  .industries-page__jumpnav ul {
+    max-height: 220px;
+    overflow-y: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+  }
+
+  .industries-page__jumpnav a {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border-left: 2px solid transparent;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
   }
 
   .industries-grid {

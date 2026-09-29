@@ -670,18 +670,18 @@ button {
 
   .hero__cta > * {
     flex: 1;
-    width: 50%;
+    width: 45%;
     height: 48px;
     min-height: 48px;
   }
 }
 @media (max-width: 640px) {
   .hero__cta {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero__highlights {
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
   }
 }
 

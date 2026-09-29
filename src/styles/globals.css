@@ -654,6 +654,11 @@ button {
     background-color: var(--bg);
   }
 }
+@media (max-width: 640px) {
+  .hero__content {
+    transform: translateY(-57px);
+  }
+}
 
 /* ==========================================================================
    Trusted by

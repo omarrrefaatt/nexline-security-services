@@ -5,6 +5,11 @@ import { heroHighlights } from "../../data/heroHighlights.js";
 import { useLanguage } from "../../context/LanguageContext.tsx";
 import { translations } from "../../data/translations.ts";
 
+import homeBg from "../../assets/home_bg.png";
+import patrol from "../../assets/patrol.jpg";
+import homeBg3 from "../../assets/home_bg3.jpeg";
+import surveillance from "../../assets/surveillance.png";
+
 function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -15,25 +20,25 @@ function Hero() {
     {
       id: "safe-family",
       title: "Safe Families",
-      image: "src/assets/home_bg.png",
+      image: homeBg,
     },
     {
       id: "patrol-vehicle",
       title: "Patrol Vehicle",
-      image: "src/assets/patrol.jpg",
+      image: patrol,
     },
     {
       id: "friendly-guard",
       title: "Friendly Security",
-      image: "src/assets/home_bg3.jpeg",
+      image: homeBg3,
     },
     {
       id: "monitoring",
       title: "24/7 Monitoring",
-      image: "src/assets/surveillance.png",
+      image: surveillance,
     },
   ];
-
+console.log("HERO IMAGES:", heroImages);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide(
@@ -63,7 +68,6 @@ function Hero() {
 
   return (
     <section className="hero">
-      {/* Image Carousel */}
       <div className="hero__carousel">
         {heroImages.map((image, index) => (
           <div
@@ -83,7 +87,6 @@ function Hero() {
 
         <div className="hero__scrim" />
 
-        {/* Carousel Indicators */}
         <div className="hero__indicators">
           {heroImages.map((_, index) => (
             <button
@@ -98,7 +101,6 @@ function Hero() {
         </div>
       </div>
 
-      {/* Content Overlay */}
       <div className="hero__content">
         <h1>NexLine Security</h1>
 

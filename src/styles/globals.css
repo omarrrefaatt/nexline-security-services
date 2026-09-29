@@ -649,7 +649,7 @@ button {
 @media (max-width: 640px) {
   .hero__slide {
     background-size: contain;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     background-color: var(--bg);
   }

@@ -647,44 +647,19 @@ button {
   }
 }
 @media (max-width: 640px) {
+  /* Hero background */
   .hero__slide {
     background-size: contain;
     background-position: center top;
     background-repeat: no-repeat;
     background-color: var(--bg);
   }
-}
-@media (max-width: 640px) {
+
+  /* Move hero content upward */
   .hero__content {
     transform: translateY(-90px);
   }
-}
-@media (max-width: 640px) {
-  .hero__cta {
-    display: flex;
-    flex-direction: row;
-    gap: 0.75rem;
-    width: 100%;
-    flex-wrap: nowrap;
-  }
 
-  .hero__cta > * {
-    flex: 1;
-    width: 70%;
-    height: 48px;
-    min-height: 48px;
-  }
-}
-@media (max-width: 640px) {
-  .hero__cta {
-    margin-bottom: 1.5rem;
-  }
-
-  .hero__highlights {
-    margin-bottom: 1.5rem;
-  }
-}
-@media (max-width: 640px) {
   /* Buttons */
   .hero__cta {
     display: flex;
@@ -692,10 +667,12 @@ button {
     gap: 0.75rem;
     width: 100%;
     flex-wrap: nowrap;
+    margin-bottom: 1rem;
   }
 
   .hero__cta > * {
     height: 48px;
+    min-height: 48px;
   }
 
   .hero__cta > *:first-child {
@@ -709,6 +686,7 @@ button {
   /* Move the 3 highlight cards slightly down */
   .hero__highlights {
     transform: translateY(40px);
+    margin-bottom: 0;
   }
 }
 /* ==========================================================================

@@ -421,6 +421,24 @@ button {
    RESPONSIVE
    ========================================================================== */
 
+@media (max-width: 768px) {
+  .hero__content {
+    padding: 2rem;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .hero__highlights {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 640px) {
   .hero__content {
     padding: 1.5rem;
@@ -433,19 +451,18 @@ button {
 
   .hero__highlights {
     grid-template-columns: 1fr;
-    flex-direction: column;
+      flex-direction: column;
     margin: 0 auto;
-    margin-bottom: 0;
+     margin-bottom: 0;
+  }
+}
+@media (max-width: 640px) {
+  .hero__cta {
+    flex-direction: column;
   }
 
-  .hero {
-    height: auto;
-    min-height: 0;
-    margin-bottom: 0;
-  }
-
-  .vision-section {
-    margin-top: -30px;
+  .hero__highlights {
+    flex-direction: column;
   }
 }
 

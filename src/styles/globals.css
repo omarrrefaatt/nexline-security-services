@@ -646,6 +646,14 @@ button {
       0 0 60px rgba(217, 164, 65, 0.4);
   }
 }
+@media (max-width: 640px) {
+  .hero__slide {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--bg);
+  }
+}
 
 /* ==========================================================================
    Trusted by

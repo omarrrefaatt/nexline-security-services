@@ -656,7 +656,21 @@ button {
 }
 @media (max-width: 640px) {
   .hero__content {
-    transform: translateY(-57px);
+    transform: translateY(-73px);
+  }
+}
+@media (max-width: 640px) {
+  .hero__cta {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  .hero__cta > * {
+    flex: 1;
+    width: 50%;
   }
 }
 

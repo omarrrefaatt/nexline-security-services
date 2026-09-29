@@ -684,7 +684,33 @@ button {
     margin-bottom: 1.5rem;
   }
 }
+@media (max-width: 640px) {
+  /* Buttons */
+  .hero__cta {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
 
+  .hero__cta > * {
+    height: 48px;
+  }
+
+  .hero__cta > *:first-child {
+    flex: 1.15;
+  }
+
+  .hero__cta > *:last-child {
+    flex: 1;
+  }
+
+  /* Move the 3 highlight cards slightly down */
+  .hero__highlights {
+    transform: translateY(20px);
+  }
+}
 /* ==========================================================================
    Trusted by
    ========================================================================== */

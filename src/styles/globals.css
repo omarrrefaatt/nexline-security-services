@@ -656,7 +656,7 @@ button {
 }
 @media (max-width: 640px) {
   .hero__content {
-    transform: translateY(-80px);
+    transform: translateY(-90px);
   }
 }
 @media (max-width: 640px) {
@@ -670,7 +670,7 @@ button {
 
   .hero__cta > * {
     flex: 1;
-    width: 60%;
+    width: 70%;
     height: 48px;
     min-height: 48px;
   }

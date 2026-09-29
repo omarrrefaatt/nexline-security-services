@@ -454,6 +454,7 @@ button {
       flex-direction: column;
     margin: 0 auto;
      margin-bottom: 0;
+     margin-top: -20px;
   }
 }
 @media (max-width: 640px) {

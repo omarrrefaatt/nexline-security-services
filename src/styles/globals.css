@@ -1357,10 +1357,9 @@ button {
   color: #a4a5ab;
   line-height: 1.6;
 }
-
 @media (max-width: 768px) {
   .vision-section {
-    padding: 4rem 1.5rem;
+    padding: 1.5rem 1.5rem 4rem;
   }
 
   .vision-section__stats {
@@ -1372,7 +1371,6 @@ button {
     grid-template-columns: 1fr;
   }
 }
-
 /* ==========================================================================
    Services section (HOMEPAGE ONLY — scoped under .services-section)
    ========================================================================== */

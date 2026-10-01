@@ -1,9 +1,11 @@
 
-import standingGuards from "../assets/standing_guard.jpeg";
+import standingGuards from "../assets/standing.jpeg";
 import servailance from "../assets/mobile-surveillance.jpg";
 import lobbyGuards from "../assets/lobby-guards.jpg";
 import fireWatch from "../assets/fire-watch.jpg";
-
+import event from "../assets/event.jpeg";
+import patrol from "../assets/patrols.jpeg";
+import patrol_video from "../assets/patrol_det.mp4";
 export const services = [
   {
     id: "standing-guards",
@@ -136,8 +138,7 @@ export const services = [
     title: "Event Security",
     description:
       "Calm, capable teams for crowd management, access control, and safe guest experiences at every scale.",
-    image:
-      "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=85",
+    image: event,
     alt: "Large event venue filled with guests",
 
     overview:
@@ -200,7 +201,8 @@ export const services = [
     description:
       "Regular and rapid-response patrols that deter threats and give your sites an extra layer of coverage.",
     image:
-      "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=1200&q=85",
+      patrol,
+      video: patrol_video,
     alt: "Security vehicle traveling through a city at night",
 
     overview:

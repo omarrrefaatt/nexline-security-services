@@ -82,19 +82,31 @@ function ServiceDetailLayout({ service }) {
           </div>
 
           <div className="service-detail-image-wrapper">
-            <img
-              className="service-detail-image"
-              src={service.image}
-              alt={service.alt || service.title}
-            />
+  {service.video ? (
+    <video
+      className="service-detail-image"
+      src={service.video}
+      autoPlay
+      muted
+      loop
+      playsInline
+      controls
+    />
+  ) : (
+    <img
+      className="service-detail-image"
+      src={service.image}
+      alt={service.alt || service.title}
+    />
+  )}
 
-            <div className="service-detail-image-overlay" />
+  <div className="service-detail-image-overlay" />
 
-            <div className="service-detail-image-label">
-              <span>{t.serviceDetail.imageLabel}</span>
-              <span>24 / 7</span>
-            </div>
-          </div>
+  <div className="service-detail-image-label">
+    <span>{service.video ? "MOBILE PATROL" : t.serviceDetail.imageLabel}</span>
+    <span>24 / 7</span>
+  </div>
+</div>
 
           <div className="service-detail-text">
             <section className="service-detail-intro">

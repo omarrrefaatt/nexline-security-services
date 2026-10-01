@@ -9,7 +9,7 @@ import hotel from "../assets/hotel.jpg";
 import parking from "../assets/parking.jfif";
 import event from "../assets/event.jpg";
 import bank from "../assets/bank.jfif";
-import hospital from "../assets/hospital.jpg";
+import hospital from "../assets/hospital.jpeg";
 
 export const industries = [
   {

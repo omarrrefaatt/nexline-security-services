@@ -190,23 +190,27 @@ function Footer() {
         </div>
       </div>
 
-      {/* ================= TRUST & CREDENTIALS ================= */}
-      <div className="site-footer__trust shell">
-        <div>
-          <h3>{t.footer.trust.title}</h3>
+      {/* ================= LICENSE ================= */}
+<div className="site-footer__trust shell">
+  <div className="site-footer__trust-heading">
+    <h3>License & Credentials</h3>
+    <p>Licensed and authorized to provide private patrol services in California.</p>
+  </div>
 
-          <p>{t.footer.trust.description}</p>
-        </div>
+  <div className="site-footer__license-card">
+    <div className="site-footer__license-icon">
+      <Icon name="shield" size={24} />
+    </div>
 
-        <div className="site-footer__trust-list">
-          <span>{t.footer.trust.license}</span>
+    <div className="site-footer__license-content">
+      <strong>Licensed Security Provider</strong>
 
-          <span>{t.footer.trust.insurance}</span>
-
-          <span>{t.footer.trust.certifications}</span>
-        </div>
-      </div>
-
+      <span>California BSIS License #122739</span>
+      <span>Private Patrol Operator (PPO)</span>
+      <span>Nexline Security Services, Inc.</span>
+    </div>
+  </div>
+</div>
       {/* ================= BOTTOM ================= */}
       <div className="site-footer__bottom shell">
         <span>

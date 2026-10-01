@@ -170,9 +170,8 @@ export const translations = {
         title: "Trust & credentials",
         description:
           "Professional standards backed by verified credentials and ongoing training.",
-        license: "License information: [TO BE PROVIDED]",
-        insurance: "Insurance information: [TO BE PROVIDED]",
-        certifications: "Certifications: [TO BE PROVIDED]",
+        license: "Licensed Security Provider\nCalifornia BSIS License #122739\nPrivate Patrol Operator (PPO)\nNexline Security Services, Inc.",
+       
       },
 
       bottom: {
@@ -1113,9 +1112,8 @@ team: {
         title: "Confianza y credenciales",
         description:
           "Estándares profesionales respaldados por credenciales verificadas y capacitación continua.",
-        license: "Información de licencia: [POR PROPORCIONAR]",
-        insurance: "Información del seguro: [POR PROPORCIONAR]",
-        certifications: "Certificaciones: [POR PROPORCIONAR]",
+        license: "Proveedor de Seguridad con Licencia\nLicencia BSIS de California #122739\nOperador de Patrulla Privada (PPO)\nNexline Security Services, Inc.",
+
       },
 
       bottom: {

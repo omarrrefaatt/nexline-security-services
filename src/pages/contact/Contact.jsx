@@ -406,10 +406,12 @@ function Contact() {
         </section>
 
         <div className="contact-page__footer-cta">
-          <p>{t.contact.footerCta.title}</p>
+          <p className="contact-page__footer-cta-title">
+            {t.contact.footerCta.title}
+          </p>
 
           <Link
-            className="text-link"
+            className="btn btn--secondary btn--sm contact-page__footer-cta-link"
             to="/services"
           >
             {t.contact.footerCta.link}

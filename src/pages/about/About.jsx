@@ -142,10 +142,12 @@ function About() {
 
         {/* ================= CTA ================= */}
         <div className="about-page__cta">
-          <p>{t.about.cta.text}</p>
+          <p className="about-page__cta-title">
+            {t.about.cta.text}
+          </p>
 
           <Link
-            className="button button-primary"
+            className="btn btn--secondary btn--sm about-page__cta-link"
             to="/quote"
           >
             {t.about.cta.button}

@@ -2073,13 +2073,36 @@ button {
   padding: 2rem 0 0;
   border-top: 1px solid var(--border);
 }
-.about-page__cta p {
+.about-page__cta-title {
   margin: 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  color: var(--text);
+  font-size: clamp(2.1rem, 4vw, 4rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  font-weight: 500;
+  max-width: 640px;
 }
-.about-page__cta .button {
+.about-page__cta-link {
   flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--gold);
+  background: transparent;
+  border: 1.5px solid rgba(217, 164, 65, 0.8);
+  box-shadow:
+    0 0 0 rgba(217, 164, 65, 0),
+    0 0 18px rgba(217, 164, 65, 0.18),
+    inset 0 0 18px rgba(217, 164, 65, 0.08);
+  text-shadow: 0 0 10px rgba(217, 164, 65, 0.35);
+}
+.about-page__cta-link:hover,
+.about-page__cta-link:focus-visible {
+  color: #f0c870;
+  border-color: #d9a441;
+  background: rgba(217, 164, 65, 0.08);
+  box-shadow:
+    0 0 18px rgba(217, 164, 65, 0.35),
+    inset 0 0 18px rgba(217, 164, 65, 0.1);
+  transform: translateY(-2px);
 }
 @media (max-width: 1000px) {
   .heroes-grid {
@@ -2527,13 +2550,36 @@ button {
   padding-top: 2rem;
   border-top: 1px solid var(--border);
 }
-.contact-page__footer-cta p {
+.contact-page__footer-cta-title {
   margin: 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-.contact-page__footer-cta .text-link {
   color: var(--text);
+  font-size: clamp(2.1rem, 4vw, 4rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  font-weight: 500;
+  max-width: 600px;
+}
+.contact-page__footer-cta-link {
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--gold);
+  background: transparent;
+  border: 1.5px solid rgba(217, 164, 65, 0.8);
+  box-shadow:
+    0 0 0 rgba(217, 164, 65, 0),
+    0 0 18px rgba(217, 164, 65, 0.18),
+    inset 0 0 18px rgba(217, 164, 65, 0.08);
+  text-shadow: 0 0 10px rgba(217, 164, 65, 0.35);
+}
+.contact-page__footer-cta-link:hover,
+.contact-page__footer-cta-link:focus-visible {
+  color: #f0c870;
+  border-color: #d9a441;
+  background: rgba(217, 164, 65, 0.08);
+  box-shadow:
+    0 0 18px rgba(217, 164, 65, 0.35),
+    inset 0 0 18px rgba(217, 164, 65, 0.1);
+  transform: translateY(-2px);
 }
 @media (max-width: 900px) {
   .contact-layout,

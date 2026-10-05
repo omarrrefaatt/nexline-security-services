@@ -19,11 +19,11 @@ function VisionSection() {
   const stats = [
     {
       id: "clients",
-      target: 500,
+      target: 200,
     },
     {
       id: "professionals",
-      target: 800,
+      target: 250,
     },
     {
       id: "operations",
@@ -86,13 +86,13 @@ function VisionSection() {
 
       setCounts({
         clients: Math.min(
-          Math.floor(500 * progress),
-          500
+          Math.floor(200 * progress),
+          200
         ),
 
         professionals: Math.min(
-          Math.floor(800 * progress),
-          800
+          Math.floor(250 * progress),
+          250
         ),
 
         years: Math.min(
@@ -116,15 +116,14 @@ function VisionSection() {
     >
       <div className="vision-section__container">
 
-        {/* Header */}
-        <div className="vision-section__header">
-         <h2>
-  {t.vision.title.split(" ").slice(0, -1).join(" ")}{" "}
-  <em>{t.vision.title.split(" ").slice(-1)}</em>
-</h2>
-          <p>{t.vision.subtitle}</p>
-        </div>
-
+      {/* Header */}
+<div className="vision-section__header">
+  <h2>
+    {t.vision.title.split(" ").slice(0, -2).join(" ")}{" "}
+    <em>{t.vision.title.split(" ").slice(-2).join(" ")}</em>
+  </h2>
+  <p>{t.vision.subtitle}</p>
+</div>
         {/* Stats Grid */}
         <div className="vision-section__stats">
           {stats.map((stat) => (

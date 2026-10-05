@@ -42,7 +42,7 @@
 
 .quote-form__field-label {
   color: var(--text-muted);
-  font: 0.65rem "DM Mono", monospace;
+  font: 0.65rem  ;
   letter-spacing: 0.08em;
   text-transform: none;;
 }

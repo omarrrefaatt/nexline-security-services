@@ -54,7 +54,7 @@
 .service-detail-sidebar__header p {
   margin: 0;
 
-  font: 0.8rem "DM Mono", monospace;
+  font: 0.8rem ;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: none;;
@@ -139,7 +139,7 @@
 }
 
 .service-detail-sidebar__number {
-  font: 0.72rem "DM Mono", monospace;
+  font: 0.72rem  ;
   letter-spacing: 0.04em;
 
   color: #6b6b6b;
@@ -213,10 +213,10 @@
 
   margin: 0;
 
-  font: 0.8rem "DM Mono", monospace;
+  font: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.14em;
-  text-transform: none;;
+  text-transform: none;
 
   color: var(--gold, #d9a441);
 }
@@ -235,7 +235,7 @@
 }
 
 .service-detail-hero__number {
-  font: 0.68rem "DM Mono", monospace;
+  font: 0.68rem;
   letter-spacing: 0.08em;
 
   color: #6b6b6b;
@@ -362,7 +362,7 @@
 }
 
 .service-detail-section-number {
-  font: 1.85rem "DM Mono", monospace;
+  font: 1.85rem;
   letter-spacing: 0.08em;
 
   color: #6b6b6b;
@@ -371,7 +371,7 @@
 .service-detail-label {
   margin: 0 0 17px;
 
-  font: 1.85rem "DM Mono", monospace;
+  font: 1.85rem  ;
   font-weight: 600;
   letter-spacing: 0.14em;
 
@@ -462,7 +462,7 @@
 
   margin-bottom: 1.25rem;
 
-  font: 1.4rem "DM Mono", monospace;
+  font: 1.4rem  ;
   font-weight: 700;
 
   color: rgba(217, 164, 65, 0.4);

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Button from "../../components/common/Button.jsx";
 import HighlightCard from "../../components/cards/HighlightCard.jsx";
 import { heroHighlights } from "../../data/heroHighlights.js";
@@ -38,7 +39,9 @@ function Hero() {
       image: surveillance,
     },
   ];
-console.log("HERO IMAGES:", heroImages);
+
+  console.log("HERO IMAGES:", heroImages);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide(
@@ -102,7 +105,7 @@ console.log("HERO IMAGES:", heroImages);
       </div>
 
       <div className="hero__content">
-        <h1>NexLine Security</h1>
+        <h1>Nexline Security</h1>
 
         <p className="hero__subtitle">
           {t.hero.subtitle}
@@ -119,16 +122,29 @@ console.log("HERO IMAGES:", heroImages);
         </div>
 
         <div className="hero__highlights">
-          {heroHighlights.map((item) => (
-            <HighlightCard
-              key={item.id}
-              icon={item.icon}
-              title={
-                t.hero.highlights[item.translationKey] ||
-                item.title
-              }
-            />
-          ))}
+          {heroHighlights.map((item, index) => {
+            const destinations = [
+              "/contact",
+              "/services",
+              "/about",
+            ];
+
+            return (
+              <Link
+                key={item.id}
+                to={destinations[index]}
+                className="hero__highlight-link"
+              >
+                <HighlightCard
+                  icon={item.icon}
+                  title={
+                    t.hero.highlights[item.translationKey] ||
+                    item.title
+                  }
+                />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -136,3 +152,4 @@ console.log("HERO IMAGES:", heroImages);
 }
 
 export default Hero;
+

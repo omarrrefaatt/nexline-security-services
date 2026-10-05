@@ -53,11 +53,11 @@ export const translations = {
 
      team: {
   ahmed: {
-    name: "Mr. Ahmed Elbaga",
+    name: "A.M Elbaga",
     role: "CEO & Founder",
     specialty: "Executive Leadership",
     summary:
-      "Mr. Ahmed leads NexLine with a strong commitment to professional, high-end security services, building a company centered on trust, integrity, reliability, and excellence in protecting clients and their properties.",
+      "Mr. Elbaga leads NexLine with a strong commitment to professional, high-end security services, building a company centered on trust, integrity, reliability, and excellence in protecting clients and their properties.",
     alt: "Professional man standing confidently in an office",
   },
 
@@ -673,15 +673,15 @@ servicesSection: {
 serviceDetail: {
   sidebarLabel: "SECURITY SERVICES",
   sidebarTitle: "Our Services",
-  serviceLabel: "SERVICE",
-  imageLabel: "PROFESSIONAL SECURITY",
-  approachLabel: "OUR APPROACH",
+  serviceLabel: "Service",
+  imageLabel: "Proffessional security",
+  approachLabel: "Our approach",
   professional: "Professional",
-  howItWorksLabel: "HOW IT WORKS",
-  processLabel: "OUR PROCESS",
+  howItWorksLabel: "How it works",
+  processLabel: "Our process",
   processTitle: "From assessment to protection.",
-  servicesLabel: "OUR SERVICES",
-  featuresTitle: "What We Provide",
+  servicesLabel: "Our services",
+  featuresTitle: "We Provide:",
 
   cta: {
     label: "Need a tailored plan?",
@@ -993,11 +993,11 @@ industries: {
     
 team: {
   ahmed: {
-    name: "Sr. Ahmed Elbaga",
+    name: "Sr. A.M Elbaga",
     role: "CEO y Fundador",
     specialty: "Liderazgo Ejecutivo",
     summary:
-      "El Sr. Ahmed lidera NexLine con un firme compromiso con los servicios de seguridad profesionales y de alta gama, construyendo una empresa basada en la confianza, la integridad, la fiabilidad y la excelencia en la protección de sus clientes y sus propiedades.",
+      "El Sr. Elbaga lidera NexLine con un firme compromiso con los servicios de seguridad profesionales y de alta gama, construyendo una empresa basada en la confianza, la integridad, la fiabilidad y la excelencia en la protección de sus clientes y sus propiedades.",
     alt: "Hombre profesional de pie con confianza en una oficina",
   },
 
@@ -1625,7 +1625,7 @@ serviceDetail: {
   processLabel: "NUESTRO PROCESO",
   processTitle: "De la evaluación a la protección.",
   servicesLabel: "NUESTROS SERVICIOS",
-  featuresTitle: "Lo Que Ofrecemos",
+  featuresTitle: "Ofrecemos:",
 
   cta: {
     label: "¿Necesita un plan personalizado?",

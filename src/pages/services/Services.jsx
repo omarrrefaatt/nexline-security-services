@@ -6,7 +6,7 @@ import { services } from "../../data/services.js";
 import { useLanguage } from "../../context/LanguageContext.tsx";
 import { translations } from "../../data/translations.ts";
 
-import serviceBackground from "../../assets/guards-services.jpg";
+import serviceBackground from "../../assets/services-bg.jpeg";
 import "./services.css";
 
 function Services() {

@@ -1,10 +1,10 @@
 
-import standingGuards from "../assets/standing.jpeg";
+import standingGuards from "../assets/standing_guard.jpeg";
 import servailance from "../assets/mobile-surveillance.jpg";
-import lobbyGuards from "../assets/lobby-guards.jpg";
+import lobbyGuards from "../assets/hotel_guards.jpeg";
 import fireWatch from "../assets/fire-watch.jpg";
 import event from "../assets/event.jpeg";
-import patrol from "../assets/patrols.jpeg";
+import patrol from "../assets/patrol-guard.jpeg";
 import patrol_video from "../assets/patrol_det.mp4";
 export const services = [
   {

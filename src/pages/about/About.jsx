@@ -3,7 +3,7 @@ import Icon from "../../components/common/Icon.jsx";
 import PageShell from "../../components/layout/PageShell.jsx";
 import { guardHeroes } from "../../data/aboutData.js";
 import "./About.css";
-import securityTeam from "../../assets/about_us_bg.jpeg";
+import securityTeam from "../../assets/2.jpeg";
 import { useLanguage } from "../../context/LanguageContext.tsx";
 import { translations } from "../../data/translations.ts";
 

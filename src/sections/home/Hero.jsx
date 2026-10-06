@@ -6,10 +6,14 @@ import { heroHighlights } from "../../data/heroHighlights.js";
 import { useLanguage } from "../../context/LanguageContext.tsx";
 import { translations } from "../../data/translations.ts";
 
-import homeBg from "../../assets/home_bg.png";
+import homeBg from "../../assets/home.jpeg";
 import patrol from "../../assets/patrol.jpg";
-import homeBg3 from "../../assets/home_bg3.jpeg";
+import homeBg3 from "../../assets/home_backhground.jpeg";
 import surveillance from "../../assets/surveillance.png";
+import video from "../../assets/patrol_video.mp4";
+import slide1 from "../../assets/1.jpeg";
+import slide5 from "../../assets/home_bg5.jpeg";
+
 
 function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -21,26 +25,42 @@ function Hero() {
     {
       id: "safe-family",
       title: "Safe Families",
-      image: homeBg,
+      image: slide1,
+      type: "image",
+    },
+    {
+      id: "video-surveillance",
+      title: "Video Surveillance",
+      image: video,
+      type: "video",
+    },
+    
+    {
+      id: "friendly-guard",
+      title: "Friendly Security",
+      image: homeBg3,
+      type: "image",
     },
     {
       id: "patrol-vehicle",
       title: "Patrol Vehicle",
       image: patrol,
-    },
-    {
-      id: "friendly-guard",
-      title: "Friendly Security",
-      image: homeBg3,
+      type: "image",
     },
     {
       id: "monitoring",
       title: "24/7 Monitoring",
       image: surveillance,
+      type: "image",
     },
-  ];
+    {
+      id: "home-security",
+      title: "Home Security",
+      image: slide5,
+      type: "image",
+    }
 
-  console.log("HERO IMAGES:", heroImages);
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -72,20 +92,36 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero__carousel">
-        {heroImages.map((image, index) => (
+
+        {heroImages.map((item, index) => (
           <div
-            key={image.id}
+            key={item.id}
             className={`hero__slide ${
               index === currentSlide ? "is-active" : ""
             }`}
-            style={{
-              backgroundImage: `url(${image.image})`,
-            }}
+            style={
+              item.type === "image"
+                ? {
+                    backgroundImage: `url(${item.image})`,
+                  }
+                : undefined
+            }
             role="img"
             aria-label={
-              t.hero.slides[image.id] || image.title
+              t.hero.slides[item.id] || item.title
             }
-          />
+          >
+            {item.type === "video" && (
+              <video
+                className="hero__video"
+                src={item.image}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            )}
+          </div>
         ))}
 
         <div className="hero__scrim" />
@@ -152,4 +188,3 @@ function Hero() {
 }
 
 export default Hero;
-

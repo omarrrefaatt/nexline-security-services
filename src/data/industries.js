@@ -1,13 +1,13 @@
 
-import construction from "../assets/construction.jpg";
+import construction from "../assets/construction.jpeg";
 import shopping from "../assets/shopping.webp";
 import school from "../assets/school.jpg";
 import petroleum from "../assets/petroleum.webp";
-import warehouse from "../assets/warehouse.png";
+import warehouse from "../assets/security-wearhouse.jpeg";
 import residential from "../assets/residential.jfif";
 import hotel from "../assets/hotel.jpg";
 import parking from "../assets/parking.jfif";
-import event from "../assets/event.jpg";
+import event from "../assets/event_industry.jpeg";
 import bank from "../assets/bank.jfif";
 import hospital from "../assets/hospital.jpeg";
 

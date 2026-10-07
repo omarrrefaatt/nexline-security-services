@@ -486,11 +486,11 @@ button {
 }
 @media (max-width: 768px) {
   .hero__slide {
-    background-position: center 25%;
+    background-position: center 40%;
   }
 
   .hero__video {
-    object-position: center 25%;
+    object-position: center 40%;
   }
 }
 

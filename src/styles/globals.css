@@ -482,6 +482,16 @@ button {
   .highlight-card__title {
     font-size: 0.75rem;
   }
+
+}
+@media (max-width: 768px) {
+  .hero__slide {
+    background-position: center 25%;
+  }
+
+  .hero__video {
+    object-position: center 25%;
+  }
 }
 
 @media (max-width: 380px) {

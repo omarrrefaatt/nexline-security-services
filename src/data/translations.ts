@@ -120,7 +120,7 @@ export const translations = {
           Home: "Home",
           "About Us": "About Us",
           "Security Services": "Security Services",
-          "Industries We Serve": "Industries We Serve",
+          "Industries we serve": "Industries we serve",
           "Service Areas": "Service Areas",
           "Contact Us": "Contact Us",
           "Request a Quote": "Request a Quote",
@@ -213,7 +213,7 @@ export const translations = {
     },
 
     reviews: {
-      title: "What Our Clients Say",
+      title: "What our clients say",
       subtitle: "Real testimonials from businesses we protect",
 
       items: {
@@ -273,7 +273,7 @@ hero: {
   },
 },
 vision: {
-  title: "Why Choose Us?",
+  title: "Why choose us?",
   subtitle:
     "Leading the industry in professional security solutions",
 
@@ -284,7 +284,7 @@ vision: {
     years: "Years of Excellence",
   },
 
-  coreStrengths: "Our Core Strengths",
+  coreStrengths: "Our core strengths",
 
   strengths: {
     monitoring: {
@@ -663,7 +663,7 @@ services: {
   
 },
 servicesSection: {
-  title: "Services We Provide",
+  title: "Services we provide",
   subtitle: "Comprehensive security solutions for every need",
   learnMore: "Learn More",
   ctaQuestion:
@@ -842,7 +842,7 @@ quote: {
 },
 industries: {
   hero: {
-    title: "Industries We Serve",
+    title: "Industries we serve",
     description:
       "From single storefronts to regulated industrial sites, we build security programs around how each industry actually operates. Explore the sectors we work with below.",
     jumpNavLabel: "Jump to an industry",
@@ -1060,7 +1060,7 @@ team: {
           Home: "Inicio",
           "About Us": "Sobre Nosotros",
           "Security Services": "Servicios de Seguridad",
-          "Industries We Serve": "Industrias que Atendemos",
+          "Industries we serve": "Industrias que Atendemos",
           "Service Areas": "Áreas de Servicio",
           "Contact Us": "Contáctenos",
           "Request a Quote": "Solicitar una Cotización",

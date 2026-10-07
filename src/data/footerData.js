@@ -3,7 +3,7 @@ export const footerQuickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Security Services", href: "/services" },
-  { label: "Industries We Serve", href: "#industries" },
+  { label: "Industries we serve", href: "#industries" },
   { label: "Service Areas", href: "#service-areas" },
   // { label: "Careers", href: "#careers" },
   { label: "Contact Us", href: "/contact" },

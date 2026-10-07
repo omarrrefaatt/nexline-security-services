@@ -42,7 +42,7 @@ function Industries() {
             aria-label={t.industries.hero.jumpNavLabel}
           >
            <span className="industries-page__jumpnav-label">
-  Industries We <em>Serve</em>
+  Industries we <em>serve</em>
 </span>
             <ul>
               {industries.map((industry) => {

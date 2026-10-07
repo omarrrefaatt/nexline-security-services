@@ -24,8 +24,7 @@ function Services() {
     }
 
     return services.filter((service) => {
-      const translatedService =
-        t.services.items[service.translationKey];
+      const translatedService = t.services.items[service.translationKey];
 
       const searchableValues = [
         translatedService?.title,
@@ -34,9 +33,7 @@ function Services() {
       ];
 
       return searchableValues.some(
-        (value) =>
-          value &&
-          value.toLowerCase().includes(normalizedQuery)
+        (value) => value && value.toLowerCase().includes(normalizedQuery),
       );
     });
   }, [query, t]);
@@ -44,7 +41,6 @@ function Services() {
   return (
     <PageShell>
       <section className="services-page">
-
         {/* =====================================================
             HERO / INTRO
         ===================================================== */}
@@ -61,14 +57,9 @@ function Services() {
               <em>{t.services.hero.titleLine2}</em>
             </h1>
 
-            <p className="services-page__lead">
-              {t.services.hero.description}
-            </p>
-
-            <Link
-              className="services-page__quote btn btn--primary"
-              to="/quote"
-            >
+            <p className="services-page__lead">{t.services.hero.description}</p>
+            <br />
+            <Link className="services-page__quote btn btn--primary" to="/quote">
               {t.services.hero.quote}
             </Link>
           </div>
@@ -83,10 +74,10 @@ function Services() {
         ===================================================== */}
         <div className="services-page__toolbar">
           <div className="services-page__toolbar-count">
-  <span className="services-page__toolbar-available">
-    {t.services.toolbar.available}
-  </span>
-</div>
+            <span className="services-page__toolbar-available">
+              {t.services.toolbar.available}
+            </span>
+          </div>
 
           <label className="services-page__search">
             <Icon name="search" size={19} />
@@ -98,9 +89,7 @@ function Services() {
             <input
               type="search"
               value={query}
-              onChange={(event) =>
-                setQuery(event.target.value)
-              }
+              onChange={(event) => setQuery(event.target.value)}
               placeholder={t.services.toolbar.searchPlaceholder}
             />
 
@@ -130,18 +119,11 @@ function Services() {
                 <article
                   key={service.id}
                   className="services-page__card"
-                  onClick={() =>
-                    navigate(`/services/${service.id}`)
-                  }
+                  onClick={() => navigate(`/services/${service.id}`)}
                   onKeyDown={(event) => {
-                    if (
-                      event.key === "Enter" ||
-                      event.key === " "
-                    ) {
+                    if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
-                      navigate(
-                        `/services/${service.id}`
-                      );
+                      navigate(`/services/${service.id}`);
                     }
                   }}
                   tabIndex={0}
@@ -152,13 +134,8 @@ function Services() {
                     <img
                       className="services-page__card-image"
                       src={service.image}
-                      alt={
-                        translatedService.alt ||
-                        translatedService.title
-                      }
-                      loading={
-                        index > 1 ? "lazy" : "eager"
-                      }
+                      alt={translatedService.alt || translatedService.title}
+                      loading={index > 1 ? "lazy" : "eager"}
                     />
                   </div>
 
@@ -179,9 +156,7 @@ function Services() {
                       onClick={(event) => {
                         event.stopPropagation();
 
-                        navigate(
-                          `/quote?service=${service.id}`
-                        );
+                        navigate(`/quote?service=${service.id}`);
                       }}
                     >
                       {t.services.card.getQuote}
@@ -204,7 +179,6 @@ function Services() {
             <p>{t.services.empty.description}</p>
           </div>
         )}
-
       </section>
     </PageShell>
   );

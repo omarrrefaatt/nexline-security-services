@@ -36,8 +36,7 @@
   transform: translateX(100%);
 
   /* Slides into position when page opens */
-  animation: heroImageSlideIn 1.2s cubic-bezier(0.22, 1, 0.36, 1)
-    forwards;
+  animation: heroImageSlideIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 
   animation-delay: 0.15s;
 
@@ -63,14 +62,13 @@
   position: absolute;
   inset: 0;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.95) 0%,
-      rgba(0, 0, 0, 0.72) 25%,
-      rgba(0, 0, 0, 0.25) 65%,
-      rgba(0, 0, 0, 0.05) 100%
-    );
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.72) 25%,
+    rgba(0, 0, 0, 0.25) 65%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
 }
 
 /* Text above everything */
@@ -114,6 +112,152 @@
   .about-page__hero-image {
     animation: none;
     transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* =========================================
+   MOBILE HERO — REDESIGNED
+========================================= */
+
+@media (max-width: 768px) {
+  .about-page__hero {
+    min-height: auto;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    padding: 0 0 70px;
+    overflow: hidden;
+  }
+
+  /* -----------------------------------------
+     HERO CONTENT
+  ----------------------------------------- */
+
+  .about-page__hero-content {
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    max-width: none;
+
+    padding: 72px 24px 38px;
+  }
+
+  .about-page__hero h1 {
+    font-size: clamp(48px, 13vw, 68px);
+    line-height: 0.94;
+    letter-spacing: -0.045em;
+
+    margin: 12px 0 24px;
+  }
+
+  .about-page__hero .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.16em;
+  }
+
+  .about-page__hero-note {
+    max-width: 520px;
+
+    font-size: 16px;
+    line-height: 1.65;
+
+    margin-top: 0;
+  }
+
+  /* -----------------------------------------
+     TEAM IMAGE
+  ----------------------------------------- */
+
+  .about-page__hero-image {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    z-index: 1;
+
+    width: calc(100% - 32px);
+    height: auto;
+
+    margin: 0 16px;
+
+    overflow: hidden;
+
+    transform: translateY(40px);
+    opacity: 0;
+
+    animation: heroImageMobileIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+    animation-delay: 0.15s;
+
+    border-radius: 2px;
+  }
+
+  .about-page__hero-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    /*
+     * Don't crop the team.
+     * The full landscape photo remains visible.
+     */
+    object-fit: contain;
+    object-position: center;
+
+    aspect-ratio: auto;
+  }
+
+  /* -----------------------------------------
+     IMAGE OVERLAY
+  ----------------------------------------- */
+
+  .about-page__hero-image::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 55%,
+      rgba(0, 0, 0, 0.22) 100%
+    );
+
+    pointer-events: none;
+  }
+}
+
+/* -----------------------------------------
+   MOBILE IMAGE ANIMATION
+----------------------------------------- */
+
+@keyframes heroImageMobileIn {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* -----------------------------------------
+   REDUCED MOTION
+----------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__hero-image {
+    animation: none;
+    transform: none;
     opacity: 1;
   }
 }

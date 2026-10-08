@@ -1134,16 +1134,16 @@ button {
   }
 
   .navbar--lg .logo__name {
-    font-size: 1.55rem;
+    font-size: 1.7rem;
     font-weight: 600;
-    line-height: 1;
+    line-height: 0.8;
     white-space: nowrap;
   }
 
   .navbar--lg .logo__tagline {
     font-size: 0.72rem;
     font-weight: 400;
-    line-height: 1;
+    line-height: 0.8;
     white-space: nowrap;
     transform: scaleX(1.08);
     transform-origin: left;

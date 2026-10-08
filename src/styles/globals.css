@@ -611,8 +611,8 @@ button {
 .navbar__logo {
   background: url("../assets/logo.png");
   background-size: contain;
-  width: 55px;
-  height: 55px;
+  width: 80px;
+  height: 80px;
 }
 
 .navbar--lg {
@@ -639,6 +639,7 @@ button {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+   
 }
 
 .navbar--lg .logo__mark {
@@ -647,13 +648,30 @@ button {
   font-size: 1.05rem;
   border-width: 1.5px;
 }
+.navbar--lg .logo__text {
+ display: inline-flex;
+   flex-direction: column;
+  width: 220px;
+
+   line-height: 0.8;
+}
 
 .navbar--lg .logo__name {
   font-size: 2.13rem;
+   width: 100%;
+     display: block;
+      line-height: 0.8;
+
 }
 
 .navbar--lg .logo__tagline {
   font-size: 0.95rem;
+   width: 100%;
+    transform: scaleX(1.1);
+      font-weight: 400;
+  transform-origin: left;
+     display: block;
+      line-height: 0.8;
 }
 
 .navbar--lg .navbar__links {
@@ -3376,7 +3394,8 @@ button {
 }
 
 .industries-page__jumpnav-label {
-  display: block;
+  display: flex;
+   flex-direction: column;
   margin-bottom: 1rem;
   color: var(--gold);
   font: 0.8rem;

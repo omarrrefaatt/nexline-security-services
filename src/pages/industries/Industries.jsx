@@ -29,8 +29,10 @@ function Industries() {
       <div className="industries-page">
         <div className="industries-page__intro">
           <div className="industries-page__intro-content">
-            <h1>
-  <ItalicLastWord text={t.industries.hero.title} />
+          <h1>
+  Industries
+  <br />
+  <em>We Serve</em>
 </h1>
             <p className="industries-page__lead">
               {t.industries.hero.description}

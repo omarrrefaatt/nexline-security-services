@@ -681,7 +681,7 @@ serviceDetail: {
   processLabel: "Our process",
   processTitle: "From assessment to protection.",
   servicesLabel: "Our services",
-  featuresTitle: "We Provide:",
+  featuresTitle: " What we Provide:",
 
   cta: {
     label: "Need a tailored plan?",

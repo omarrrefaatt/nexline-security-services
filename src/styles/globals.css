@@ -1128,6 +1128,34 @@ button {
     display: none;
   }
 }
+@media (max-width: 768px) {
+  .navbar--lg .logo__text {
+    width: 160px;
+  }
+
+  .navbar--lg .logo__name {
+    font-size: 1.55rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .navbar--lg .logo__tagline {
+    font-size: 0.72rem;
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+    transform: scaleX(1.08);
+    transform-origin: left;
+  }
+}
+@media (max-width: 768px) {
+  .navbar__logo {
+    width:80px;
+    height: 80px;
+  }
+}
+
 
 /* ==========================================================================
    Vision section (homepage)

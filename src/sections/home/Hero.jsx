@@ -8,10 +8,10 @@ import { translations } from "../../data/translations.ts";
 
 import homeBg from "../../assets/home.jpeg";
 import patrol from "../../assets/patrol.jpg";
-import homeBg3 from "../../assets/home_backhground.jpeg";
+import homeBg3 from "../../assets/home_slide3.jpeg";
 import surveillance from "../../assets/surveillance.png";
 import video from "../../assets/patrol_video.mp4";
-import slide1 from "../../assets/1.jpeg";
+import slide1 from "../../assets/home_slide1.jpeg";
 import slide5 from "../../assets/home_bg5.jpeg";
 
 

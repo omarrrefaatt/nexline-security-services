@@ -140,7 +140,7 @@ function Quote() {
 
             <a
               className="btn btn--sm site-footer__cta-call"
-              href="tel:+19097021008"
+              href="tel:+18008749003"
             >
               {t.quote.hero.callButton}
               <Icon name="phone" size={16} />

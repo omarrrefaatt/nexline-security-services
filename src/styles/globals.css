@@ -611,8 +611,8 @@ button {
 .navbar__logo {
   background: url("../assets/logo.png");
   background-size: contain;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 
 .navbar--lg {

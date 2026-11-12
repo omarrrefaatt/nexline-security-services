@@ -43,7 +43,7 @@ function Footer() {
 
           <a
             className="btn btn--sm site-footer__cta-call"
-            href="tel:+19097021008"
+            href="tel:+18008749003"
           >
             {t.footer.cta.callButton}
             <Icon name="phone" size={16} />
@@ -144,7 +144,7 @@ function Footer() {
 
           <span>{t.footer.contact.phone}</span>
 
-          <strong>+1 (909) 702-1008</strong>
+          <strong>+1 (800) 874-9003</strong>
 
 
           <span>{t.footer.contact.email}</span>

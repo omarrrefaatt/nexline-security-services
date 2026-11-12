@@ -2,8 +2,8 @@ export const contactDetails = [
   {
     id: "phone",
     translationKey: "phone",
-    value: "+1(909) 702-1008",
-    href: "tel:+19097021008",
+    value: "+1 (800) 874-9003",
+    href: "tel:+18008749003",
   },
   {
     id: "email",

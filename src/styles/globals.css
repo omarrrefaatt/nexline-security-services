@@ -2417,7 +2417,7 @@ button {
   text-align: left;
   cursor: pointer;
   font:
-    600 0.95rem "Manrope",
+    450 0.95rem "Manrope",
     sans-serif;
 }
 .faq-item__question > span:first-child {
@@ -2701,7 +2701,7 @@ button {
 .site-footer__contact strong {
   color: #d8d8d6;
   font-size: 0.74rem;
-  font-weight: 500;
+  font-weight: 400;
   overflow-wrap: anywhere;
 }
 .site-footer__areas {
